@@ -1,0 +1,5 @@
+#categories-dropdown {
+  display: flex;
+  justify-self: center;
+  max-width: 95%;
+}
