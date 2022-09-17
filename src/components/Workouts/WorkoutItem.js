@@ -1,10 +1,15 @@
 import React from 'react';
-import classes from './WorkoutItem.module.css';
+
 import Card from '../UI/Card';
 function WorkoutItem(props) {
   return (
     <React.Fragment>
-      <Card title={props.title} type={props.type}></Card>
+      <Card
+        title={props.title}
+        type={props.type}
+        sets={props.sets}
+        reps={props.reps}
+      ></Card>
     </React.Fragment>
   );
 }

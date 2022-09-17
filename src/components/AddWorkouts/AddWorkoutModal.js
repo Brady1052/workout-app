@@ -28,28 +28,18 @@ function WorkoutForm(props) {
     const workoutData = {
       name: workoutName,
       type: workoutType,
+      sets: numSets,
+      reps: numReps,
     };
-    saveWorkoutDataHandler(workoutData);
+    props.onSaveWorkout(workoutData);
     setWorkoutName('');
     setWorkoutType('');
     setNumSets(0);
     setNumReps(0);
   };
 
-  const saveWorkoutDataHandler = (enteredWorkoutData) => {
-    const workoutData = {
-      ...enteredWorkoutData,
-      id: Math.random().toString(),
-    };
-    props.onAddWorkout(workoutData);
-  };
-
   return (
     <React.Fragment>
-      <h1 style={{ color: 'blue' }}>
-        {numSets}
-        {numReps}
-      </h1>
       <button
         type="button"
         className="btn btn-primary"
