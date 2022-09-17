@@ -1,0 +1,8 @@
+.card {
+  margin-top: 2rem;
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+}

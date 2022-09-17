@@ -1,0 +1,27 @@
+.modal-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-input {
+  display: flex;
+  justify-self: center;
+  max-width: 99%;
+}
+
+.input-control {
+  display: flex;
+  flex-direction: column;
+}
+
+#add-workout {
+}
+/* 
+@media (max-width: 801px) {
+  #add-workout {
+    display: block;
+    visibility: visible;
+    position: absolute;
+    right: 60px;
+  }
+} */

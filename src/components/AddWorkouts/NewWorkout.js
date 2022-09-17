@@ -1,5 +1,5 @@
 import React from 'react';
-import WorkoutForm from './WorkoutForm';
+import AddWorkoutModal from './AddWorkoutModal';
 import classes from './NewWorkout.module.css';
 function NewWorkout(props) {
   const saveWorkoutDataHandler = (enteredWorkoutData) => {
@@ -11,7 +11,10 @@ function NewWorkout(props) {
   };
   return (
     <React.Fragment>
-      <WorkoutForm onSaveWorkout={saveWorkoutDataHandler} />
+      <AddWorkoutModal
+        onAddWorkout={props.onAddWorkout}
+        onSaveWorkout={saveWorkoutDataHandler}
+      />
     </React.Fragment>
   );
 }

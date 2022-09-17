@@ -1,13 +1,9 @@
 import React, { useState } from 'react';
 import './App.css';
-import NewWorkout from './components/AddWorkouts/NewWorkout';
+
 import Workouts from './components/Workouts/Workouts';
-import Wrapper from './components/UI/Wrapper';
+import WrapperRow from './components/UI/WrapperRow';
 import NavBar from './components/LayoutComponents/Navbar';
-const addWorkoutHandler = (workout) => {
-  console.log('In app.js');
-  console.log(workout);
-};
 
 function App() {
   const [workouts, setWorkouts] = useState([]);
@@ -19,11 +15,10 @@ function App() {
   };
   return (
     <React.Fragment>
-      <NavBar />
-      <NewWorkout onAddWorkout={addWorkoutHandler} />
-      <Wrapper>
+      <NavBar onAddWorkout={addWorkoutHandler} />
+      <WrapperRow>
         <Workouts workouts={workouts} />
-      </Wrapper>
+      </WrapperRow>
     </React.Fragment>
   );
 }
