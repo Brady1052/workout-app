@@ -1,21 +1,14 @@
 import React from 'react';
 import classes from './Card.module.css';
 function Card(props) {
-  const showCardID = () => {
-    console.log(`CARD ID: `, props.cardID);
-    console.log('CARD WORKOUTS', props.workoutID);
-  };
-
   const deleteWorkout = () => {
     const workouts = props.workouts;
     workouts.forEach((workout, idx) => {
       if (props.cardID === workout.workoutID) {
-        console.log('splice function');
         props.workouts.splice(idx, 1);
 
         return props.onDeleteWorkout(props.workouts);
       }
-      console.log('updated workouts', props.workouts);
     });
   };
   return (
@@ -40,9 +33,6 @@ function Card(props) {
                   <button className="btn text-success">Edit</button>
                   <button onClick={deleteWorkout} className="btn text-danger">
                     Delete
-                  </button>
-                  <button onClick={showCardID} className="btn btn-primary">
-                    Show Card ID
                   </button>
                 </div>
               </div>

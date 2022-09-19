@@ -5,11 +5,13 @@ import WrapperRow from './components/UI/WrapperRow';
 import NavBar from './components/LayoutComponents/Navbar';
 
 function App() {
-  const [forceReRender, setForceReRender] = useState(0);
+  const [forceRender, setForceRender] = useState(0);
   const [workouts, setWorkouts] = useState([]);
-
-  const reRender = () => {
-    setForceReRender((prevState) => {
+  /* When a workout is removed it initially removes it from local storage,
+   but does not remove the card associated with it until the page is re-rendered. The forceRender state
+   is used to re-render the component everytime a workout is deleted thus removing the card immediately */
+  const forceRenderHandler = () => {
+    setForceRender((prevState) => {
       return prevState + 1;
     });
   };
@@ -24,7 +26,7 @@ function App() {
     setWorkouts(updatedWorkoutList);
     console.log(workouts);
     localStorage.setItem('Workouts', JSON.stringify(workouts));
-    reRender();
+    forceRenderHandler();
   };
 
   //******** Handles setting local storage, and appending to local storage  ***********//
