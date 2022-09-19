@@ -6,11 +6,10 @@ function NewWorkout(props) {
       ...enteredWorkoutData,
       id: Math.random().toString(),
     };
-    const savedDataArray = [];
-    savedDataArray.push(workoutData);
-    localStorage.setItem('Workout', JSON.stringify(savedDataArray));
     props.onAddWorkout(workoutData);
+    props.onStoreWorkout(workoutData);
   };
+
   return (
     <React.Fragment>
       <AddWorkoutModal onSaveWorkout={saveWorkoutDataHandler} />

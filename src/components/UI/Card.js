@@ -1,6 +1,10 @@
 import React from 'react';
 import classes from './Card.module.css';
 function Card(props) {
+  const deleteWorkout = () => {
+    localStorage.removeItem(`Workout`);
+  };
+
   return (
     <div className={`container ${classes.card}`}>
       <div className="col">
@@ -14,7 +18,6 @@ function Card(props) {
               <ul className={`list-group list-group-flush`}>
                 <li className="list-group-item">Sets: {props.sets}</li>
                 <li className="list-group-item">Reps: {props.reps}</li>
-                <li className="list-group-item">Vestibulum at eros</li>
               </ul>
               <div className="text-center d-flex justify-content-between">
                 <button className="btn text-success">Edit</button>

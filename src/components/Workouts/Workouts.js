@@ -1,19 +1,20 @@
 import React from 'react';
 import WorkoutItem from './WorkoutItem';
 
-function Workouts() {
-  const savedWorkouts = JSON.parse(localStorage.getItem('Workout'));
+function Workouts(props) {
   return (
     <React.Fragment>
-      {savedWorkouts.map((workout) => (
-        <WorkoutItem
-          key={workout.id}
-          title={workout.name}
-          type={workout.type}
-          sets={workout.sets}
-          reps={workout.reps}
-        />
-      ))}
+      {props.workouts.map((workout) => {
+        return (
+          <WorkoutItem
+            key={workout.id}
+            title={workout.name}
+            type={workout.type}
+            sets={workout.sets}
+            reps={workout.reps}
+          />
+        );
+      })}
     </React.Fragment>
   );
 }

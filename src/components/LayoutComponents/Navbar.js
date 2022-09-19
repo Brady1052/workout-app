@@ -64,7 +64,10 @@ function NavBar(props) {
               </li>
             </ul>
 
-            <NewWorkout onAddWorkout={props.onAddWorkout} />
+            <NewWorkout
+              onAddWorkout={props.onAddWorkout}
+              onStoreWorkout={props.onStoreWorkout}
+            />
           </div>
         </div>
       </nav>
