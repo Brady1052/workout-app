@@ -42,7 +42,7 @@ function WorkoutForm(props) {
     <React.Fragment>
       <button
         type="button"
-        className="btn btn-primary"
+        className="btn btn-light"
         id={classes['add-workout']}
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"

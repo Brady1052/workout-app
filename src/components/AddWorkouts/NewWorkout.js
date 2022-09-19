@@ -7,7 +7,6 @@ function NewWorkout(props) {
       id: Math.random().toString(),
     };
     props.onAddWorkout(workoutData);
-    props.onStoreWorkout(workoutData);
   };
 
   return (

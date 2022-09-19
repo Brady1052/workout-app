@@ -1,10 +1,6 @@
 import React from 'react';
 import classes from './Card.module.css';
 function Card(props) {
-  const deleteWorkout = () => {
-    localStorage.removeItem(`Workout`);
-  };
-
   return (
     <div className={`container ${classes.card}`}>
       <div className="col">
@@ -19,9 +15,17 @@ function Card(props) {
                 <li className="list-group-item">Sets: {props.sets}</li>
                 <li className="list-group-item">Reps: {props.reps}</li>
               </ul>
-              <div className="text-center d-flex justify-content-between">
+              <div
+                className="text-center d-flex justify-content-between"
+                style={{ marginTop: '1rem' }}
+              >
                 <button className="btn text-success">Edit</button>
-                <button className="btn text-danger">Delete</button>
+                <button
+                  onClick={props.onDeleteWorkout}
+                  className="btn text-danger"
+                >
+                  Delete
+                </button>
               </div>
             </div>
           </div>

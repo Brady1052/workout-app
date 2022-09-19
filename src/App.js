@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Workouts from './components/Workouts/Workouts';
 import WrapperRow from './components/UI/WrapperRow';
@@ -6,59 +6,38 @@ import NavBar from './components/LayoutComponents/Navbar';
 
 function App() {
   const [workouts, setWorkouts] = useState([]);
-  const [storedWorkouts, setStoredWorkouts] = useState(
-    JSON.parse(localStorage.getItem('Workouts'))
-  );
-
-  const [array, setArray] = useState([]);
 
   const addWorkoutHandler = (workout) => {
     setWorkouts((prevState) => {
       return [...prevState, workout];
     });
   };
-  const workoutsArrayHandler = () => {
-    array.push(workouts);
-  };
+  const deleteWorkout = () => {};
 
-  //Store *************
-  const storeWorkoutsHandler = (workout) => {
-    // console.log(JSON.parse(storedWorkouts.current));
-  };
-
+  //******** Handles setting, and adding to local storage  ***********//
   useEffect(() => {
     if (localStorage.getItem('Workouts') === null) {
       localStorage.setItem('Workouts', JSON.stringify([]));
-      setArray(JSON.parse(localStorage.getItem('Workouts')));
     }
     if (localStorage.getItem('Workouts') === '[]' && workouts.length !== 0) {
       localStorage.setItem('Workouts', JSON.stringify(workouts));
-      console.log(JSON.parse(localStorage.getItem('Workouts')).length);
     }
     if (
       JSON.parse(localStorage.getItem('Workouts')).length > 0 &&
       workouts.length === 0
     ) {
-      console.log(
-        JSON.parse(localStorage.getItem('Workouts')).length + 'ayooo'
-      );
-      console.log(JSON.parse(localStorage.getItem('Workouts')));
       setWorkouts(JSON.parse(localStorage.getItem('Workouts')));
-      console.log(workouts);
     }
     if (workouts.length > 0) {
       localStorage.setItem('Workouts', JSON.stringify(workouts));
     }
   }, [workouts]);
-
+  //*******************************************************************//
   return (
     <React.Fragment>
-      <NavBar
-        onStoreWorkout={storeWorkoutsHandler}
-        onAddWorkout={addWorkoutHandler}
-      />
+      <NavBar onAddWorkout={addWorkoutHandler} />
       <WrapperRow>
-        <Workouts workouts={workouts} />
+        <Workouts onDeleteWorkout={deleteWorkout} workouts={workouts} />
       </WrapperRow>
     </React.Fragment>
   );

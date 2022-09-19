@@ -7,6 +7,7 @@ function Workouts(props) {
       {props.workouts.map((workout) => {
         return (
           <WorkoutItem
+            deleteWorkout={props.onDeleteWorkout}
             key={workout.id}
             title={workout.name}
             type={workout.type}

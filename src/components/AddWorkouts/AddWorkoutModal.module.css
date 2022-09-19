@@ -14,14 +14,6 @@
   flex-direction: column;
 }
 
-#add-workout {
+#add-workout:hover {
+  background-color: rgb(214, 214, 214);
 }
-/* 
-@media (max-width: 801px) {
-  #add-workout {
-    display: block;
-    visibility: visible;
-    position: absolute;
-    right: 60px;
-  }
-} */
