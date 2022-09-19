@@ -2,7 +2,18 @@ import React from 'react';
 import classes from './Card.module.css';
 function Card(props) {
   const showCardID = () => {
-    console.log(props.id);
+    console.log(`CARD ID: `, props.cardID);
+    console.log('CARD WORKOUTS', props.workouts);
+  };
+
+  const deleteWorkout = () => {
+    props.workouts.forEach((workout) => {
+      if (props.workoutID === props.cardID) {
+        console.log('WORKOUT', workout);
+        console.log(`CARD ID: `, props.cardID);
+        console.log(`WORKOUT ID:`, props.workoutID);
+      }
+    });
   };
   return (
     <div className="col-4">
@@ -24,10 +35,7 @@ function Card(props) {
                   style={{ marginTop: '1rem' }}
                 >
                   <button className="btn text-success">Edit</button>
-                  <button
-                    onClick={props.onDeleteWorkout}
-                    className="btn text-danger"
-                  >
+                  <button onClick={deleteWorkout} className="btn text-danger">
                     Delete
                   </button>
                   <button onClick={showCardID} className="btn btn-primary">

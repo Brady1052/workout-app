@@ -6,6 +6,7 @@ function NewWorkout(props) {
       ...enteredWorkoutData,
       id: Math.random().toString(),
     };
+    console.log(workoutData);
     props.onAddWorkout(workoutData);
   };
 

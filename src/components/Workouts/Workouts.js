@@ -13,6 +13,7 @@ function Workouts(props) {
           {props.workouts.map((workout) => {
             return (
               <WorkoutItem
+                workouts={props.workouts}
                 deleteWorkout={props.onDeleteWorkout}
                 key={workout.id}
                 id={workout.id}

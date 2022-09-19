@@ -12,9 +12,9 @@ function App() {
       return [...prevState, workout];
     });
   };
-  const deleteWorkout = () => {};
+  const deleteWorkout = (workouts) => {};
 
-  //******** Handles setting, and adding to local storage  ***********//
+  //******** Handles setting local storage, and appending to local storage  ***********//
   useEffect(() => {
     if (localStorage.getItem('Workouts') === null) {
       localStorage.setItem('Workouts', JSON.stringify([]));
@@ -32,6 +32,7 @@ function App() {
       localStorage.setItem('Workouts', JSON.stringify(workouts));
     }
   }, [workouts]);
+
   //*******************************************************************//
   return (
     <React.Fragment>
