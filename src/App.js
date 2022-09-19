@@ -5,14 +5,27 @@ import WrapperRow from './components/UI/WrapperRow';
 import NavBar from './components/LayoutComponents/Navbar';
 
 function App() {
+  const [forceReRender, setForceReRender] = useState(0);
   const [workouts, setWorkouts] = useState([]);
+
+  const reRender = () => {
+    setForceReRender((prevState) => {
+      return prevState + 1;
+    });
+  };
 
   const addWorkoutHandler = (workout) => {
     setWorkouts((prevState) => {
       return [...prevState, workout];
     });
   };
-  const deleteWorkout = (workouts) => {};
+  const deleteWorkout = (updatedWorkoutList) => {
+    console.log('APP.JS');
+    setWorkouts(updatedWorkoutList);
+    console.log(workouts);
+    localStorage.setItem('Workouts', JSON.stringify(workouts));
+    reRender();
+  };
 
   //******** Handles setting local storage, and appending to local storage  ***********//
   useEffect(() => {

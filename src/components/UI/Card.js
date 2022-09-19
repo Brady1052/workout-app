@@ -3,16 +3,19 @@ import classes from './Card.module.css';
 function Card(props) {
   const showCardID = () => {
     console.log(`CARD ID: `, props.cardID);
-    console.log('CARD WORKOUTS', props.workouts);
+    console.log('CARD WORKOUTS', props.workoutID);
   };
 
   const deleteWorkout = () => {
-    props.workouts.forEach((workout) => {
-      if (props.workoutID === props.cardID) {
-        console.log('WORKOUT', workout);
-        console.log(`CARD ID: `, props.cardID);
-        console.log(`WORKOUT ID:`, props.workoutID);
+    const workouts = props.workouts;
+    workouts.forEach((workout, idx) => {
+      if (props.cardID === workout.workoutID) {
+        console.log('splice function');
+        props.workouts.splice(idx, 1);
+
+        return props.onDeleteWorkout(props.workouts);
       }
+      console.log('updated workouts', props.workouts);
     });
   };
   return (

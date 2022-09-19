@@ -14,9 +14,10 @@ function Workouts(props) {
             return (
               <WorkoutItem
                 workouts={props.workouts}
-                deleteWorkout={props.onDeleteWorkout}
-                key={workout.id}
-                id={workout.id}
+                onDeleteWorkout={props.onDeleteWorkout}
+                key={workout.workoutID}
+                workoutID={workout.workoutID}
+                cardID={workout.workoutID}
                 title={workout.name}
                 type={workout.type}
                 sets={workout.sets}

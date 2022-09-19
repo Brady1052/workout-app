@@ -4,9 +4,8 @@ function NewWorkout(props) {
   const saveWorkoutDataHandler = (enteredWorkoutData) => {
     const workoutData = {
       ...enteredWorkoutData,
-      id: Math.random().toString(),
+      workoutID: Math.random().toString(),
     };
-    console.log(workoutData);
     props.onAddWorkout(workoutData);
   };
 

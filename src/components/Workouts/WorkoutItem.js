@@ -7,9 +7,9 @@ function WorkoutItem(props) {
       <Card
         workouts={props.workouts}
         onDeleteWorkout={props.onDeleteWorkout}
-        key={props.id}
-        cardID={props.id}
-        workoutID={props.id}
+        key={Math.random().toString()}
+        cardID={props.cardID}
+        workoutID={props.workoutID}
         title={props.title}
         type={props.type}
         sets={props.sets}
