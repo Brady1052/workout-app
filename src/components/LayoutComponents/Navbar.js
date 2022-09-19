@@ -25,7 +25,11 @@ function NavBar(props) {
           <div className="collapse navbar-collapse" id="mobileNavbar">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <button type="button" className="btn btn-dark" id={classes.btn}>
+                <button
+                  type="button"
+                  className="btn btn-light"
+                  id={classes.btn}
+                >
                   Create Workout Schedule
                 </button>
               </li>
