@@ -38,6 +38,13 @@ function WorkoutForm(props) {
     setNumReps('');
   };
 
+  const closeModal = () => {
+    setWorkoutName('');
+    setWorkoutType('Select Workout Type');
+    setNumSets('');
+    setNumReps('');
+  };
+
   return (
     <React.Fragment>
       <button
@@ -125,6 +132,7 @@ function WorkoutForm(props) {
                   type="button"
                   className="btn btn-secondary"
                   data-bs-dismiss="modal"
+                  onClick={closeModal}
                 >
                   Close
                 </button>
