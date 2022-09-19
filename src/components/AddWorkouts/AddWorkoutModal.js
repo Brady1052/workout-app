@@ -4,8 +4,8 @@ import classes from './AddWorkoutModal.module.css';
 function WorkoutForm(props) {
   const [workoutName, setWorkoutName] = useState('');
   const [workoutType, setWorkoutType] = useState('');
-  const [numSets, setNumSets] = useState(0);
-  const [numReps, setNumReps] = useState(0);
+  const [numSets, setNumSets] = useState();
+  const [numReps, setNumReps] = useState();
 
   const workoutNameHandler = (e) => {
     setWorkoutName(e.target.value);
@@ -33,9 +33,9 @@ function WorkoutForm(props) {
     };
     props.onSaveWorkout(workoutData);
     setWorkoutName('');
-    setWorkoutType('');
-    setNumSets(0);
-    setNumReps(0);
+    setWorkoutType('Select Workout Type');
+    setNumSets('');
+    setNumReps('');
   };
 
   return (
@@ -66,28 +66,27 @@ function WorkoutForm(props) {
               </h5>
             </div>
             <div className={`modal-body ${classes['modal-container']}`}>
-              <div className="mb-3">
-                <label htmlFor="workout-name" className="form-label">
-                  Workout Name
-                </label>
+              <div className="mb-3 form-floating">
                 <input
+                  value={workoutName}
                   type="text"
                   className={`form-control`}
                   id="workout-name"
                   onChange={workoutNameHandler}
+                  placeholder="Place workout name here"
                 />
+                <label htmlFor="workout-name">Workout Name</label>
               </div>
 
               <div className="mb-3">
-                <label htmlFor="workout-type" className="form-label">
-                  Type
-                </label>
-
                 <select
                   className={`form-select ${classes['modal-input']}`}
                   onChange={workoutTypeHandler}
+                  value={workoutType}
                 >
-                  <option value="selected">Open this select menu</option>
+                  <option value="Select workout type">
+                    Select workout type
+                  </option>
                   <option value="Weight Lifting">Weight Lifting</option>
                   <option value="Cardio">Cardio</option>
                   <option value="Yoga">Yoga</option>
@@ -97,30 +96,29 @@ function WorkoutForm(props) {
                   <option value="Other">Other</option>
                 </select>
               </div>
-              <div className={`mb-3 ${classes['input-control']}`}>
-                <label htmlFor="workout-name" className="form-label">
-                  Sets
-                </label>
+              <div className={`mb-3 form-floating ${classes['input-control']}`}>
                 <input
                   type="number"
                   value={numSets}
                   className={`form-control ${classes['modal-input']}`}
-                  id="workout-name"
                   onChange={numSetsHandler}
+                  placeholder="Enter number of sets here"
                 />
-              </div>
-              <div className={`mb-3 ${classes['input-control']}`}>
                 <label htmlFor="workout-name" className="form-label">
-                  Reps
+                  Sets
                 </label>
-
+              </div>
+              <div className={`mb-3 form-floating ${classes['input-control']}`}>
                 <input
                   type="number"
                   value={numReps}
                   className={`form-control ${classes['modal-input']}`}
-                  id="workout-name"
                   onChange={numRepsHandler}
+                  placeholder="Enter number of reps here"
                 />
+                <label htmlFor="workout-name" className="form-label">
+                  Reps
+                </label>
               </div>
               <div className="modal-footer">
                 <button
@@ -134,6 +132,7 @@ function WorkoutForm(props) {
                   type="button"
                   className="btn btn-primary"
                   onClick={submitHandler}
+                  data-bs-dismiss="modal"
                 >
                   Add Workout
                 </button>

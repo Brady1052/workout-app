@@ -6,6 +6,8 @@ function WorkoutItem(props) {
     <React.Fragment>
       <Card
         onDeleteWorkout={props.onDeleteWorkout}
+        key={props.id}
+        id={props.id}
         title={props.title}
         type={props.type}
         sets={props.sets}
