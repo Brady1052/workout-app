@@ -1,6 +1,9 @@
 import React from 'react';
 import classes from './Card.module.css';
 function Card(props) {
+  const showCardID = () => {
+    console.log(props.id);
+  };
   return (
     <div className="col-4">
       <div className={`container ${classes.card}`}>
@@ -26,6 +29,9 @@ function Card(props) {
                     className="btn text-danger"
                   >
                     Delete
+                  </button>
+                  <button onClick={showCardID} className="btn btn-primary">
+                    Show Card ID
                   </button>
                 </div>
               </div>

@@ -4,8 +4,8 @@ import classes from './AddWorkoutModal.module.css';
 function WorkoutForm(props) {
   const [workoutName, setWorkoutName] = useState('');
   const [workoutType, setWorkoutType] = useState('');
-  const [numSets, setNumSets] = useState();
-  const [numReps, setNumReps] = useState();
+  const [numSets, setNumSets] = useState('');
+  const [numReps, setNumReps] = useState('');
 
   const workoutNameHandler = (e) => {
     setWorkoutName(e.target.value);

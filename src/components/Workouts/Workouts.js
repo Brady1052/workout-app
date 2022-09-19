@@ -2,7 +2,10 @@ import React from 'react';
 import WorkoutItem from './WorkoutItem';
 
 function Workouts(props) {
-  console.log(props.workouts);
+  // for (i = 0; i < props.workouts.length; i++) {
+  //   console.log(props.workouts[i]);
+  // }
+
   return (
     <React.Fragment>
       <div className="container">
@@ -17,7 +20,7 @@ function Workouts(props) {
                 type={workout.type}
                 sets={workout.sets}
                 reps={workout.reps}
-              />
+              ></WorkoutItem>
             );
           })}
         </div>
