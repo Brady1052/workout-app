@@ -1,18 +1,14 @@
 import React from 'react';
-import WorkoutItem from './WorkoutItem';
+import Card from '../UI/Card';
 
-function Workouts(props) {
-  // for (i = 0; i < props.workouts.length; i++) {
-  //   console.log(props.workouts[i]);
-  // }
-
+function WorkoutItem(props) {
   return (
     <React.Fragment>
       <div className="container">
         <div className="row">
           {props.workouts.map((workout) => {
             return (
-              <WorkoutItem
+              <Card
                 workouts={props.workouts}
                 onDeleteWorkout={props.onDeleteWorkout}
                 key={workout.workoutID}
@@ -22,7 +18,7 @@ function Workouts(props) {
                 type={workout.type}
                 sets={workout.sets}
                 reps={workout.reps}
-              ></WorkoutItem>
+              ></Card>
             );
           })}
         </div>
@@ -31,4 +27,4 @@ function Workouts(props) {
   );
 }
 
-export default Workouts;
+export default WorkoutItem;
