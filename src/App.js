@@ -21,6 +21,9 @@ function App() {
 
   /****** Updates workout state when user adds a workout ******/
   const addWorkoutHandler = (workout) => {
+    workout = {
+      ...workout,
+    };
     setWorkouts((prevState) => {
       return [...prevState, workout];
     });

@@ -21,9 +21,11 @@ function Card() {
         <div className="row">
           {ctx.workouts.map((workout) => {
             workout['cardID'] = workout.workoutID;
+
             return (
               <div
                 className={`col-xs-12  col-sm-12 col-md-6 col-lg-4 col-xl-4`}
+                key={workout.workoutID}
               >
                 <div className={`container ${classes.card}`}>
                   <div className="col">

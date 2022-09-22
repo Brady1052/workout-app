@@ -36,6 +36,7 @@ function WorkoutForm() {
   const submitHandler = (e) => {
     e.preventDefault();
     const workoutData = {
+      key: Math.random().toString(),
       name: workoutName,
       type: workoutType,
       sets: numSets,
