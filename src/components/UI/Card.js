@@ -2,15 +2,15 @@ import React, { useContext } from 'react';
 import WorkoutsContext from '../../context/workouts-context';
 import classes from './Card.module.css';
 
-function Card(props) {
+function Card() {
   const ctx = useContext(WorkoutsContext);
+
   const deleteWorkout = () => {
-    const workouts = ctx.workouts;
-    workouts.forEach((workout, idx) => {
-      if (props.cardID === workout.workoutID) {
+    ctx.workouts.forEach((workout, idx) => {
+      if (workout.cardID === workout.workoutID) {
         ctx.workouts.splice(idx, 1);
 
-        return props.onDeleteWorkout(props.workouts);
+        return ctx.onDeleteWorkout(ctx.workouts);
       }
     });
   };
@@ -20,6 +20,7 @@ function Card(props) {
       <div className="container">
         <div className="row">
           {ctx.workouts.map((workout) => {
+            workout['cardID'] = workout.workoutID;
             return (
               <div
                 className={`col-xs-12  col-sm-12 col-md-6 col-lg-4 col-xl-4`}

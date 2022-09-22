@@ -67,12 +67,14 @@ function App() {
 
   return (
     <WorkoutsContext.Provider
-      value={{ workouts: workouts, onAddWorkout: addWorkoutHandler }}
+      value={{
+        workouts: workouts,
+        onAddWorkout: addWorkoutHandler,
+        onDeleteWorkout: deleteWorkout,
+      }}
     >
       <NavBar />
-      <WrapperRow>
-        {/* <WorkoutsData onDeleteWorkout={deleteWorkout} workouts={workouts} /> */}
-      </WrapperRow>
+      <WrapperRow></WrapperRow>
       <Card onDeleteWorkout={deleteWorkout} />
     </WorkoutsContext.Provider>
   );
