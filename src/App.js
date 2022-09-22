@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-
 import WrapperRow from './components/UI/WrapperRow';
 import NavBar from './components/Layout/Navbar';
 import WorkoutsContext from './context/workouts-context';
@@ -67,12 +66,14 @@ function App() {
   //******************************************************************************//
 
   return (
-    <WorkoutsContext.Provider value={{ workouts: workouts }}>
-      <NavBar onAddWorkout={addWorkoutHandler} />
+    <WorkoutsContext.Provider
+      value={{ workouts: workouts, onAddWorkout: addWorkoutHandler }}
+    >
+      <NavBar />
       <WrapperRow>
         {/* <WorkoutsData onDeleteWorkout={deleteWorkout} workouts={workouts} /> */}
       </WrapperRow>
-      <Card />
+      <Card onDeleteWorkout={deleteWorkout} />
     </WorkoutsContext.Provider>
   );
 }

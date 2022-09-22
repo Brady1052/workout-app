@@ -1,18 +1,19 @@
 import React, { useContext } from 'react';
 import WorkoutsContext from '../../context/workouts-context';
 import classes from './Card.module.css';
+
 function Card(props) {
+  const ctx = useContext(WorkoutsContext);
   const deleteWorkout = () => {
-    const workouts = props.workouts;
+    const workouts = ctx.workouts;
     workouts.forEach((workout, idx) => {
       if (props.cardID === workout.workoutID) {
-        props.workouts.splice(idx, 1);
+        ctx.workouts.splice(idx, 1);
 
         return props.onDeleteWorkout(props.workouts);
       }
     });
   };
-  const ctx = useContext(WorkoutsContext);
 
   return (
     <React.Fragment>

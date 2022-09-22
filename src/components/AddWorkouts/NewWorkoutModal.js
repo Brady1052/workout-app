@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import classes from './NewWorkoutModal.module.css';
 import WorkoutsContext from '../../context/workouts-context';
-function WorkoutForm(props) {
+function WorkoutForm() {
   const ctx = useContext(WorkoutsContext);
 
   const [workoutName, setWorkoutName] = useState('');
@@ -25,6 +25,14 @@ function WorkoutForm(props) {
     setNumReps(e.target.value);
   };
 
+  const saveWorkoutDataHandler = (enteredWorkoutData) => {
+    const workoutData = {
+      ...enteredWorkoutData,
+      workoutID: Math.random().toString(),
+    };
+    ctx.onAddWorkout(workoutData);
+  };
+
   const submitHandler = (e) => {
     e.preventDefault();
     const workoutData = {
@@ -33,7 +41,7 @@ function WorkoutForm(props) {
       sets: numSets,
       reps: numReps,
     };
-    ctx.onAddWorkout(workoutData);
+    saveWorkoutDataHandler(workoutData);
     setWorkoutName('');
     setWorkoutType('Select Workout Type');
     setNumSets('');
