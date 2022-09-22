@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import WrapperRow from './components/UI/WrapperRow';
 import NavBar from './components/Layout/Navbar';
 import WorkoutsContext from './context/workouts-context';
-import Card from './components/UI/Card';
+import WorkoutCard from './components/UI/WorkoutCard';
 
 function App() {
   const [forceRender, setForceRender] = useState(0);
@@ -77,8 +76,7 @@ function App() {
       }}
     >
       <NavBar />
-      <WrapperRow></WrapperRow>
-      <Card onDeleteWorkout={deleteWorkout} />
+      <WorkoutCard onDeleteWorkout={deleteWorkout} />
     </WorkoutsContext.Provider>
   );
 }
