@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import classes from './AddWorkoutModal.module.css';
-
+import React, { useState, useContext } from 'react';
+import classes from './NewWorkoutModal.module.css';
+import WorkoutsContext from '../../context/workouts-context';
 function WorkoutForm(props) {
+  const ctx = useContext(WorkoutsContext);
+
   const [workoutName, setWorkoutName] = useState('');
   const [workoutType, setWorkoutType] = useState('');
   const [numSets, setNumSets] = useState('');
@@ -31,7 +33,7 @@ function WorkoutForm(props) {
       sets: numSets,
       reps: numReps,
     };
-    props.onSaveWorkout(workoutData);
+    ctx.onAddWorkout(workoutData);
     setWorkoutName('');
     setWorkoutType('Select Workout Type');
     setNumSets('');

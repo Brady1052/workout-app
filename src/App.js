@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import Workouts from './components/Workouts/Workouts';
+
 import WrapperRow from './components/UI/WrapperRow';
-import NavBar from './components/LayoutComponents/Navbar';
+import NavBar from './components/Layout/Navbar';
+import WorkoutsContext from './context/workouts-context';
+import Card from './components/UI/Card';
 
 function App() {
   const [forceRender, setForceRender] = useState(0);
@@ -16,7 +18,7 @@ function App() {
       return prevState + 1;
     });
   };
-  /********************************************************************************** */
+  /***********************************************************************************/
 
   /****** Updates workout state when user adds a workout ******/
   const addWorkoutHandler = (workout) => {
@@ -24,7 +26,8 @@ function App() {
       return [...prevState, workout];
     });
   };
-  /****************************************************/
+
+  /******************************************************************/
 
   /****  Updates workout state when user deletes a workout. Also updates local storage to reflect the new workout state, and re-renders the component so that the proper workouts are displayed****/
   const deleteWorkout = (updatedWorkoutList) => {
@@ -32,7 +35,7 @@ function App() {
     localStorage.setItem('Workouts', JSON.stringify(workouts));
     forceRenderHandler();
   };
-  /********************************************************************************** */
+  /***********************************************************************************/
 
   //******** Handles setting local storage, and appending to local storage ***********//
   useEffect(() => {
@@ -64,12 +67,13 @@ function App() {
   //******************************************************************************//
 
   return (
-    <React.Fragment>
+    <WorkoutsContext.Provider value={{ workouts: workouts }}>
       <NavBar onAddWorkout={addWorkoutHandler} />
       <WrapperRow>
-        <Workouts onDeleteWorkout={deleteWorkout} workouts={workouts} />
+        {/* <WorkoutsData onDeleteWorkout={deleteWorkout} workouts={workouts} /> */}
       </WrapperRow>
-    </React.Fragment>
+      <Card />
+    </WorkoutsContext.Provider>
   );
 }
 

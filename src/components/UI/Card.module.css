@@ -2,7 +2,8 @@
   margin-top: 2rem;
 }
 
-.control {
-  display: flex;
-  flex-direction: column;
+@media (max-width: 354px) {
+  .col-xs-12 {
+    margin-right: 2rem;
+  }
 }

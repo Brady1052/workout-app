@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Navbar.module.css';
-import NewWorkout from '../AddWorkouts/NewWorkout';
+import NewWorkoutModal from '../AddWorkouts/NewWorkoutModal';
 
 function NavBar(props) {
   return (
@@ -35,7 +35,7 @@ function NavBar(props) {
               </li>
             </ul>
 
-            <NewWorkout onAddWorkout={props.onAddWorkout} />
+            <NewWorkoutModal />
           </div>
         </div>
       </nav>
