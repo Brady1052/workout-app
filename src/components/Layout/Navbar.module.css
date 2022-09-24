@@ -5,3 +5,11 @@
 #btn:hover {
   background-color: rgb(214, 214, 214);
 }
+
+.container {
+  display: flex;
+}
+
+#btn {
+  justify-self: center;
+}

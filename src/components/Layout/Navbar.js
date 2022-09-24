@@ -2,11 +2,11 @@ import React from 'react';
 import classes from './Navbar.module.css';
 import NewWorkoutModal from '../AddWorkouts/NewWorkoutModal';
 
-function NavBar(props) {
+function NavBar() {
   return (
     <React.Fragment>
-      <nav className={`navbar navbar-expand-sm navbar-dark bg-dark`}>
-        <div className="container-fluid">
+      <nav className={`navbar d-flex navbar-expand-sm navbar-dark bg-dark `}>
+        <div className="d-flex justify-content-between">
           <h4 id={classes['color-white']} className={`navbar-brand}`}>
             Workout Tracker
           </h4>
@@ -23,7 +23,7 @@ function NavBar(props) {
             <span className="navbar-toggler-icon text-light"></span>
           </button>
           <div className="collapse navbar-collapse" id="mobileNavbar">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul className="navbar-nav me-5 mb-lg-0">
               <li className="nav-item">
                 <button
                   type="button"

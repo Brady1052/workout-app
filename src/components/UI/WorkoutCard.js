@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import WorkoutsContext from '../../context/workouts-context';
-import classes from './Card.module.css';
+import classes from './WorkoutCard.module.css';
 
 function Card() {
   const ctx = useContext(WorkoutsContext);
