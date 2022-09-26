@@ -52,7 +52,7 @@ function Card() {
                           >
                             <button className="btn text-success">Edit</button>
                             <button
-                              onClick={deleteWorkout}
+                              onClick={ctx.deleteWorkout}
                               className="btn text-danger"
                             >
                               Delete

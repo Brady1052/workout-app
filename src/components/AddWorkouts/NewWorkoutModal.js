@@ -65,7 +65,7 @@ function WorkoutForm() {
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        Add Workout
+        Add Exercise
       </button>
 
       <div
@@ -80,27 +80,27 @@ function WorkoutForm() {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel">
-                Add Workout
+                Add Exercise
               </h5>
             </div>
             <div className={`modal-body ${classes['modal-container']}`}>
               <div className="mb-3 form-floating">
                 <input
-                  value={workoutName}
+                  value={ctx.workoutName}
                   type="text"
                   className={`form-control`}
                   id="workout-name"
-                  onChange={workoutNameHandler}
+                  onChange={ctx.workoutNameHandler}
                   placeholder="Place workout name here"
                 />
-                <label htmlFor="workout-name">Workout Name</label>
+                <label htmlFor="workout-name">Exercise Name</label>
               </div>
 
               <div className="mb-3">
                 <select
                   className={`form-select ${classes['modal-input']}`}
-                  onChange={workoutTypeHandler}
-                  value={workoutType}
+                  onChange={ctx.workoutTypeHandler}
+                  value={ctx.workoutType}
                 >
                   <option value="Select workout type">
                     Select workout type
@@ -117,9 +117,9 @@ function WorkoutForm() {
               <div className={`mb-3 form-floating ${classes['input-control']}`}>
                 <input
                   type="number"
-                  value={numSets}
+                  value={ctx.numSets}
                   className={`form-control ${classes['modal-input']}`}
-                  onChange={numSetsHandler}
+                  onChange={ctx.numSetsHandler}
                   placeholder="Enter number of sets here"
                 />
                 <label htmlFor="workout-name" className="form-label">
@@ -129,9 +129,9 @@ function WorkoutForm() {
               <div className={`mb-3 form-floating ${classes['input-control']}`}>
                 <input
                   type="number"
-                  value={numReps}
+                  value={ctx.numReps}
                   className={`form-control ${classes['modal-input']}`}
-                  onChange={numRepsHandler}
+                  onChange={ctx.numRepsHandler}
                   placeholder="Enter number of reps here"
                 />
                 <label htmlFor="workout-name" className="form-label">
@@ -143,14 +143,14 @@ function WorkoutForm() {
                   type="button"
                   className="btn btn-secondary"
                   data-bs-dismiss="modal"
-                  onClick={closeModal}
+                  onClick={ctx.closeModal}
                 >
                   Close
                 </button>
                 <button
                   type="button"
                   className="btn btn-primary"
-                  onClick={submitHandler}
+                  onClick={ctx.submitHandler}
                   data-bs-dismiss="modal"
                 >
                   Add Workout

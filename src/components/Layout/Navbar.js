@@ -6,7 +6,7 @@ function NavBar() {
   return (
     <React.Fragment>
       <nav className={`navbar d-flex navbar-expand-sm navbar-dark bg-dark `}>
-        <div className="d-flex justify-content-between">
+        <div className="container-fluid d-flex justify-content-between">
           <h4 id={classes['color-white']} className={`navbar-brand}`}>
             Workout Tracker
           </h4>
@@ -30,7 +30,18 @@ function NavBar() {
                   className="btn btn-light"
                   id={classes.btn}
                 >
-                  Create Workout Schedule
+                  Create Schedule
+                </button>
+              </li>
+            </ul>
+            <ul className="navbar-nav me-5 mb-lg-0">
+              <li className="nav-item">
+                <button
+                  type="button"
+                  className="btn btn-light"
+                  id={classes.btn}
+                >
+                  View Exercises
                 </button>
               </li>
             </ul>
