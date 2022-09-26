@@ -7,6 +7,7 @@ const WorkoutsContext = React.createContext({
   workoutNameHandler: () => {},
 });
 
+// Provides state and functions to entire application
 export const WorkoutsContextProvider = (props) => {
   const [forceRender, setForceRender] = useState(0);
 
@@ -21,18 +22,13 @@ export const WorkoutsContextProvider = (props) => {
     });
   };
 
+  // Re-renders app when workout is deleted so that the card is removed from the dom immediately
   const forceRenderHandler = () => {
     setForceRender((prevState) => {
       return prevState + 1;
     });
   };
 
-  /****  Updates workout state when user deletes a workout. Also updates local storage to reflect the new workout state, and re-renders the component so that the proper workouts are displayed****/
-  //   const deleteWorkout = (updatedWorkoutList) => {
-  //     setWorkouts(updatedWorkoutList);
-  //     localStorage.setItem('Workouts', JSON.stringify(workouts));
-  //     forceRenderHandler();
-  //   };
   const deleteWorkoutHandler = (updatedWorkoutList) => {
     setWorkouts(updatedWorkoutList);
     localStorage.setItem('Workouts', JSON.stringify(workouts));

@@ -5,23 +5,12 @@ import classes from './WorkoutCard.module.css';
 function Card() {
   const ctx = useContext(WorkoutsContext);
 
-  const deleteWorkout = () => {
-    ctx.workouts.forEach((workout, idx) => {
-      if (workout.cardID === workout.workoutID) {
-        ctx.workouts.splice(idx, 1);
-
-        return ctx.onDeleteWorkout(ctx.workouts);
-      }
-    });
-  };
-
   return (
     <React.Fragment>
       <div className="container">
         <div className="row">
           {ctx.workouts.map((workout) => {
             workout['cardID'] = workout.workoutID;
-
             return (
               <div
                 className={`col-xs-12  col-sm-12 col-md-6 col-lg-4 col-xl-4`}

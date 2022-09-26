@@ -1,60 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import classes from './NewWorkoutModal.module.css';
 import WorkoutsContext from '../../context/workouts-context';
 function WorkoutForm() {
   const ctx = useContext(WorkoutsContext);
-
-  const [workoutName, setWorkoutName] = useState('');
-  const [workoutType, setWorkoutType] = useState('');
-  const [numSets, setNumSets] = useState('');
-  const [numReps, setNumReps] = useState('');
-
-  const workoutNameHandler = (e) => {
-    setWorkoutName(e.target.value);
-  };
-
-  const workoutTypeHandler = (e) => {
-    setWorkoutType(e.target.value);
-  };
-
-  const numSetsHandler = (e) => {
-    setNumSets(e.target.value);
-  };
-
-  const numRepsHandler = (e) => {
-    setNumReps(e.target.value);
-  };
-
-  const saveWorkoutDataHandler = (enteredWorkoutData) => {
-    const workoutData = {
-      ...enteredWorkoutData,
-      workoutID: Math.random().toString(),
-    };
-    ctx.onAddWorkout(workoutData);
-  };
-
-  const submitHandler = (e) => {
-    e.preventDefault();
-    const workoutData = {
-      key: Math.random().toString(),
-      name: workoutName,
-      type: workoutType,
-      sets: numSets,
-      reps: numReps,
-    };
-    saveWorkoutDataHandler(workoutData);
-    setWorkoutName('');
-    setWorkoutType('Select Workout Type');
-    setNumSets('');
-    setNumReps('');
-  };
-
-  const closeModal = () => {
-    setWorkoutName('');
-    setWorkoutType('Select Workout Type');
-    setNumSets('');
-    setNumReps('');
-  };
 
   return (
     <React.Fragment>
