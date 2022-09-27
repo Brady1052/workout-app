@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import classes from './NewWorkoutModal.module.css';
+import classes from './CreateExerciseModal.module.css';
 import WorkoutsContext from '../../context/workouts-context';
 function WorkoutForm() {
   const ctx = useContext(WorkoutsContext);
@@ -13,7 +13,7 @@ function WorkoutForm() {
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        Add Exercise
+        Create Exercise
       </button>
 
       <div
@@ -51,7 +51,7 @@ function WorkoutForm() {
                   value={ctx.workoutType}
                 >
                   <option value="Select workout type">
-                    Select workout type
+                    Select exercise type
                   </option>
                   <option value="Weight Lifting">Weight Lifting</option>
                   <option value="Cardio">Cardio</option>
@@ -61,6 +61,19 @@ function WorkoutForm() {
                   <option value="Steam Room">Steam Room</option>
                   <option value="Other">Other</option>
                 </select>
+              </div>
+
+              <div className={`mb-3 form-floating ${classes['input-control']}`}>
+                <input
+                  type="number"
+                  value={ctx.weightAmount}
+                  className={`form-control ${classes['modal-input']}`}
+                  onChange={ctx.workoutWeightHandler}
+                  placeholder="Enter weight here"
+                />
+                <label htmlFor="workout-name" className="form-label">
+                  Weight
+                </label>
               </div>
               <div className={`mb-3 form-floating ${classes['input-control']}`}>
                 <input
@@ -86,6 +99,7 @@ function WorkoutForm() {
                   Reps
                 </label>
               </div>
+
               <div className="modal-footer">
                 <button
                   type="button"
@@ -101,7 +115,7 @@ function WorkoutForm() {
                   onClick={ctx.submitHandler}
                   data-bs-dismiss="modal"
                 >
-                  Add Workout
+                  Create Exercise
                 </button>
               </div>
             </div>

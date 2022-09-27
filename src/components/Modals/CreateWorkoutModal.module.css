@@ -1,0 +1,13 @@
+.modal-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#add-workout:hover {
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+
+#add-exercise-btn {
+  margin-top: 1rem;
+}

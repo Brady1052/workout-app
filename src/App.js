@@ -7,9 +7,8 @@ import WorkoutCard from './components/UI/WorkoutCard';
 function App() {
   return (
     <React.Fragment>
-      {/* <Route path="/" element={<Home />} /> */}
-
       <NavBar />
+      {/* <Route path="/" element={<Home />} /> */}
       <WorkoutCard />
     </React.Fragment>
   );

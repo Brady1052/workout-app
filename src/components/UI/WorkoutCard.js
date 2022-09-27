@@ -29,6 +29,9 @@ function Card() {
                           </div>
                           <ul className={`list-group list-group-flush`}>
                             <li className="list-group-item">
+                              Weight: {workout.weight}
+                            </li>
+                            <li className="list-group-item">
                               Sets: {workout.sets}
                             </li>
                             <li className="list-group-item">
