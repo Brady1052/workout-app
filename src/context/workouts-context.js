@@ -31,7 +31,7 @@ export const WorkoutsContextProvider = (props) => {
 
   const deleteWorkoutHandler = (updatedWorkoutList) => {
     setWorkouts(updatedWorkoutList);
-    localStorage.setItem('Workouts', JSON.stringify(workouts));
+    localStorage.setItem('Exercises', JSON.stringify(workouts));
     forceRenderHandler();
   };
 
@@ -47,28 +47,28 @@ export const WorkoutsContextProvider = (props) => {
   //******** Handles local storage, and appending to local storage ***********//
   useEffect(() => {
     /** If it is the user's first time visitng the site then store a Workouts object set to an empty array in local storage **/
-    if (localStorage.getItem('Workouts') === null) {
-      localStorage.setItem('Workouts', JSON.stringify([]));
+    if (localStorage.getItem('Exercises') === null) {
+      localStorage.setItem('Exercises', JSON.stringify([]));
     }
 
     /** If the user does not have any workouts saved, but they have already visited the site then set the local storage equal
         to the workout they are currently adding **/
-    if (localStorage.getItem('Workouts') === '[]' && workouts.length !== 0) {
-      localStorage.setItem('Workouts', JSON.stringify(workouts));
+    if (localStorage.getItem('Exercises') === '[]' && workouts.length !== 0) {
+      localStorage.setItem('Exercises', JSON.stringify(workouts));
     }
 
     /** If the user has left the site, is coming back, and has saved workouts then set the workouts state equal to their 
         saved data **/
     if (
-      JSON.parse(localStorage.getItem('Workouts')).length > 0 &&
+      JSON.parse(localStorage.getItem('Exercises')).length > 0 &&
       workouts.length === 0
     ) {
-      setWorkouts(JSON.parse(localStorage.getItem('Workouts')));
+      setWorkouts(JSON.parse(localStorage.getItem('Exercises')));
     }
 
     /** If the workouts state is greater than zero, and the user adds a workout - add their workout to the saved workouts array in local storage  **/
     if (workouts.length > 0) {
-      localStorage.setItem('Workouts', JSON.stringify(workouts));
+      localStorage.setItem('Exercises', JSON.stringify(workouts));
     }
   }, [workouts]);
 
@@ -137,6 +137,9 @@ export const WorkoutsContextProvider = (props) => {
   // Form Context
   const [formState, setFormState] = useState([]);
   const [formArray, setFormArray] = useState([]);
+  const [workName, setWorkName] = useState('');
+
+  const workNamehHandler = () => {};
 
   const formStateHandler = (e) => {
     setFormState(e.target.value);
@@ -151,6 +154,35 @@ export const WorkoutsContextProvider = (props) => {
       }
     }
   }, [formState]);
+
+  //Save form to local storage
+  //******** Handles local storage, and appending to local storage ***********//
+  useEffect(() => {
+    /** If it is the user's first time visitng the site then store a Workouts object set to an empty array in local storage **/
+    if (localStorage.getItem('Workouts') === null) {
+      localStorage.setItem('Workouts', JSON.stringify([]));
+    }
+
+    /** If the user does not have any workouts saved, but they have already visited the site then set the local storage equal
+        to the workout they are currently adding **/
+    if (localStorage.getItem('Workouts') === '[]' && formArray.length !== 0) {
+      localStorage.setItem('Workouts', JSON.stringify(formArray));
+    }
+
+    /** If the user has left the site, is coming back, and has saved workouts then set the workouts state equal to their 
+        saved data **/
+    if (
+      JSON.parse(localStorage.getItem('Workouts')).length > 0 &&
+      formArray.length === 0
+    ) {
+      setFormArray(JSON.parse(localStorage.getItem('Workouts')));
+    }
+
+    /** If the workouts state is greater than zero, and the user adds a workout - add their workout to the saved workouts array in local storage  **/
+    if (formArray.length > 0) {
+      localStorage.setItem('Workouts', JSON.stringify(formArray));
+    }
+  }, [formArray]);
 
   return (
     <WorkoutsContext.Provider
