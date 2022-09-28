@@ -236,6 +236,7 @@ export const WorkoutsContextProvider = (props) => {
         formArray: formArray,
         workouts: workouts,
         selectedExercise: selectedExercise,
+        setFormArray: setFormArray,
         displayExerciseTable: displayExerciseTable,
         selectedExerciseHandler: selectedExerciseHandler,
         workoutNameHandler: workoutNameHandler,

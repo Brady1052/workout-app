@@ -16,6 +16,7 @@ function WorkoutModal() {
   };
   const resetForm = () => {
     setAddedExercise(false);
+    ctx.setFormArray([]);
   };
 
   return (
