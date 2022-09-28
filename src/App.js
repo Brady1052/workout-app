@@ -2,14 +2,14 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import NavBar from './components/Layout/Navbar';
-import WorkoutCard from './components/UI/WorkoutCard';
+import ExerciseCard from './components/UI/ExerciseCard';
 
 function App() {
   return (
     <React.Fragment>
       <NavBar />
       {/* <Route path="/" element={<Home />} /> */}
-      <WorkoutCard />
+      <ExerciseCard />
     </React.Fragment>
   );
 }

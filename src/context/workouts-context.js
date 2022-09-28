@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-const WorkoutsContext = React.createContext({
-  workouts: [],
-  addWorkoutHandler: (workout) => {},
-  deleteWorkout: (updatedWorkoutList) => {},
+const exercisesContext = React.createContext({
+  exercises: [],
+  addexerciseHandler: (exercise) => {},
+  deleteexercise: (updatedexerciseList) => {},
   exerciseNameHandler: () => {},
 });
 
@@ -11,36 +11,36 @@ const WorkoutsContext = React.createContext({
 export const WorkoutsContextProvider = (props) => {
   const [forceRender, setForceRender] = useState(0);
 
-  const [workouts, setWorkouts] = useState([]);
+  const [exercises, setExercises] = useState([]);
 
-  const addWorkoutHandler = (workout) => {
-    workout = {
-      ...workout,
+  const addexerciseHandler = (exercise) => {
+    exercise = {
+      ...exercise,
     };
-    setWorkouts((prevState) => {
-      return [...prevState, workout];
+    setExercises((prevState) => {
+      return [...prevState, exercise];
     });
   };
 
-  // Re-renders app when workout is deleted so that the card is removed from the dom immediately
+  // Re-renders app when exercise is deleted so that the card is removed from the dom immediately
   const forceRenderHandler = () => {
     setForceRender((prevState) => {
       return prevState + 1;
     });
   };
 
-  const deleteWorkoutHandler = (updatedWorkoutList) => {
-    setWorkouts(updatedWorkoutList);
-    localStorage.setItem('Exercises', JSON.stringify(workouts));
+  const deleteExerciseHandler = (updatedexerciseList) => {
+    setExercises(updatedexerciseList);
+    localStorage.setItem('Exercises', JSON.stringify(exercises));
     forceRenderHandler();
   };
 
-  const deleteWorkout = () => {
-    workouts.forEach((workout, idx) => {
-      if (workout.cardID === workout.workoutID) {
-        workouts.splice(idx, 1);
+  const deleteExercise = () => {
+    exercises.forEach((exercise, idx) => {
+      if (exercise.cardID === exercise.exerciseID) {
+        exercises.splice(idx, 1);
       }
-      return deleteWorkoutHandler(workouts);
+      return deleteExerciseHandler(exercises);
     });
   };
 
@@ -53,24 +53,24 @@ export const WorkoutsContextProvider = (props) => {
 
     /** If the user does not have any Exercises saved, but they have already visited the site then set the local storage equal
         to the exercise they are currently adding **/
-    if (localStorage.getItem('Exercises') === '[]' && workouts.length !== 0) {
-      localStorage.setItem('Exercises', JSON.stringify(workouts));
+    if (localStorage.getItem('Exercises') === '[]' && exercises.length !== 0) {
+      localStorage.setItem('Exercises', JSON.stringify(exercises));
     }
 
     /** If the user has left the site, is coming back, and has saved exercises then set the exercise state equal to their 
         saved data **/
     if (
       JSON.parse(localStorage.getItem('Exercises')).length > 0 &&
-      workouts.length === 0
+      exercises.length === 0
     ) {
-      setWorkouts(JSON.parse(localStorage.getItem('Exercises')));
+      setExercises(JSON.parse(localStorage.getItem('Exercises')));
     }
 
-    /** If the exercise state is greater than zero, and the user adds a exercise - add their workout to the saved workouts array in local storage  **/
-    if (workouts.length > 0) {
-      localStorage.setItem('Exercises', JSON.stringify(workouts));
+    /** If the exercise state is greater than zero, and the user adds a exercise - add their exercise to the saved exercises array in local storage  **/
+    if (exercises.length > 0) {
+      localStorage.setItem('Exercises', JSON.stringify(exercises));
     }
-  }, [workouts]);
+  }, [exercises]);
 
   //Adding a exercise, context
 
@@ -103,9 +103,9 @@ export const WorkoutsContextProvider = (props) => {
   const saveExerciseDataHandler = (enteredexerciseData) => {
     const exerciseData = {
       ...enteredexerciseData,
-      workoutID: Math.random().toString(),
+      exerciseID: Math.random().toString(),
     };
-    addWorkoutHandler(exerciseData);
+    addexerciseHandler(exerciseData);
   };
 
   const submitHandler = (e) => {
@@ -120,7 +120,7 @@ export const WorkoutsContextProvider = (props) => {
     };
     saveExerciseDataHandler(exerciseData);
     setexerciseName('');
-    setexerciseType('Select Workout Type');
+    setexerciseType('Select exercise Type');
     setexerciseWeight('');
     setNumSets('');
     setNumReps('');
@@ -128,90 +128,90 @@ export const WorkoutsContextProvider = (props) => {
 
   const closeModal = () => {
     setexerciseName('');
-    setexerciseType('Select Workout Type');
+    setexerciseType('Select exercise Type');
     setexerciseWeight('');
     setNumSets('');
     setNumReps('');
   };
 
-  // Workout Form Context
+  // exercise Form Context
   const [formState, setFormState] = useState([]);
   const [formArray, setFormArray] = useState([]);
-  const [workoutArray, setWorkoutArray] = useState([]);
-  const [workName, setWorkName] = useState('');
+  const [exerciseArray, setexerciseArray] = useState([]);
+  const [workoutName, setWorkoutName] = useState('');
 
-  const workNameHandler = (e) => {
-    setWorkName(e.target.value);
+  const workoutNameHandler = (e) => {
+    setWorkoutName(e.target.value);
   };
 
   const formStateHandler = (e) => {
     setFormState(e.target.value);
   };
 
-  const workoutArrayHandler = () => {
-    setWorkoutArray(formArray);
+  const exerciseArrayHandler = () => {
+    setexerciseArray(formArray);
   };
-  //   Effect for the form that is displayed everytime the user adds an exerise to their workout
+  //   Effect for the form that is displayed everytime the user adds an exerise to their exercise
   useEffect(() => {
-    for (let i = 0; i < workouts.length; i++) {
-      if (workouts[i].name === formState) {
+    for (let i = 0; i < exercises.length; i++) {
+      if (exercises[i].name === formState) {
         setFormArray((prev) => {
-          return [...prev, workouts[i]];
+          return [...prev, exercises[i]];
         });
-        setWorkoutArray((prev) => {
-          return [...prev, workouts[i]];
+        setexerciseArray((prev) => {
+          return [...prev, exercises[i]];
         });
       }
       console.log('hooray');
     }
   }, [formState]);
-  // Effect for the workout information saved to local storage
+  // Effect for the exercise information saved to local storage
   //   useEffect(() => {
-  //     for (let i = 0; i < workouts.length; i++) {
-  //       if (workouts[i].name === workoutArray) {
-  //         setWorkoutArray((prev) => {
-  //           return [...prev, workouts[i]];
+  //     for (let i = 0; i < exercises.length; i++) {
+  //       if (exercises[i].name === exerciseArray) {
+  //         setexerciseArray((prev) => {
+  //           return [...prev, exercises[i]];
   //         });
   //       }
   //     }
-  //   }, [workoutArray]);
+  //   }, [exerciseArray]);
 
   //Save form to local storage
   //******** Handles local storage, and appending to local storage ***********//
   useEffect(() => {
-    /** If it is the user's first time visitng the site then store a Workouts object set to an empty array in local storage **/
-    if (localStorage.getItem('Workouts') === null) {
-      localStorage.setItem('Workouts', JSON.stringify([]));
+    /** If it is the user's first time visitng the site then store a exercises object set to an empty array in local storage **/
+    if (localStorage.getItem('exercises') === null) {
+      localStorage.setItem('exercises', JSON.stringify([]));
     }
 
-    /** If the user does not have any workouts saved, but they have already visited the site then set the local storage equal
-        to the workout they are currently adding **/
+    /** If the user does not have any exercises saved, but they have already visited the site then set the local storage equal
+        to the exercise they are currently adding **/
     if (
-      localStorage.getItem('Workouts') === '[]' &&
-      workoutArray.length !== 0
+      localStorage.getItem('exercises') === '[]' &&
+      exerciseArray.length !== 0
     ) {
-      localStorage.setItem('Workouts', JSON.stringify(workoutArray));
+      localStorage.setItem('exercises', JSON.stringify(exerciseArray));
     }
 
-    /** If the user has left the site, is coming back, and has saved workouts then set the workouts state equal to their 
+    /** If the user has left the site, is coming back, and has saved exercises then set the exercises state equal to their 
         saved data **/
     if (
-      JSON.parse(localStorage.getItem('Workouts')).length > 0 &&
-      workoutArray.length === 0
+      JSON.parse(localStorage.getItem('exercises')).length > 0 &&
+      exerciseArray.length === 0
     ) {
-      setWorkoutArray(JSON.parse(localStorage.getItem('Workouts')));
+      setexerciseArray(JSON.parse(localStorage.getItem('exercises')));
     }
 
-    /** If the workouts state is greater than zero, and the user adds a workout - add their workout to the saved workouts array in local storage  **/
-    if (workoutArray.length > 0) {
-      localStorage.setItem('Workouts', JSON.stringify(workoutArray));
+    /** If the exercises state is greater than zero, and the user adds a exercise - add their exercise to the saved exercises array in local storage  **/
+    if (exerciseArray.length > 0) {
+      localStorage.setItem('exercises', JSON.stringify(exerciseArray));
     }
-  }, [workoutArray]);
+  }, [exerciseArray]);
 
   return (
-    <WorkoutsContext.Provider
+    <exercisesContext.Provider
       value={{
-        workouts: workouts,
+        exercises: exercises,
         exerciseName: exerciseName,
         exerciseType: exerciseType,
         weight: exerciseWeight,
@@ -219,11 +219,11 @@ export const WorkoutsContextProvider = (props) => {
         numReps: numReps,
         formState: formState,
         formArray: formArray,
-        workoutArray: workoutArray,
-        workNameHandler: workNameHandler,
+        exerciseArray: exerciseArray,
+        workoutNameHandler: workoutNameHandler,
         formStateHandler: formStateHandler,
-        addWorkoutHandler: addWorkoutHandler,
-        deleteWorkout: deleteWorkout,
+        addexerciseHandler: addexerciseHandler,
+        deleteExercise: deleteExercise,
         exerciseNameHandler: exerciseNameHandler,
         exerciseTypeHandler: exerciseTypeHandler,
         exerciseWeightHandler: exerciseWeightHandler,
@@ -234,8 +234,8 @@ export const WorkoutsContextProvider = (props) => {
       }}
     >
       {props.children}
-    </WorkoutsContext.Provider>
+    </exercisesContext.Provider>
   );
 };
 
-export default WorkoutsContext;
+export default exercisesContext;

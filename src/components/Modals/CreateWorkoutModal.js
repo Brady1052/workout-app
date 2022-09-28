@@ -66,8 +66,10 @@ function CreateWorkoutModal() {
                   <option value="Choose from your list of exercises">
                     Choose from your list of exercises
                   </option>
-                  {ctx.workouts.map((workout) => {
-                    return <option value={workout.name}>{workout.name}</option>;
+                  {ctx.exercises.map((exercise) => {
+                    return (
+                      <option value={exercise.name}>{exercise.name}</option>
+                    );
                   })}
                 </select>
                 <button

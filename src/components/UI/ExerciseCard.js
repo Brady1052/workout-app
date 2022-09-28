@@ -1,20 +1,20 @@
 import React, { useContext } from 'react';
 import WorkoutsContext from '../../context/workouts-context';
-import classes from './WorkoutCard.module.css';
+import classes from './ExerciseCard.module.css';
 
-function Card() {
+function ExerciseCard() {
   const ctx = useContext(WorkoutsContext);
 
   return (
     <React.Fragment>
       <div className="container">
         <div className="row">
-          {ctx.workouts.map((workout) => {
-            workout['cardID'] = workout.workoutID;
+          {ctx.exercises.map((exercise) => {
+            exercise['cardID'] = exercise.exerciseID;
             return (
               <div
                 className={`col-xs-12  col-sm-12 col-md-6 col-lg-4 col-xl-4`}
-                key={workout.workoutID}
+                key={exercise.exerciseID}
               >
                 <div className={`container ${classes.card}`}>
                   <div className="col">
@@ -22,20 +22,20 @@ function Card() {
                       <div className="card" style={{ width: '18rem' }}>
                         <div className="card-body">
                           <div className="text-center">
-                            <h5 className="card-title">{workout.type}</h5>
+                            <h5 className="card-title">{exercise.type}</h5>
                             <h5 className="card-subtitle mb-2 ">
-                              {workout.name}
+                              {exercise.name}
                             </h5>
                           </div>
                           <ul className={`list-group list-group-flush`}>
                             <li className="list-group-item">
-                              Weight: {workout.weight}
+                              Weight: {exercise.weight}
                             </li>
                             <li className="list-group-item">
-                              Sets: {workout.sets}
+                              Sets: {exercise.sets}
                             </li>
                             <li className="list-group-item">
-                              Reps: {workout.reps}
+                              Reps: {exercise.reps}
                             </li>
                           </ul>
                           <div
@@ -44,7 +44,7 @@ function Card() {
                           >
                             <button className="btn text-success">Edit</button>
                             <button
-                              onClick={ctx.deleteWorkout}
+                              onClick={ctx.deleteExercise}
                               className="btn text-danger"
                             >
                               Delete
@@ -64,4 +64,4 @@ function Card() {
   );
 }
 
-export default Card;
+export default ExerciseCard;
