@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const exercisesContext = React.createContext({
+const ExercisesContext = React.createContext({
   exercises: [],
   addexerciseHandler: (exercise) => {},
   deleteexercise: (updatedexerciseList) => {},
@@ -133,64 +133,52 @@ export const WorkoutsContextProvider = (props) => {
   };
 
   //********************************* Workout Context *********************//
-  const [formState, setFormState] = useState([]);
-  const [selectedExercise, setSelectedExercise] = useState([]);
+
+  //Used for looping through every exercise the user has saved and matching it with the name in workout dropdown
+  const [selectedExerciseName, setSelectedExerciseName] = useState([]);
+  //Used for saving all the exercises that the user saves to their workout to an array that can be used inside of the workout object
+  const [selectedExercises, setSelectedExercises] = useState([]);
+  //Used for determining what exercises to show added that were added to the table in the workout modal
   const [formArray, setFormArray] = useState([]);
+  //Used for saving all workout objects inside a array
   const [workouts, setWorkouts] = useState([]);
+  //Used for saving the name of the workout
   const [workoutName, setWorkoutName] = useState('');
 
-  const addWorkoutHandler = (workout) => {
-    setWorkouts((prev) => {
-      return [...prev, workout];
-    });
+  // //Used for looping through every exercise the user has saved and matching it with the name in workout dropdown
+  // Saves the selected exercise name
+  const selectedExerciseNameHandler = (e) => {
+    setSelectedExerciseName(e.target.value);
   };
-
-  const selectedExerciseHandler = (e) => {
-    setSelectedExercise(e.target.value);
-  };
-
-  useEffect(() => {
-    console.log(selectedExercise);
-  }, [selectedExercise]);
-
+  // Sets the name of the workout to what the user types in the workout modal
   const workoutNameHandler = (e) => {
     setWorkoutName(e.target.value);
   };
 
-  const formStateHandler = () => {
-    setWorkouts((prev) => {
-      return [...prev, formArray];
-    });
-  };
-
-  const saveWorkoutHandler = (workoutInformation) => {
+  const saveWorkoutHandler = () => {
     const workoutData = {
-      workoutName: workoutName,
-      ...workoutInformation,
       key: Math.random().toString(),
-    };
-  };
-
-  const submitWorkoutHandler = (e) => {
-    e.preventDefault();
-    const workoutInfo = {
       workoutName: workoutName,
-      exercises: [],
+      exercises: [selectedExercises],
     };
+    setWorkouts((prev) => {
+      return [...prev, workoutData];
+    });
+    setSelectedExercises([]);
     setWorkoutName('');
   };
+
   //   Effect for the table that is displayed everytime the user adds an exerise to their workout
   const displayExerciseTable = () => {
     for (let i = 0; i < exercises.length; i++) {
-      if (exercises[i].name === selectedExercise) {
+      if (exercises[i].name === selectedExerciseName) {
         setFormArray((prev) => {
           return [...prev, exercises[i]];
         });
-        setWorkouts((prev) => {
+        setSelectedExercises((prev) => {
           return [...prev, exercises[i]];
         });
       }
-      console.log('hooray');
     }
   };
 
@@ -224,7 +212,7 @@ export const WorkoutsContextProvider = (props) => {
   }, [workouts]);
 
   return (
-    <exercisesContext.Provider
+    <ExercisesContext.Provider
       value={{
         exercises: exercises,
         exerciseName: exerciseName,
@@ -232,15 +220,14 @@ export const WorkoutsContextProvider = (props) => {
         exerciseWeight: exerciseWeight,
         numSets: numSets,
         numReps: numReps,
-        formState: formState,
         formArray: formArray,
         workouts: workouts,
-        selectedExercise: selectedExercise,
+        selectedExerciseName: selectedExerciseName,
+        saveWorkoutHandler: saveWorkoutHandler,
         setFormArray: setFormArray,
         displayExerciseTable: displayExerciseTable,
-        selectedExerciseHandler: selectedExerciseHandler,
+        selectedExerciseNameHandler: selectedExerciseNameHandler,
         workoutNameHandler: workoutNameHandler,
-        formStateHandler: formStateHandler,
         addExerciseHandler: addExerciseHandler,
         deleteExercise: deleteExercise,
         exerciseNameHandler: exerciseNameHandler,
@@ -253,8 +240,8 @@ export const WorkoutsContextProvider = (props) => {
       }}
     >
       {props.children}
-    </exercisesContext.Provider>
+    </ExercisesContext.Provider>
   );
 };
 
-export default exercisesContext;
+export default ExercisesContext;

@@ -10,12 +10,19 @@ function WorkoutModal() {
   const [addedExercise, setAddedExercise] = useState(false);
 
   // Functions that tell the app to display or stop displaying the form
-  const showForm = () => {
+  const showTable = () => {
     setAddedExercise(true);
-    ctx.displayExerciseTable(ctx.selectedExercise);
+    ctx.displayExerciseTable(ctx.selectedExerciseName);
   };
-  const resetForm = () => {
+
+  const eraseTable = () => {
     setAddedExercise(false);
+    ctx.setFormArray([]);
+  };
+
+  const submitForm = () => {
+    setAddedExercise(false);
+    ctx.saveWorkoutHandler();
     ctx.setFormArray([]);
   };
 
@@ -56,7 +63,7 @@ function WorkoutModal() {
                   type="text"
                   className={`form-control`}
                   id="workout-name"
-                  onChange={ctx.workNameHandler}
+                  onChange={ctx.workoutNameHandler}
                   placeholder="Place workout name here"
                 />
                 <label htmlFor="workout-name">Workout Name</label>
@@ -64,7 +71,7 @@ function WorkoutModal() {
               <div className="mb-3">
                 <select
                   className={`form-select ${classes['modal-input']}`}
-                  onChange={ctx.selectedExerciseHandler}
+                  onChange={ctx.selectedExerciseNameHandler}
                 >
                   <option value="Choose from your list of exercises">
                     Choose from your list of exercises
@@ -79,7 +86,7 @@ function WorkoutModal() {
                   type="button"
                   className="btn btn-primary w-100"
                   id={classes['add-exercise-btn']}
-                  onClick={showForm}
+                  onClick={showTable}
                 >
                   Add Exercise to Workout
                 </button>
@@ -90,7 +97,7 @@ function WorkoutModal() {
                   type="button"
                   className="btn btn-secondary"
                   data-bs-dismiss="modal"
-                  onClick={resetForm}
+                  onClick={eraseTable}
                 >
                   Close
                 </button>
@@ -99,7 +106,7 @@ function WorkoutModal() {
                   className="btn btn-primary"
                   //   onClick={ctx.submitHandler}
                   data-bs-dismiss="modal"
-                  onClick={resetForm}
+                  onClick={submitForm}
                 >
                   Create Workout
                 </button>
