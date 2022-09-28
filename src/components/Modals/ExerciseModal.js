@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import classes from './CreateExerciseModal.module.css';
+import classes from './ExerciseModal.module.css';
 import WorkoutsContext from '../../context/workouts-context';
-function ExerciseForm() {
+function ExerciseModal() {
   const ctx = useContext(WorkoutsContext);
 
   return (
@@ -126,4 +126,4 @@ function ExerciseForm() {
   );
 }
 
-export default ExerciseForm;
+export default ExerciseModal;

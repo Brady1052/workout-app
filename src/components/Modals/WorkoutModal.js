@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react';
-import classes from './CreateWorkoutModal.module.css';
+import classes from './WorkoutModal.module.css';
 import WorkoutsContext from '../../context/workouts-context';
 import WorkoutTable from '../UI/WorkoutTable';
 
-function CreateWorkoutModal() {
+function WorkoutModal() {
   const ctx = useContext(WorkoutsContext);
 
   // This state is used to determine when to show the form in the modal
@@ -109,4 +109,4 @@ function CreateWorkoutModal() {
   );
 }
 
-export default CreateWorkoutModal;
+export default WorkoutModal;
