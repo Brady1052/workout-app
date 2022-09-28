@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import WorkoutsContext from '../../context/workouts-context';
 
-function WorkoutForm() {
+function WorkoutTable() {
   const ctx = useContext(WorkoutsContext);
   //   const addExercise = () => {
   //     if ()
@@ -42,4 +42,4 @@ function WorkoutForm() {
   );
 }
 
-export default WorkoutForm;
+export default WorkoutTable;

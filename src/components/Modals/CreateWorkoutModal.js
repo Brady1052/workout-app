@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import classes from './CreateWorkoutModal.module.css';
 import WorkoutsContext from '../../context/workouts-context';
-import WorkoutForm from '../UI/WorkoutForm';
+import WorkoutTable from '../UI/WorkoutTable';
 
 function CreateWorkoutModal() {
   const ctx = useContext(WorkoutsContext);
@@ -80,7 +80,7 @@ function CreateWorkoutModal() {
                 >
                   Add Exercise to Workout
                 </button>
-                {addedExercise === true && <WorkoutForm />}
+                {addedExercise === true && <WorkoutTable />}
               </div>
               <div className="modal-footer justify-content-between">
                 <button
