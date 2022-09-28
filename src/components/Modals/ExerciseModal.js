@@ -66,7 +66,7 @@ function ExerciseModal() {
               <div className={`mb-3 form-floating ${classes['input-control']}`}>
                 <input
                   type="number"
-                  value={ctx.weightAmount}
+                  value={ctx.exerciseWeight}
                   className={`form-control ${classes['modal-input']}`}
                   onChange={ctx.exerciseWeightHandler}
                   placeholder="Enter weight here"

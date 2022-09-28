@@ -13,7 +13,7 @@ export const WorkoutsContextProvider = (props) => {
 
   const [exercises, setExercises] = useState([]);
 
-  const addexerciseHandler = (exercise) => {
+  const addExerciseHandler = (exercise) => {
     exercise = {
       ...exercise,
     };
@@ -72,24 +72,22 @@ export const WorkoutsContextProvider = (props) => {
     }
   }, [exercises]);
 
-  //Adding a exercise, context
-
-  const [exerciseName, setexerciseName] = useState('');
-  const [exerciseType, setexerciseType] = useState('');
-  const [exerciseWeight, setexerciseWeight] = useState('');
+  const [exerciseName, setExerciseName] = useState('');
+  const [exerciseType, setExerciseType] = useState('');
+  const [exerciseWeight, setExerciseWeight] = useState('');
   const [numSets, setNumSets] = useState('');
   const [numReps, setNumReps] = useState('');
 
   const exerciseNameHandler = (e) => {
-    setexerciseName(e.target.value);
+    setExerciseName(e.target.value);
   };
 
   const exerciseTypeHandler = (e) => {
-    setexerciseType(e.target.value);
+    setExerciseType(e.target.value);
   };
 
   const exerciseWeightHandler = (e) => {
-    setexerciseWeight(e.target.value);
+    setExerciseWeight(e.target.value);
   };
 
   const numSetsHandler = (e) => {
@@ -100,12 +98,12 @@ export const WorkoutsContextProvider = (props) => {
     setNumReps(e.target.value);
   };
 
-  const saveExerciseDataHandler = (enteredexerciseData) => {
+  const saveExerciseDataHandler = (enteredExerciseData) => {
     const exerciseData = {
-      ...enteredexerciseData,
+      ...enteredExerciseData,
       exerciseID: Math.random().toString(),
     };
-    addexerciseHandler(exerciseData);
+    addExerciseHandler(exerciseData);
   };
 
   const submitHandler = (e) => {
@@ -119,94 +117,111 @@ export const WorkoutsContextProvider = (props) => {
       reps: numReps,
     };
     saveExerciseDataHandler(exerciseData);
-    setexerciseName('');
-    setexerciseType('Select exercise Type');
-    setexerciseWeight('');
+    setExerciseName('');
+    setExerciseType('Select exercise Type');
+    setExerciseWeight('');
     setNumSets('');
     setNumReps('');
   };
 
   const closeModal = () => {
-    setexerciseName('');
-    setexerciseType('Select exercise Type');
-    setexerciseWeight('');
+    setExerciseName('');
+    setExerciseType('Select exercise Type');
+    setExerciseWeight('');
     setNumSets('');
     setNumReps('');
   };
 
-  // exercise Form Context
+  //********************************* Workout Context *********************//
   const [formState, setFormState] = useState([]);
+  const [selectedExercise, setSelectedExercise] = useState([]);
   const [formArray, setFormArray] = useState([]);
-  const [exerciseArray, setexerciseArray] = useState([]);
+  const [workouts, setWorkouts] = useState([]);
   const [workoutName, setWorkoutName] = useState('');
+
+  const addWorkoutHandler = (workout) => {
+    setWorkouts((prev) => {
+      return [...prev, workout];
+    });
+  };
+
+  const selectedExerciseHandler = (e) => {
+    setSelectedExercise(e.target.value);
+  };
+
+  useEffect(() => {
+    console.log(selectedExercise);
+  }, [selectedExercise]);
 
   const workoutNameHandler = (e) => {
     setWorkoutName(e.target.value);
   };
 
-  const formStateHandler = (e) => {
-    setFormState(e.target.value);
+  const formStateHandler = () => {
+    setWorkouts((prev) => {
+      return [...prev, formArray];
+    });
   };
 
-  const exerciseArrayHandler = () => {
-    setexerciseArray(formArray);
+  const saveWorkoutHandler = (workoutInformation) => {
+    const workoutData = {
+      workoutName: workoutName,
+      ...workoutInformation,
+      key: Math.random().toString(),
+    };
   };
-  //   Effect for the form that is displayed everytime the user adds an exerise to their exercise
-  useEffect(() => {
+
+  const submitWorkoutHandler = (e) => {
+    e.preventDefault();
+    const workoutInfo = {
+      workoutName: workoutName,
+      exercises: [],
+    };
+    setWorkoutName('');
+  };
+  //   Effect for the table that is displayed everytime the user adds an exerise to their workout
+  const displayExerciseTable = () => {
     for (let i = 0; i < exercises.length; i++) {
-      if (exercises[i].name === formState) {
+      if (exercises[i].name === selectedExercise) {
         setFormArray((prev) => {
           return [...prev, exercises[i]];
         });
-        setexerciseArray((prev) => {
+        setWorkouts((prev) => {
           return [...prev, exercises[i]];
         });
       }
       console.log('hooray');
     }
-  }, [formState]);
-  // Effect for the exercise information saved to local storage
-  //   useEffect(() => {
-  //     for (let i = 0; i < exercises.length; i++) {
-  //       if (exercises[i].name === exerciseArray) {
-  //         setexerciseArray((prev) => {
-  //           return [...prev, exercises[i]];
-  //         });
-  //       }
-  //     }
-  //   }, [exerciseArray]);
+  };
 
   //Save form to local storage
   //******** Handles local storage, and appending to local storage ***********//
   useEffect(() => {
-    /** If it is the user's first time visitng the site then store a exercises object set to an empty array in local storage **/
-    if (localStorage.getItem('exercises') === null) {
-      localStorage.setItem('exercises', JSON.stringify([]));
+    /** If it is the user's first time visitng the site then store a Workouts object set to an empty array in local storage **/
+    if (localStorage.getItem('Workouts') === null) {
+      localStorage.setItem('Workouts', JSON.stringify([]));
     }
 
-    /** If the user does not have any exercises saved, but they have already visited the site then set the local storage equal
-        to the exercise they are currently adding **/
-    if (
-      localStorage.getItem('exercises') === '[]' &&
-      exerciseArray.length !== 0
-    ) {
-      localStorage.setItem('exercises', JSON.stringify(exerciseArray));
+    /** If the user does not have any workouts saved, but they have already visited the site then set the local storage equal
+        to the workout they are currently adding **/
+    if (localStorage.getItem('Workouts') === '[]' && workouts.length !== 0) {
+      localStorage.setItem('Workouts', JSON.stringify(workouts));
     }
 
-    /** If the user has left the site, is coming back, and has saved exercises then set the exercises state equal to their 
+    /** If the user has left the site, is coming back, and has saved workouts then set the workouts state equal to their 
         saved data **/
     if (
-      JSON.parse(localStorage.getItem('exercises')).length > 0 &&
-      exerciseArray.length === 0
+      JSON.parse(localStorage.getItem('Workouts')).length > 0 &&
+      workouts.length === 0
     ) {
-      setexerciseArray(JSON.parse(localStorage.getItem('exercises')));
+      setWorkouts(JSON.parse(localStorage.getItem('Workouts')));
     }
 
-    /** If the exercises state is greater than zero, and the user adds a exercise - add their exercise to the saved exercises array in local storage  **/
-    if (exerciseArray.length > 0) {
-      localStorage.setItem('exercises', JSON.stringify(exerciseArray));
+    /** If the workouts state length is greater than zero, and the user adds a workout - add their workout to the saved workouts array in local storage  **/
+    if (workouts.length > 0) {
+      localStorage.setItem('Workouts', JSON.stringify(workouts));
     }
-  }, [exerciseArray]);
+  }, [workouts]);
 
   return (
     <exercisesContext.Provider
@@ -214,15 +229,18 @@ export const WorkoutsContextProvider = (props) => {
         exercises: exercises,
         exerciseName: exerciseName,
         exerciseType: exerciseType,
-        weight: exerciseWeight,
+        exerciseWeight: exerciseWeight,
         numSets: numSets,
         numReps: numReps,
         formState: formState,
         formArray: formArray,
-        exerciseArray: exerciseArray,
+        workouts: workouts,
+        selectedExercise: selectedExercise,
+        displayExerciseTable: displayExerciseTable,
+        selectedExerciseHandler: selectedExerciseHandler,
         workoutNameHandler: workoutNameHandler,
         formStateHandler: formStateHandler,
-        addexerciseHandler: addexerciseHandler,
+        addExerciseHandler: addExerciseHandler,
         deleteExercise: deleteExercise,
         exerciseNameHandler: exerciseNameHandler,
         exerciseTypeHandler: exerciseTypeHandler,

@@ -8,9 +8,11 @@ function WorkoutModal() {
 
   // This state is used to determine when to show the form in the modal
   const [addedExercise, setAddedExercise] = useState(false);
+
   // Functions that tell the app to display or stop displaying the form
   const showForm = () => {
     setAddedExercise(true);
+    ctx.displayExerciseTable(ctx.selectedExercise);
   };
   const resetForm = () => {
     setAddedExercise(false);
@@ -49,7 +51,7 @@ function WorkoutModal() {
             <div className={`modal-body ${classes['modal-container']}`}>
               <div className="mb-3 form-floating">
                 <input
-                  value={ctx.workName}
+                  value={ctx.workoutName}
                   type="text"
                   className={`form-control`}
                   id="workout-name"
@@ -61,7 +63,7 @@ function WorkoutModal() {
               <div className="mb-3">
                 <select
                   className={`form-select ${classes['modal-input']}`}
-                  onChange={ctx.formStateHandler}
+                  onChange={ctx.selectedExerciseHandler}
                 >
                   <option value="Choose from your list of exercises">
                     Choose from your list of exercises
