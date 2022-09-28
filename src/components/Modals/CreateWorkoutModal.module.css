@@ -3,6 +3,11 @@
   flex-direction: column;
 }
 
+.modal-header-container {
+  display: flex;
+  justify-content: center;
+}
+
 #add-workout:hover {
   background-color: rgb(255, 255, 255);
   color: black;

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import classes from './CreateExerciseModal.module.css';
 import WorkoutsContext from '../../context/workouts-context';
-function WorkoutForm() {
+function ExerciseForm() {
   const ctx = useContext(WorkoutsContext);
 
   return (
@@ -9,7 +9,7 @@ function WorkoutForm() {
       <button
         type="button"
         className="btn btn-light"
-        id={classes['add-workout']}
+        id={classes['add-exercise']}
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
@@ -34,23 +34,23 @@ function WorkoutForm() {
             <div className={`modal-body ${classes['modal-container']}`}>
               <div className="mb-3 form-floating">
                 <input
-                  value={ctx.workoutName}
+                  value={ctx.exerciseName}
                   type="text"
                   className={`form-control`}
-                  id="workout-name"
-                  onChange={ctx.workoutNameHandler}
-                  placeholder="Place workout name here"
+                  id="exercise-name"
+                  onChange={ctx.exerciseNameHandler}
+                  placeholder="Place exercise name here"
                 />
-                <label htmlFor="workout-name">Exercise Name</label>
+                <label htmlFor="exercise-name">Exercise Name</label>
               </div>
 
               <div className="mb-3">
                 <select
                   className={`form-select ${classes['modal-input']}`}
-                  onChange={ctx.workoutTypeHandler}
-                  value={ctx.workoutType}
+                  onChange={ctx.exerciseTypeHandler}
+                  value={ctx.exerciseType}
                 >
-                  <option value="Select workout type">
+                  <option value="Select exercise type">
                     Select exercise type
                   </option>
                   <option value="Weight Lifting">Weight Lifting</option>
@@ -68,10 +68,10 @@ function WorkoutForm() {
                   type="number"
                   value={ctx.weightAmount}
                   className={`form-control ${classes['modal-input']}`}
-                  onChange={ctx.workoutWeightHandler}
+                  onChange={ctx.exerciseWeightHandler}
                   placeholder="Enter weight here"
                 />
-                <label htmlFor="workout-name" className="form-label">
+                <label htmlFor="exercise-name" className="form-label">
                   Weight
                 </label>
               </div>
@@ -83,7 +83,7 @@ function WorkoutForm() {
                   onChange={ctx.numSetsHandler}
                   placeholder="Enter number of sets here"
                 />
-                <label htmlFor="workout-name" className="form-label">
+                <label htmlFor="exercise-name" className="form-label">
                   Sets
                 </label>
               </div>
@@ -95,7 +95,7 @@ function WorkoutForm() {
                   onChange={ctx.numRepsHandler}
                   placeholder="Enter number of reps here"
                 />
-                <label htmlFor="workout-name" className="form-label">
+                <label htmlFor="exercise-name" className="form-label">
                   Reps
                 </label>
               </div>
@@ -126,4 +126,4 @@ function WorkoutForm() {
   );
 }
 
-export default WorkoutForm;
+export default ExerciseForm;

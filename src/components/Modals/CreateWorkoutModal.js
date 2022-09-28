@@ -38,20 +38,22 @@ function CreateWorkoutModal() {
       >
         <div className="modal-dialog" role="document">
           <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">
-                Create Workout
-              </h5>
+            <div className={classes['modal-header-container']}>
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">
+                  Create Workout
+                </h5>
+              </div>
             </div>
 
             <div className={`modal-body ${classes['modal-container']}`}>
               <div className="mb-3 form-floating">
                 <input
-                  //   value={ctx.workoutName}
+                  value={ctx.workName}
                   type="text"
                   className={`form-control`}
                   id="workout-name"
-                  //   onChange={ctx.workoutNameHandler}
+                  onChange={ctx.workNameHandler}
                   placeholder="Place workout name here"
                 />
                 <label htmlFor="workout-name">Workout Name</label>
@@ -78,7 +80,7 @@ function CreateWorkoutModal() {
                 </button>
                 {addedExercise === true && <WorkoutForm />}
               </div>
-              <div className="modal-footer">
+              <div className="modal-footer justify-content-between">
                 <button
                   type="button"
                   className="btn btn-secondary"
@@ -94,7 +96,7 @@ function CreateWorkoutModal() {
                   data-bs-dismiss="modal"
                   onClick={resetForm}
                 >
-                  Add Workout
+                  Create Workout
                 </button>
               </div>
             </div>
