@@ -13,3 +13,8 @@
 #btn {
   justify-self: center;
 }
+
+#mobileNavbar {
+  display: flex;
+  justify-content: space-between;
+}

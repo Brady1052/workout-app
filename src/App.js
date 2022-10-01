@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import NavBar from './components/Layout/Navbar';
 import ExerciseCard from './components/UI/ExerciseCard';
+import WorkoutTable from './components/UI/WorkoutTable';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <NavBar />
       {/* <Route path="/" element={<Home />} /> */}
       <ExerciseCard />
+      <WorkoutTable />
     </React.Fragment>
   );
 }

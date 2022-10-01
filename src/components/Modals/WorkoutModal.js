@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import classes from './WorkoutModal.module.css';
 import WorkoutsContext from '../../context/workouts-context';
-import WorkoutTable from '../UI/WorkoutTable';
+import FormWorkoutTable from '../UI/FormWorkoutTable';
 
 function WorkoutModal() {
   const ctx = useContext(WorkoutsContext);
@@ -13,6 +13,7 @@ function WorkoutModal() {
   const showTable = () => {
     setAddedExercise(true);
     ctx.displayExerciseTable(ctx.selectedExerciseName);
+    console.log(ctx.workouts.exercises);
   };
 
   const eraseTable = () => {
@@ -90,7 +91,7 @@ function WorkoutModal() {
                 >
                   Add Exercise to Workout
                 </button>
-                {addedExercise === true && <WorkoutTable />}
+                {addedExercise === true && <FormWorkoutTable />}
               </div>
               <div className="modal-footer justify-content-between">
                 <button
@@ -104,7 +105,6 @@ function WorkoutModal() {
                 <button
                   type="button"
                   className="btn btn-primary"
-                  //   onClick={ctx.submitHandler}
                   data-bs-dismiss="modal"
                   onClick={submitForm}
                 >

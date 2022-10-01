@@ -132,7 +132,7 @@ export const WorkoutsContextProvider = (props) => {
     setNumReps('');
   };
 
-  //********************************* Workout Context *********************//
+  //********************************* Workout Context ********************************//
 
   //Used for looping through every exercise the user has saved and matching it with the name in workout dropdown
   const [selectedExerciseName, setSelectedExerciseName] = useState([]);
@@ -140,8 +140,10 @@ export const WorkoutsContextProvider = (props) => {
   const [selectedExercises, setSelectedExercises] = useState([]);
   //Used for determining what exercises to show added that were added to the table in the workout modal
   const [formArray, setFormArray] = useState([]);
-  //Used for saving all workout objects inside a array
+  //Used for saving all workout objects inside one array
   const [workouts, setWorkouts] = useState([]);
+
+  const [exercisesInWorkout, setExercisesInWorkout] = useState();
   //Used for saving the name of the workout
   const [workoutName, setWorkoutName] = useState('');
 
@@ -159,7 +161,7 @@ export const WorkoutsContextProvider = (props) => {
     const workoutData = {
       key: Math.random().toString(),
       workoutName: workoutName,
-      exercises: [selectedExercises],
+      exercises: selectedExercises,
     };
     setWorkouts((prev) => {
       return [...prev, workoutData];
@@ -209,6 +211,9 @@ export const WorkoutsContextProvider = (props) => {
     if (workouts.length > 0) {
       localStorage.setItem('Workouts', JSON.stringify(workouts));
     }
+    // workouts.forEach((workout) => {
+    //   console.log(workout.exercises);
+    // });
   }, [workouts]);
 
   return (

@@ -7,7 +7,7 @@ function NavBar() {
   return (
     <React.Fragment>
       <nav className={`navbar d-flex navbar-expand-sm navbar-dark bg-dark `}>
-        <div className="container-fluid d-flex justify-content-between">
+        <div className="container-fluid">
           <h4 id={classes['color-white']} className={`navbar-brand}`}>
             Workout Tracker
           </h4>
