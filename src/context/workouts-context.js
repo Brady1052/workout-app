@@ -155,7 +155,7 @@ export const WorkoutsContextProvider = (props) => {
   const workoutNameHandler = (e) => {
     setWorkoutName(e.target.value);
   };
-
+  // Creats the workout object that is saved in local storage and reverts all the input in the workout modal back to their default value
   const saveWorkoutHandler = () => {
     const workoutData = {
       key: Math.random().toString(),
@@ -169,17 +169,12 @@ export const WorkoutsContextProvider = (props) => {
     setWorkoutName('');
   };
 
-  //   Effect for the table that is displayed everytime the user adds an exerise to their workout
+  //   Function for the table that is displayed everytime the user adds an exerise to their workout -  Also adds their selected exercise to storage
   const displayExerciseTable = () => {
     for (let i = 0; i < exercises.length; i++) {
       if (exercises[i].name === selectedExerciseName) {
         setFormArray((prev) => {
-          return [
-            ...prev,
-            { key: Math.random().toString() },
-            Math.random().toString(),
-            exercises[i],
-          ];
+          return [...prev, exercises[i]];
         });
         setSelectedExercises((prev) => {
           return [...prev, exercises[i]];
@@ -228,9 +223,11 @@ export const WorkoutsContextProvider = (props) => {
         numReps: numReps,
         formArray: formArray,
         workouts: workouts,
+        workoutName: workoutName,
         selectedExerciseName: selectedExerciseName,
         saveWorkoutHandler: saveWorkoutHandler,
         setFormArray: setFormArray,
+        setWorkoutName: setWorkoutName,
         displayExerciseTable: displayExerciseTable,
         selectedExerciseNameHandler: selectedExerciseNameHandler,
         workoutNameHandler: workoutNameHandler,

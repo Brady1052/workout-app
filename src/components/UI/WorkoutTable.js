@@ -21,14 +21,28 @@ function WorkoutTable() {
     return map;
   };
   return (
-    <React.Fragment>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}
+    >
       {ctx.workouts.map((workout) => {
         return (
-          <React.Fragment>
-            <h1>{workout.workoutName}</h1>
+          <div key={Math.random().toString()}>
+            <h1 style={{ textAlign: 'center', color: 'blue' }}>
+              {workout.workoutName}
+            </h1>
             <table
               key={Math.random().toString()}
               className="table table-striped"
+              style={{
+                maxWidth: '50rem',
+                minWidth: '50rem',
+                alignSelf: 'center',
+                position: 'relative',
+              }}
             >
               <thead>
                 <tr>
@@ -41,10 +55,19 @@ function WorkoutTable() {
               </thead>
               <tbody>{exerciseInfo(workout.exercises)}</tbody>
             </table>
-          </React.Fragment>
+            <button
+              style={{
+                maxWidth: '100%',
+                minWidth: '100%',
+                backgroundColor: 'red',
+              }}
+            >
+              Remove Workout
+            </button>
+          </div>
         );
       })}
-    </React.Fragment>
+    </div>
   );
 }
 

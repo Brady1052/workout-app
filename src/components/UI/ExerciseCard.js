@@ -19,7 +19,14 @@ function ExerciseCard() {
                 <div className={`container ${classes.card}`}>
                   <div className="col">
                     <div className="col ">
-                      <div className="card" style={{ width: '18rem' }}>
+                      <div
+                        className="card"
+                        style={{
+                          width: '18rem',
+                          borderRadius: '25px',
+                          marginTop: '8rem',
+                        }}
+                      >
                         <div className="card-body">
                           <div className="text-center">
                             <h5 className="card-title">{exercise.type}</h5>

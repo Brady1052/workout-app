@@ -8,7 +8,9 @@ import WorkoutTable from './components/UI/WorkoutTable';
 function App() {
   return (
     <React.Fragment>
-      <NavBar />
+      <div>
+        <NavBar />
+      </div>
       {/* <Route path="/" element={<Home />} /> */}
       <ExerciseCard />
       <WorkoutTable key={Math.random().toString()} />

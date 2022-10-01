@@ -1,0 +1,25 @@
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: black;
+  padding: 1rem;
+}
+
+body.modal-open div.modal-backdrop {
+  z-index: 0;
+}
+
+.exercise-modal-container {
+  background-color: aqua;
+}
+
+@media (max-width: 400px) {
+  .exercise-modal-container {
+    line-height: 1px;
+    background-color: brown;
+  }
+}

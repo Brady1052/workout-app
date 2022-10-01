@@ -18,6 +18,7 @@ function WorkoutModal() {
   const eraseTable = () => {
     setAddedExercise(false);
     ctx.setFormArray([]);
+    ctx.setWorkoutName('');
   };
 
   const submitForm = () => {
@@ -25,6 +26,8 @@ function WorkoutModal() {
     ctx.saveWorkoutHandler();
     ctx.setFormArray([]);
   };
+
+  const [highlightedExercise, setHighlightedExercise] = useState('');
 
   return (
     <React.Fragment>
@@ -55,7 +58,6 @@ function WorkoutModal() {
                 </h5>
               </div>
             </div>
-
             <div className={`modal-body ${classes['modal-container']}`}>
               <div className="mb-3 form-floating">
                 <input
