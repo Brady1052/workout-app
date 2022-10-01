@@ -5,7 +5,6 @@ function WorkoutTable() {
   const ctx = useContext(WorkoutsContext);
 
   const exerciseInfo = (info) => {
-    console.log(info);
     const map = info.map((exercise) => {
       return (
         <React.Fragment>
@@ -27,7 +26,10 @@ function WorkoutTable() {
         return (
           <React.Fragment>
             <h1>{workout.workoutName}</h1>
-            <table className="table table-striped">
+            <table
+              key={Math.random().toString()}
+              className="table table-striped"
+            >
               <thead>
                 <tr>
                   <th scope="col">Name</th>
@@ -37,10 +39,7 @@ function WorkoutTable() {
                   <th scope="col">Reps</th>
                 </tr>
               </thead>
-              <tbody>
-                {exerciseInfo(workout.exercises)}
-                {/* <td>{workout.exercises[0].name}</td> */}
-              </tbody>
+              <tbody>{exerciseInfo(workout.exercises)}</tbody>
             </table>
           </React.Fragment>
         );

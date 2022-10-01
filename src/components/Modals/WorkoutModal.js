@@ -13,7 +13,6 @@ function WorkoutModal() {
   const showTable = () => {
     setAddedExercise(true);
     ctx.displayExerciseTable(ctx.selectedExerciseName);
-    console.log(ctx.workouts.exercises);
   };
 
   const eraseTable = () => {
@@ -79,7 +78,12 @@ function WorkoutModal() {
                   </option>
                   {ctx.exercises.map((exercise) => {
                     return (
-                      <option value={exercise.name}>{exercise.name}</option>
+                      <option
+                        key={Math.random().toString()}
+                        value={exercise.name}
+                      >
+                        {exercise.name}
+                      </option>
                     );
                   })}
                 </select>

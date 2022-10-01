@@ -11,7 +11,7 @@ function App() {
       <NavBar />
       {/* <Route path="/" element={<Home />} /> */}
       <ExerciseCard />
-      <WorkoutTable />
+      <WorkoutTable key={Math.random().toString()} />
     </React.Fragment>
   );
 }

@@ -143,7 +143,6 @@ export const WorkoutsContextProvider = (props) => {
   //Used for saving all workout objects inside one array
   const [workouts, setWorkouts] = useState([]);
 
-  const [exercisesInWorkout, setExercisesInWorkout] = useState();
   //Used for saving the name of the workout
   const [workoutName, setWorkoutName] = useState('');
 
@@ -175,7 +174,12 @@ export const WorkoutsContextProvider = (props) => {
     for (let i = 0; i < exercises.length; i++) {
       if (exercises[i].name === selectedExerciseName) {
         setFormArray((prev) => {
-          return [...prev, exercises[i]];
+          return [
+            ...prev,
+            { key: Math.random().toString() },
+            Math.random().toString(),
+            exercises[i],
+          ];
         });
         setSelectedExercises((prev) => {
           return [...prev, exercises[i]];
@@ -211,9 +215,6 @@ export const WorkoutsContextProvider = (props) => {
     if (workouts.length > 0) {
       localStorage.setItem('Workouts', JSON.stringify(workouts));
     }
-    // workouts.forEach((workout) => {
-    //   console.log(workout.exercises);
-    // });
   }, [workouts]);
 
   return (

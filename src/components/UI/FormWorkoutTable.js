@@ -19,7 +19,7 @@ function WorkoutTable() {
         <tbody>
           {ctx.formArray.map((exercise) => {
             return (
-              <tr>
+              <tr key={Math.random().toString()}>
                 <th scope="row">{exercise.name}</th>
                 <td>{exercise.type}</td>
                 <td>{exercise.weight}</td>
