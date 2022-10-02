@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const ExercisesContext = React.createContext({
-  exercises: [],
-  addexerciseHandler: (exercise) => {},
-  deleteexercise: (updatedexerciseList) => {},
-  exerciseNameHandler: () => {},
-});
+const ExercisesContext = React.createContext({});
 
 // Provides state and functions to entire application
 export const WorkoutsContextProvider = (props) => {
@@ -29,8 +24,8 @@ export const WorkoutsContextProvider = (props) => {
     });
   };
 
-  const deleteExerciseHandler = (updatedexerciseList) => {
-    setExercises(updatedexerciseList);
+  const deleteExerciseHandler = (updatedExerciseList) => {
+    setExercises(updatedExerciseList);
     localStorage.setItem('Exercises', JSON.stringify(exercises));
     forceRenderHandler();
   };
@@ -135,7 +130,7 @@ export const WorkoutsContextProvider = (props) => {
   //********************************* Workout Context ********************************//
 
   //Used for looping through every exercise the user has saved and matching it with the name in workout dropdown
-  const [selectedExerciseName, setSelectedExerciseName] = useState([]);
+  const [selectedExerciseName, setSelectedExerciseName] = useState('');
   //Used for saving all the exercises that the user saves to their workout to an array that can be used inside of the workout object
   const [selectedExercises, setSelectedExercises] = useState([]);
   //Used for determining what exercises to show added that were added to the table in the workout modal
@@ -146,6 +141,21 @@ export const WorkoutsContextProvider = (props) => {
   //Used for saving the name of the workout
   const [workoutName, setWorkoutName] = useState('');
 
+  const deleteWorkoutHandler = (updatedWorkoutList) => {
+    setWorkouts(updatedWorkoutList);
+    localStorage.setItem('Workouts', JSON.stringify(workouts));
+    forceRenderHandler();
+  };
+
+  const deleteWorkout = () => {
+    exercises.forEach((workout, idx) => {
+      if (workout.tableID === workout.id) {
+        workouts.splice(idx, 1);
+      }
+      return deleteWorkoutHandler(workouts);
+    });
+  };
+
   // //Used for looping through every exercise the user has saved and matching it with the name in workout dropdown
   // Saves the selected exercise name
   const selectedExerciseNameHandler = (e) => {
@@ -155,10 +165,12 @@ export const WorkoutsContextProvider = (props) => {
   const workoutNameHandler = (e) => {
     setWorkoutName(e.target.value);
   };
+
   // Creats the workout object that is saved in local storage and reverts all the input in the workout modal back to their default value
   const saveWorkoutHandler = () => {
     const workoutData = {
       key: Math.random().toString(),
+      id: Math.random().toString(),
       workoutName: workoutName,
       exercises: selectedExercises,
     };
@@ -212,6 +224,13 @@ export const WorkoutsContextProvider = (props) => {
     }
   }, [workouts]);
 
+  //   Exercise Card Context //
+  const [cardID, setCardID] = useState('');
+  const cardIDHandler = (id) => {
+    setCardID({ id: id });
+    // console.log(id);
+  };
+
   return (
     <ExercisesContext.Provider
       value={{
@@ -225,9 +244,12 @@ export const WorkoutsContextProvider = (props) => {
         workouts: workouts,
         workoutName: workoutName,
         selectedExerciseName: selectedExerciseName,
-        saveWorkoutHandler: saveWorkoutHandler,
+        cardIDHandler: cardIDHandler,
+        deleteWorkout: deleteWorkout,
         setFormArray: setFormArray,
         setWorkoutName: setWorkoutName,
+        setSelectedExerciseName: setSelectedExerciseName,
+        saveWorkoutHandler: saveWorkoutHandler,
         displayExerciseTable: displayExerciseTable,
         selectedExerciseNameHandler: selectedExerciseNameHandler,
         workoutNameHandler: workoutNameHandler,

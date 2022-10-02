@@ -19,6 +19,7 @@ function WorkoutModal() {
     setAddedExercise(false);
     ctx.setFormArray([]);
     ctx.setWorkoutName('');
+    ctx.setSelectedExerciseName('');
   };
 
   const submitForm = () => {
@@ -26,8 +27,6 @@ function WorkoutModal() {
     ctx.saveWorkoutHandler();
     ctx.setFormArray([]);
   };
-
-  const [highlightedExercise, setHighlightedExercise] = useState('');
 
   return (
     <React.Fragment>
@@ -74,6 +73,7 @@ function WorkoutModal() {
                 <select
                   className={`form-select ${classes['modal-input']}`}
                   onChange={ctx.selectedExerciseNameHandler}
+                  value={ctx.selectedExerciseName}
                 >
                   <option value="Choose from your list of exercises">
                     Choose from your list of exercises

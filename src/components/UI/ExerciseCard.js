@@ -10,11 +10,10 @@ function ExerciseCard() {
       <div className="container">
         <div className="row">
           {ctx.exercises.map((exercise) => {
-            exercise['cardID'] = exercise.exerciseID;
+            // ctx.cardIDHandler(exercise.exerciseID);
             return (
               <div
                 className={`col-xs-12  col-sm-12 col-md-6 col-lg-4 col-xl-4`}
-                key={exercise.exerciseID}
               >
                 <div className={`container ${classes.card}`}>
                   <div className="col">
@@ -26,6 +25,7 @@ function ExerciseCard() {
                           borderRadius: '25px',
                           marginTop: '8rem',
                         }}
+                        key={exercise.exerciseID}
                       >
                         <div className="card-body">
                           <div className="text-center">

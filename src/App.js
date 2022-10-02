@@ -4,16 +4,19 @@ import './App.css';
 import NavBar from './components/Layout/Navbar';
 import ExerciseCard from './components/UI/ExerciseCard';
 import WorkoutTable from './components/UI/WorkoutTable';
+import Exercises from './pages/Exercises';
+import Workouts from './pages/Workouts';
 
 function App() {
   return (
     <React.Fragment>
-      <div>
-        <NavBar />
-      </div>
-      {/* <Route path="/" element={<Home />} /> */}
-      <ExerciseCard />
-      <WorkoutTable key={Math.random().toString()} />
+      <NavBar />
+      {/* <ExerciseCard />
+      <WorkoutTable /> */}
+      <Routes>
+        <Route path="/exercises" element={<Exercises />} />
+        <Route path="/workouts" element={<Workouts />} />
+      </Routes>
     </React.Fragment>
   );
 }

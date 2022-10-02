@@ -7,7 +7,7 @@ function WorkoutTable() {
   const exerciseInfo = (info) => {
     const map = info.map((exercise) => {
       return (
-        <React.Fragment>
+        <React.Fragment key={Math.random().toString()}>
           <tr>
             <td>{exercise.name}</td>
             <td>{exercise.type}</td>
@@ -29,19 +29,21 @@ function WorkoutTable() {
       }}
     >
       {ctx.workouts.map((workout) => {
+        workout['tableID'] = workout.id;
+
         return (
           <div key={Math.random().toString()}>
             <h1 style={{ textAlign: 'center', color: 'blue' }}>
               {workout.workoutName}
             </h1>
             <table
-              key={Math.random().toString()}
               className="table table-striped"
               style={{
                 maxWidth: '50rem',
                 minWidth: '50rem',
                 alignSelf: 'center',
                 position: 'relative',
+                marginTop: '5rem',
               }}
             >
               <thead>
@@ -61,6 +63,7 @@ function WorkoutTable() {
                 minWidth: '100%',
                 backgroundColor: 'red',
               }}
+              onClick={ctx.deleteWorkout}
             >
               Remove Workout
             </button>
