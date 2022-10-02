@@ -9,9 +9,6 @@ export const WorkoutsContextProvider = (props) => {
   const [exercises, setExercises] = useState([]);
 
   const addExerciseHandler = (exercise) => {
-    exercise = {
-      ...exercise,
-    };
     setExercises((prevState) => {
       return [...prevState, exercise];
     });
@@ -31,6 +28,7 @@ export const WorkoutsContextProvider = (props) => {
   };
 
   const deleteExercise = () => {
+    console.log('delete');
     exercises.forEach((exercise, idx) => {
       if (exercise.cardID === exercise.exerciseID) {
         exercises.splice(idx, 1);
@@ -113,7 +111,7 @@ export const WorkoutsContextProvider = (props) => {
     };
     saveExerciseDataHandler(exerciseData);
     setExerciseName('');
-    setExerciseType('Select exercise Type');
+    setExerciseType('');
     setExerciseWeight('');
     setNumSets('');
     setNumReps('');
@@ -227,7 +225,7 @@ export const WorkoutsContextProvider = (props) => {
   //   Exercise Card Context //
   const [cardID, setCardID] = useState('');
   const cardIDHandler = (id) => {
-    setCardID({ id: id });
+    // setCardID({ id: id });
     // console.log(id);
   };
 
