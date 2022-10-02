@@ -61,9 +61,21 @@ function WorkoutTable() {
               style={{
                 maxWidth: '100%',
                 minWidth: '100%',
-                backgroundColor: 'red',
+                backgroundColor: 'black',
+                color: 'white',
               }}
-              onClick={ctx.deleteWorkout}
+              onClick={() => {
+                for (let i = 0; i < ctx.workouts.length; i++) {
+                  const workouts = ctx.workouts;
+                  if (ctx.workouts[i].id === workout.id) {
+                    workouts.splice(i, 1);
+                    ctx.setWorkouts(workouts);
+                    localStorage.setItem('Workouts', JSON.stringify(workouts));
+                    ctx.forceRenderHandler();
+                    return;
+                  } else return alert('Error');
+                }
+              }}
             >
               Remove Workout
             </button>

@@ -10,6 +10,7 @@ function ExerciseCard() {
       <div className="container">
         <div className="row">
           {ctx.exercises.map((exercise) => {
+            exercise['cardID'] = exercise.id;
             return (
               <div
                 className={`col-xs-12  col-sm-12 col-md-6 col-lg-4 col-xl-4`}
@@ -50,7 +51,21 @@ function ExerciseCard() {
                           >
                             <button className="btn text-success">Edit</button>
                             <button
-                              onClick={ctx.deleteExercise}
+                              onClick={() => {
+                                for (let i = 0; i < ctx.exercises.length; i++) {
+                                  const exercises = ctx.exercises;
+                                  if (ctx.exercises[i].id === exercise.id) {
+                                    exercises.splice(i, 1);
+                                    ctx.setExercises(exercises);
+                                    localStorage.setItem(
+                                      'Exercises',
+                                      JSON.stringify(exercises)
+                                    );
+                                    ctx.forceRenderHandler();
+                                    return;
+                                  } else return alert('Error');
+                                }
+                              }}
                               className="btn text-danger"
                             >
                               Delete

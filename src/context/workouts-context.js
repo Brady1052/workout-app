@@ -21,22 +21,6 @@ export const WorkoutsContextProvider = (props) => {
     });
   };
 
-  const deleteExerciseHandler = (updatedExerciseList) => {
-    setExercises(updatedExerciseList);
-    localStorage.setItem('Exercises', JSON.stringify(exercises));
-    forceRenderHandler();
-  };
-
-  const deleteExercise = () => {
-    console.log('delete');
-    exercises.forEach((exercise, idx) => {
-      if (exercise.cardID === exercise.exerciseID) {
-        exercises.splice(idx, 1);
-      }
-      return deleteExerciseHandler(exercises);
-    });
-  };
-
   //******** Handles local storage, and appending to local storage ***********//
   useEffect(() => {
     /** If it is the user's first time visitng the site then store a Exercises object set to an empty array in local storage **/
@@ -94,7 +78,6 @@ export const WorkoutsContextProvider = (props) => {
   const saveExerciseDataHandler = (enteredExerciseData) => {
     const exerciseData = {
       ...enteredExerciseData,
-      exerciseID: Math.random().toString(),
     };
     addExerciseHandler(exerciseData);
   };
@@ -102,6 +85,7 @@ export const WorkoutsContextProvider = (props) => {
   const submitHandler = (e) => {
     e.preventDefault();
     const exerciseData = {
+      id: Math.random().toString(),
       key: Math.random().toString(),
       name: exerciseName,
       type: exerciseType,
@@ -222,13 +206,6 @@ export const WorkoutsContextProvider = (props) => {
     }
   }, [workouts]);
 
-  //   Exercise Card Context //
-  const [cardID, setCardID] = useState('');
-  const cardIDHandler = (id) => {
-    // setCardID({ id: id });
-    // console.log(id);
-  };
-
   return (
     <ExercisesContext.Provider
       value={{
@@ -242,8 +219,9 @@ export const WorkoutsContextProvider = (props) => {
         workouts: workouts,
         workoutName: workoutName,
         selectedExerciseName: selectedExerciseName,
-        cardIDHandler: cardIDHandler,
         deleteWorkout: deleteWorkout,
+        setExercises: setExercises,
+        setWorkouts: setWorkouts,
         setFormArray: setFormArray,
         setWorkoutName: setWorkoutName,
         setSelectedExerciseName: setSelectedExerciseName,
@@ -252,7 +230,6 @@ export const WorkoutsContextProvider = (props) => {
         selectedExerciseNameHandler: selectedExerciseNameHandler,
         workoutNameHandler: workoutNameHandler,
         addExerciseHandler: addExerciseHandler,
-        deleteExercise: deleteExercise,
         exerciseNameHandler: exerciseNameHandler,
         exerciseTypeHandler: exerciseTypeHandler,
         exerciseWeightHandler: exerciseWeightHandler,
@@ -260,6 +237,7 @@ export const WorkoutsContextProvider = (props) => {
         numSetsHandler: numSetsHandler,
         submitHandler: submitHandler,
         closeModal: closeModal,
+        forceRenderHandler: forceRenderHandler,
       }}
     >
       {props.children}
