@@ -33,7 +33,9 @@ function WorkoutTable() {
 
         return (
           <div key={Math.random().toString()}>
-            <h1 style={{ textAlign: 'center', color: 'blue' }}>
+            <h1
+              style={{ textAlign: 'center', color: 'blue', marginTop: '5rem' }}
+            >
               {workout.workoutName}
             </h1>
             <table
@@ -73,8 +75,9 @@ function WorkoutTable() {
                     localStorage.setItem('Workouts', JSON.stringify(workouts));
                     ctx.forceRenderHandler();
                     return;
-                  } else return alert('Error');
+                  }
                 }
+                return alert('Error');
               }}
             >
               Remove Workout

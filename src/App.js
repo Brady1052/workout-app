@@ -11,11 +11,11 @@ function App() {
   return (
     <React.Fragment>
       <NavBar />
-      <ExerciseCard />
-      <WorkoutTable />
+      {/* <ExerciseCard />
+      <WorkoutTable /> */}
       <Routes>
-        {/* <Route path="/exercises" element={<Exercises />} />
-        <Route path="/workouts" element={<Workouts />} /> */}
+        <Route path="/exercises" element={<Exercises />} />
+        <Route path="/workouts" element={<Workouts />} />
       </Routes>
     </React.Fragment>
   );

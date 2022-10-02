@@ -63,8 +63,9 @@ function ExerciseCard() {
                                     );
                                     ctx.forceRenderHandler();
                                     return;
-                                  } else return alert('Error');
+                                  }
                                 }
+                                return alert('Error');
                               }}
                               className="btn text-danger"
                             >

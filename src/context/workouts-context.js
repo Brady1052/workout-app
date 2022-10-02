@@ -103,7 +103,7 @@ export const WorkoutsContextProvider = (props) => {
 
   const closeModal = () => {
     setExerciseName('');
-    setExerciseType('Select exercise Type');
+    setExerciseType('');
     setExerciseWeight('');
     setNumSets('');
     setNumReps('');
