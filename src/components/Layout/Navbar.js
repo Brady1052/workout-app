@@ -6,6 +6,7 @@ import WorkoutModal from '../Modals/WorkoutModal.js';
 import Button from '@mui/material/Button';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import ImportContactsIcon from '@mui/icons-material/ImportContacts';
+import { ButtonGroup } from '@mui/material';
 
 function NavBar() {
   return (
@@ -22,6 +23,7 @@ function NavBar() {
               Exercises
             </Button>
           </Link>
+
           <Link to="/workouts">
             <Button
               variant="contained"

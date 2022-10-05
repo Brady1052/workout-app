@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import WorkoutsContext from '../../context/workouts-context';
+import Button from '@mui/material/Button';
 
 function WorkoutTable() {
   const ctx = useContext(WorkoutsContext);
@@ -59,12 +60,11 @@ function WorkoutTable() {
               </thead>
               <tbody>{exerciseInfo(workout.exercises)}</tbody>
             </table>
-            <button
+            <Button
+              variant="contained"
               style={{
                 maxWidth: '100%',
                 minWidth: '100%',
-                backgroundColor: 'black',
-                color: 'white',
               }}
               onClick={() => {
                 for (let i = 0; i < ctx.workouts.length; i++) {
@@ -81,7 +81,7 @@ function WorkoutTable() {
               }}
             >
               Remove Workout
-            </button>
+            </Button>
           </div>
         );
       })}

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import WorkoutsContext from '../../context/workouts-context';
 import classes from './ExerciseCard.module.css';
+import Button from '@mui/material/Button';
 
 function ExerciseCard() {
   const ctx = useContext(WorkoutsContext);
@@ -49,8 +50,8 @@ function ExerciseCard() {
                             className="text-center d-flex justify-content-between"
                             style={{ marginTop: '1rem' }}
                           >
-                            <button className="btn text-success">Edit</button>
-                            <button
+                            <Button variant="contained">Edit</Button>
+                            <Button
                               onClick={() => {
                                 for (let i = 0; i < ctx.exercises.length; i++) {
                                   const exercises = ctx.exercises;
@@ -67,10 +68,11 @@ function ExerciseCard() {
                                 }
                                 return alert('Error');
                               }}
-                              className="btn text-danger"
+                              variant="contained"
+                              color="error"
                             >
                               Delete
-                            </button>
+                            </Button>
                           </div>
                         </div>
                       </div>
