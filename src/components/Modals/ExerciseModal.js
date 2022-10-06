@@ -1,20 +1,21 @@
 import React, { useContext } from 'react';
 import classes from './ExerciseModal.module.css';
 import WorkoutsContext from '../../context/workouts-context';
+import Button from '@mui/material/Button';
+
 function ExerciseModal() {
   const ctx = useContext(WorkoutsContext);
 
   return (
     <React.Fragment>
-      <button
+      <Button
         type="button"
-        className="btn btn-light"
-        id={classes['add-exercise']}
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
+        variant="contained"
       >
         Create Exercise
-      </button>
+      </Button>
 
       <div
         className="modal fade"
@@ -100,23 +101,27 @@ function ExerciseModal() {
                 </label>
               </div>
 
-              <div className="modal-footer">
-                <button
+              <div
+                className="modal-footer"
+                style={{ display: 'flex', justifyContent: 'space-between' }}
+              >
+                <Button
                   type="button"
-                  className="btn btn-secondary"
                   data-bs-dismiss="modal"
                   onClick={ctx.closeModal}
+                  variant="contained"
+                  color="error"
                 >
                   Close
-                </button>
-                <button
+                </Button>
+                <Button
                   type="button"
-                  className="btn btn-primary"
                   onClick={ctx.submitHandler}
                   data-bs-dismiss="modal"
+                  variant="contained"
                 >
                   Create Exercise
-                </button>
+                </Button>
               </div>
             </div>
           </div>

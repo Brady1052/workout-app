@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import classes from './WorkoutModal.module.css';
 import WorkoutsContext from '../../context/workouts-context';
 import FormWorkoutTable from '../UI/FormWorkoutTable';
+import Button from '@mui/material/Button';
 
 function WorkoutModal() {
   const ctx = useContext(WorkoutsContext);
@@ -31,15 +32,14 @@ function WorkoutModal() {
 
   return (
     <React.Fragment>
-      <button
+      <Button
         type="button"
-        className="btn btn-light"
-        id={classes['add-workout']}
         data-bs-toggle="modal"
         data-bs-target="#workout-modal"
+        variant="contained"
       >
         Create Workout
-      </button>
+      </Button>
 
       <div
         className="modal fade"
@@ -100,23 +100,28 @@ function WorkoutModal() {
                 </button>
                 {addedExercise === true && <FormWorkoutTable />}
               </div>
-              <div className="modal-footer justify-content-between">
-                <button
+              <div
+                className="modal-footer"
+                style={{ display: 'flex', justifyContent: 'space-between' }}
+              >
+                <Button
                   type="button"
                   className="btn btn-secondary"
                   data-bs-dismiss="modal"
                   onClick={eraseTable}
+                  variant="contained"
+                  color="error"
                 >
                   Close
-                </button>
-                <button
+                </Button>
+                <Button
                   type="button"
-                  className="btn btn-primary"
                   data-bs-dismiss="modal"
                   onClick={submitForm}
+                  variant="contained"
                 >
                   Create Workout
-                </button>
+                </Button>
               </div>
             </div>
           </div>
