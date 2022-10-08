@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import ExerciseModal from '../Modals/ExerciseModal.js';
@@ -27,8 +27,8 @@ function NavBar() {
     boxShadow: 24,
     p: 4,
   };
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => (!open ? setOpen(true) : console.log());
   const handleClose = () => setOpen(false);
   return (
     <React.Fragment>
