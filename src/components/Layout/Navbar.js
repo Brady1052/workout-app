@@ -6,14 +6,18 @@ import WorkoutModal from '../Modals/WorkoutModal.js';
 import Button from '@mui/material/Button';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import ImportContactsIcon from '@mui/icons-material/ImportContacts';
-import Grid from '@mui/material/Grid';
-import { AppBar } from '@mui/material';
-import { Toolbar } from '@mui/material';
-import { IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Modal } from '@mui/material';
-import { Box } from '@mui/material';
-import { Typography } from '@mui/material';
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Modal,
+  Box,
+  Typography,
+  Grid,
+  Tabs,
+  Tab,
+} from '@mui/material';
 
 function NavBar() {
   const style = {
@@ -25,22 +29,35 @@ function NavBar() {
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
-    p: 4,
+    pt: 2,
+    px: 4,
+    pb: 3,
   };
+  const [tabValue, setTabValue] = useState();
   const [open, setOpen] = useState(false);
   const handleOpen = () => (!open ? setOpen(true) : console.log());
   const handleClose = () => setOpen(false);
   return (
     <React.Fragment>
-      <AppBar>
+      <AppBar
+        sx={{
+          backgroundImage:
+            'linear-gradient(90deg, rgba(30,0,143,1) 0%, rgba(30,0,143,1) 48%, rgba(30,0,143,1) 100%)',
+        }}
+      >
         <Toolbar>
           <IconButton>
             <MenuIcon />
           </IconButton>
           {/* <div className="nav-container"> */}
-          <Grid container justifyContent="center">
-            <Grid item>
-              <Button variant="contained" onClick={handleOpen}>
+          <Grid container sx={{ placeItems: 'center' }}>
+            <Grid item xs={3} style={{ textAlign: 'center' }}>
+              <Button
+                variant="text"
+                color="inherit"
+                onClick={handleOpen}
+                sx={{ fontWeight: '1000' }}
+              >
                 Open
                 <Modal
                   open={open}
@@ -64,22 +81,23 @@ function NavBar() {
                 </Modal>
               </Button>
             </Grid>
-            <Grid item xs={3}>
-              <Link to="/exercises">
+            <Grid item xs={3} textAlign="center">
+              <Link to="/exercises" style={{ textDecoration: 'none' }}>
                 <Button
-                  variant="contained"
-                  color="primary"
-                  size="large"
-                  endIcon={<FitnessCenterIcon style={{ color: 'black' }} />}
+                  color="warning"
+                  variant="text"
+                  // size="large"
+                  sx={{ fontWeight: '1000' }}
+                  style={{ color: 'white' }}
                 >
                   Exercises
                 </Button>
               </Link>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={3} textAlign="center">
               <Link to="/workouts">
                 <Button
-                  variant="contained"
+                  variant="text"
                   color="primary"
                   size="large"
                   endIcon={<ImportContactsIcon style={{ color: 'black' }} />}
@@ -88,13 +106,19 @@ function NavBar() {
                 </Button>
               </Link>
             </Grid>
-            <Grid item xs={3}>
+            {/* <Grid item xs={3} textAlign="center">
               <ExerciseModal />
             </Grid>
-            <Grid item>
+            <Grid item xs={3} textAlign="center">
               <WorkoutModal />
             </Grid>
+            <Grid item xs={3} textAlign="center">
+              <Typography>
+                <Button variant="contained">Click Me</Button>
+              </Typography>
+            </Grid> */}
           </Grid>
+
           {/* </div> */}
         </Toolbar>
       </AppBar>

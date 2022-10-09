@@ -8,6 +8,12 @@ import 'fontsource-roboto';
 import Typography from '@mui/material/Typography';
 import ThemeProvider from '@mui/material/styles/ThemeProvider';
 import createMuiTheme from '@mui/material/styles/createTheme';
+const linksArray = [
+  'Exercises',
+  'Workouts',
+  'Create Exercise',
+  'Create Workout',
+];
 function App() {
   const theme = createMuiTheme({
     typography: {
@@ -16,7 +22,7 @@ function App() {
   });
   return (
     <ThemeProvider theme={theme}>
-      <NavBar />
+      <NavBar links={linksArray} />
       <Typography style={{ marginTop: '8rem' }} variant="h2">
         Welcome to Workout
       </Typography>
