@@ -26,6 +26,8 @@ function ExerciseCard() {
                           width: '18rem',
                           borderRadius: '25px',
                           marginTop: '8rem',
+                          backgroundColor: '#007FFF',
+                          color: 'white',
                         }}
                       >
                         <div className="card-body">
@@ -36,13 +38,31 @@ function ExerciseCard() {
                             </h5>
                           </div>
                           <ul className={`list-group list-group-flush`}>
-                            <li className="list-group-item">
+                            <li
+                              className="list-group-item"
+                              style={{
+                                backgroundColor: '#007FFF',
+                                color: 'white',
+                              }}
+                            >
                               Weight: {exercise.weight}
                             </li>
-                            <li className="list-group-item">
+                            <li
+                              className="list-group-item"
+                              style={{
+                                backgroundColor: '#007FFF',
+                                color: 'white',
+                              }}
+                            >
                               Sets: {exercise.sets}
                             </li>
-                            <li className="list-group-item">
+                            <li
+                              className="list-group-item"
+                              style={{
+                                backgroundColor: '#007FFF',
+                                color: 'white',
+                              }}
+                            >
                               Reps: {exercise.reps}
                             </li>
                           </ul>

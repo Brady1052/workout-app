@@ -23,9 +23,6 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <NavBar links={linksArray} />
-      <Typography style={{ marginTop: '8rem' }} variant="h2">
-        Welcome to Workout
-      </Typography>
       <Routes>
         <Route path="/exercises" element={<Exercises />} />
         <Route path="/workouts" element={<Workouts />} />

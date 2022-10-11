@@ -9,7 +9,14 @@ function WorkoutTable() {
     const map = info.map((exercise) => {
       return (
         <React.Fragment key={Math.random().toString()}>
-          <tr>
+          <tr
+            style={{
+              color: 'white',
+              backgroundColor: '#0057C3',
+              borderTop: '2px solid white',
+              fontWeight: '600',
+            }}
+          >
             <td>{exercise.name}</td>
             <td>{exercise.type}</td>
             <td>{exercise.weight}</td>
@@ -40,17 +47,23 @@ function WorkoutTable() {
               {workout.workoutName}
             </h1>
             <table
-              className="table table-striped"
+              className="table"
               style={{
                 maxWidth: '50rem',
                 minWidth: '50rem',
                 alignSelf: 'center',
                 position: 'relative',
                 marginTop: '5rem',
+                border: '2px solid white',
               }}
             >
               <thead>
-                <tr>
+                <tr
+                  style={{
+                    color: 'white',
+                    border: '2px solid white',
+                  }}
+                >
                   <th scope="col">Name</th>
                   <th scope="col">Type</th>
                   <th scope="col">Weight</th>
@@ -65,6 +78,7 @@ function WorkoutTable() {
               style={{
                 maxWidth: '100%',
                 minWidth: '100%',
+                fontWeight: '600',
               }}
               onClick={() => {
                 for (let i = 0; i < ctx.workouts.length; i++) {
