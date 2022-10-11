@@ -4,12 +4,28 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { WorkoutsContextProvider } from './context/workouts-context';
-
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: 'rgba(0, 31, 65, 1)',
+    },
+    secondary: {
+      main: '#0057C3',
+    },
+    white: {
+      main: '#fff',
+    },
+  },
+});
 root.render(
-  <WorkoutsContextProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </WorkoutsContextProvider>
+  <ThemeProvider theme={theme}>
+    <WorkoutsContextProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </WorkoutsContextProvider>
+  </ThemeProvider>
 );

@@ -5,7 +5,7 @@ function WorkoutTable() {
   const ctx = useContext(WorkoutsContext);
 
   return (
-    <React.Fragment>
+    <>
       <table className="table table-striped">
         <thead>
           <tr>
@@ -30,7 +30,7 @@ function WorkoutTable() {
           })}
         </tbody>
       </table>
-    </React.Fragment>
+    </>
   );
 }
 

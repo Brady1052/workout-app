@@ -7,7 +7,7 @@ function ExerciseCard() {
   const ctx = useContext(WorkoutsContext);
 
   return (
-    <React.Fragment>
+    <>
       <div className="container">
         <div className="row">
           {ctx.exercises.map((exercise) => {
@@ -26,7 +26,7 @@ function ExerciseCard() {
                           width: '18rem',
                           borderRadius: '25px',
                           marginTop: '8rem',
-                          backgroundColor: '#007FFF',
+                          backgroundColor: '#0057C3',
                           color: 'white',
                         }}
                       >
@@ -41,7 +41,7 @@ function ExerciseCard() {
                             <li
                               className="list-group-item"
                               style={{
-                                backgroundColor: '#007FFF',
+                                backgroundColor: '#0057C3',
                                 color: 'white',
                               }}
                             >
@@ -50,7 +50,7 @@ function ExerciseCard() {
                             <li
                               className="list-group-item"
                               style={{
-                                backgroundColor: '#007FFF',
+                                backgroundColor: '#0057C3',
                                 color: 'white',
                               }}
                             >
@@ -59,7 +59,7 @@ function ExerciseCard() {
                             <li
                               className="list-group-item"
                               style={{
-                                backgroundColor: '#007FFF',
+                                backgroundColor: '#0057C3',
                                 color: 'white',
                               }}
                             >
@@ -104,7 +104,7 @@ function ExerciseCard() {
           })}
         </div>
       </div>
-    </React.Fragment>
+    </>
   );
 }
 

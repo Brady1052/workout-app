@@ -31,7 +31,7 @@ function WorkoutModal() {
   };
 
   return (
-    <React.Fragment>
+    <>
       <Button
         type="button"
         data-bs-toggle="modal"
@@ -127,7 +127,7 @@ function WorkoutModal() {
           </div>
         </div>
       </div>
-    </React.Fragment>
+    </>
   );
 }
 

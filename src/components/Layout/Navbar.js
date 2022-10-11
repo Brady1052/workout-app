@@ -38,7 +38,7 @@ function NavBar() {
   const handleOpen = () => (!open ? setOpen(true) : console.log());
   const handleClose = () => setOpen(false);
   return (
-    <React.Fragment>
+    <>
       <AppBar
         sx={{
           backgroundImage:
@@ -53,36 +53,6 @@ function NavBar() {
             </>
           ) : (
             <Grid container sx={{ placeItems: 'center' }}>
-              <Grid item xs={3} style={{ textAlign: 'center' }}>
-                <Button
-                  variant="text"
-                  color="inherit"
-                  onClick={handleOpen}
-                  sx={{ fontWeight: '1000' }}
-                >
-                  Open
-                  <Modal
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
-                  >
-                    <Box sx={style}>
-                      <Typography
-                        id="modal-modal-title"
-                        variant="h6"
-                        component="h2"
-                      >
-                        Text in a modal
-                      </Typography>
-                      <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Duis mollis, est non commodo luctus, nisi erat porttitor
-                        ligula.
-                      </Typography>
-                    </Box>
-                  </Modal>
-                </Button>
-              </Grid>
               <Grid item xs={3} textAlign="center">
                 <Link to="/exercises" style={{ textDecoration: 'none' }}>
                   <Button
@@ -115,16 +85,11 @@ function NavBar() {
               <Grid item xs={3} textAlign="center">
                 <WorkoutModal />
               </Grid>
-              <Grid item xs={3} textAlign="center">
-                <Typography>
-                  <Button variant="contained">Click Me</Button>
-                </Typography>
-              </Grid>
             </Grid>
           )}
         </Toolbar>
       </AppBar>
-    </React.Fragment>
+    </>
   );
 }
 
