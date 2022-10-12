@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import WorkoutsContext from '../../context/workouts-context';
 import classes from './ExerciseCard.module.css';
-import Button from '@mui/material/Button';
+import IconButton from '@mui/material/Button';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 import EditRoundedIcon from '@mui/icons-material/EditRounded';
 
@@ -72,17 +72,16 @@ function ExerciseCard() {
                             className="text-center d-flex justify-content-between flex-row-reverse"
                             style={{ marginTop: '1rem' }}
                           >
-                            <Button
-                              variant="contained"
-                              color="bonus"
-                              sx={{ fontWeight: '700' }}
-                              endIcon={
-                                <EditRoundedIcon sx={{ color: 'white' }} />
-                              }
-                            >
-                              Edit
-                            </Button>
-                            <Button
+                            <IconButton variant="text" color="bonus">
+                              {' '}
+                              <EditRoundedIcon
+                                sx={{
+                                  color: 'rgb(32, 225, 18)',
+                                  fontSize: '2.5rem',
+                                }}
+                              />
+                            </IconButton>
+                            <IconButton
                               sx={{ fontWeight: '700' }}
                               onClick={() => {
                                 for (let i = 0; i < ctx.exercises.length; i++) {
@@ -100,16 +99,13 @@ function ExerciseCard() {
                                 }
                                 return alert('Error');
                               }}
-                              variant="contained"
+                              variant="text"
                               color="error"
-                              endIcon={
-                                <DeleteForeverRoundedIcon
-                                  sx={{ color: 'white' }}
-                                />
-                              }
                             >
-                              Delete
-                            </Button>
+                              <DeleteForeverRoundedIcon
+                                sx={{ color: 'red', fontSize: '3rem' }}
+                              />
+                            </IconButton>
                           </div>
                         </div>
                       </div>

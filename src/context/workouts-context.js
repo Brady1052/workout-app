@@ -82,9 +82,10 @@ export const WorkoutsContextProvider = (props) => {
     addExerciseHandler(exerciseData);
   };
   //   Handles submit and closing events for the exercise modal
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => (!open ? setOpen(true) : console.log());
-  const handleClose = () => setOpen(false);
+  const [exerciseOpen, setExerciseOpen] = useState(false);
+  const handleExerciseOpen = () =>
+    !exerciseOpen ? setExerciseOpen(true) : console.log();
+  const handleExerciseClose = () => setExerciseOpen(false);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -97,7 +98,7 @@ export const WorkoutsContextProvider = (props) => {
       sets: numSets,
       reps: numReps,
     };
-    handleClose();
+    handleExerciseClose();
     saveExerciseDataHandler(exerciseData);
     setExerciseName('');
     setExerciseType('');
@@ -107,7 +108,7 @@ export const WorkoutsContextProvider = (props) => {
   };
 
   const closeModal = () => {
-    handleClose();
+    handleExerciseClose();
     setExerciseName('');
     setExerciseType('');
     setExerciseWeight('');
@@ -185,6 +186,11 @@ export const WorkoutsContextProvider = (props) => {
     }
   };
 
+  const [workoutOpen, setWorkoutOpen] = useState(false);
+  const handleWorkoutOpen = () =>
+    !workoutOpen ? setWorkoutOpen(true) : console.log();
+  const handleWorkoutClose = () => setWorkoutOpen(false);
+
   //Save form to local storage
   //******** Handles local storage, and appending to local storage ***********//
   useEffect(() => {
@@ -227,9 +233,12 @@ export const WorkoutsContextProvider = (props) => {
         workouts: workouts,
         workoutName: workoutName,
         selectedExerciseName: selectedExerciseName,
-        handleClose: handleClose,
-        handleOpen: handleOpen,
-        open: open,
+        handleExerciseClose: handleExerciseClose,
+        handleExerciseOpen: handleExerciseOpen,
+        exerciseOpen: exerciseOpen,
+        workoutOpen: workoutOpen,
+        handleWorkoutOpen: handleWorkoutOpen,
+        handleWorkoutClose: handleWorkoutClose,
         deleteWorkout: deleteWorkout,
         setExercises: setExercises,
         setWorkouts: setWorkouts,
