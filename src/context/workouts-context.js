@@ -81,6 +81,10 @@ export const WorkoutsContextProvider = (props) => {
     };
     addExerciseHandler(exerciseData);
   };
+  //   Handles submit and closing events for the exercise modal
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => (!open ? setOpen(true) : console.log());
+  const handleClose = () => setOpen(false);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -93,6 +97,7 @@ export const WorkoutsContextProvider = (props) => {
       sets: numSets,
       reps: numReps,
     };
+    handleClose();
     saveExerciseDataHandler(exerciseData);
     setExerciseName('');
     setExerciseType('');
@@ -102,6 +107,7 @@ export const WorkoutsContextProvider = (props) => {
   };
 
   const closeModal = () => {
+    handleClose();
     setExerciseName('');
     setExerciseType('');
     setExerciseWeight('');
@@ -141,10 +147,12 @@ export const WorkoutsContextProvider = (props) => {
   // //Used for looping through every exercise the user has saved and matching it with the name in workout dropdown
   // Saves the selected exercise name
   const selectedExerciseNameHandler = (e) => {
+    console.log(e.target.value);
     setSelectedExerciseName(e.target.value);
   };
   // Sets the name of the workout to what the user types in the workout modal
   const workoutNameHandler = (e) => {
+    console.log(e);
     setWorkoutName(e.target.value);
   };
 
@@ -219,6 +227,9 @@ export const WorkoutsContextProvider = (props) => {
         workouts: workouts,
         workoutName: workoutName,
         selectedExerciseName: selectedExerciseName,
+        handleClose: handleClose,
+        handleOpen: handleOpen,
+        open: open,
         deleteWorkout: deleteWorkout,
         setExercises: setExercises,
         setWorkouts: setWorkouts,

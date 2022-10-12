@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import WorkoutsContext from '../../context/workouts-context';
 import classes from './ExerciseCard.module.css';
 import Button from '@mui/material/Button';
+import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
+import EditRoundedIcon from '@mui/icons-material/EditRounded';
 
 function ExerciseCard() {
   const ctx = useContext(WorkoutsContext);
@@ -67,11 +69,21 @@ function ExerciseCard() {
                             </li>
                           </ul>
                           <div
-                            className="text-center d-flex justify-content-between"
+                            className="text-center d-flex justify-content-between flex-row-reverse"
                             style={{ marginTop: '1rem' }}
                           >
-                            <Button variant="contained">Edit</Button>
                             <Button
+                              variant="contained"
+                              color="bonus"
+                              sx={{ fontWeight: '700' }}
+                              endIcon={
+                                <EditRoundedIcon sx={{ color: 'white' }} />
+                              }
+                            >
+                              Edit
+                            </Button>
+                            <Button
+                              sx={{ fontWeight: '700' }}
                               onClick={() => {
                                 for (let i = 0; i < ctx.exercises.length; i++) {
                                   const exercises = ctx.exercises;
@@ -90,6 +102,11 @@ function ExerciseCard() {
                               }}
                               variant="contained"
                               color="error"
+                              endIcon={
+                                <DeleteForeverRoundedIcon
+                                  sx={{ color: 'white' }}
+                                />
+                              }
                             >
                               Delete
                             </Button>

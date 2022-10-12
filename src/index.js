@@ -18,6 +18,9 @@ const theme = createTheme({
     white: {
       main: '#fff',
     },
+    bonus: {
+      main: 'rgba(6,147,227,1)',
+    },
   },
 });
 root.render(
