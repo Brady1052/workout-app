@@ -42,7 +42,7 @@ function NavBar() {
       <AppBar
         sx={{
           backgroundImage:
-            'linear-gradient(90deg, rgba(0,31,65,1) 0%, rgba(0,31,65,1) 100%, rgba(0,31,65,1) 100%)',
+            'linear-gradient(90deg, rgba(0,65,55,1) 0%, rgba(3,35,64,1) 50%, rgba(0,117,245,1) 100%)',
           position: 'relative',
         }}
       >

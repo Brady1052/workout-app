@@ -153,7 +153,7 @@ export const WorkoutsContextProvider = (props) => {
   };
   // Sets the name of the workout to what the user types in the workout modal
   const workoutNameHandler = (e) => {
-    console.log(e);
+    console.log(e.target.value);
     setWorkoutName(e.target.value);
   };
 

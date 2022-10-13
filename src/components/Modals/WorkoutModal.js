@@ -1,15 +1,10 @@
 import React, { useState, useContext } from 'react';
-import classes from './WorkoutModal.module.css';
 import WorkoutsContext from '../../context/workouts-context';
 import FormWorkoutTable from '../UI/FormWorkoutTable';
-import {
-  Button,
-  Modal,
-  Box,
-  Typography,
-  TextField,
-  MenuItem,
-} from '@mui/material/';
+import ExercisesDropdown from './ExercisesDropdown';
+import { Button, Modal, Box, Typography, TextField } from '@mui/material/';
+import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
+import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 
 function WorkoutModal() {
   const ctx = useContext(WorkoutsContext);
@@ -37,6 +32,7 @@ function WorkoutModal() {
   };
 
   const eraseTable = () => {
+    ctx.handleWorkoutClose();
     setAddedExercise(false);
     ctx.setFormArray([]);
     ctx.setWorkoutName('');
@@ -45,6 +41,7 @@ function WorkoutModal() {
 
   const submitForm = () => {
     setAddedExercise(false);
+    ctx.handleWorkoutClose();
     ctx.saveWorkoutHandler();
     ctx.setFormArray([]);
     ctx.setSelectedExerciseName('');
@@ -81,8 +78,8 @@ function WorkoutModal() {
               Enter Workout Information
             </Typography>
             <TextField
-              value={ctx.exerciseName}
-              onChange={ctx.exerciseNameHandler}
+              value={ctx.workoutName}
+              onChange={ctx.workoutNameHandler}
               sx={{
                 '& .MuiFormLabel-root': {
                   color: 'white.main',
@@ -102,140 +99,50 @@ function WorkoutModal() {
               label="Workout Name"
               fullWidth
             ></TextField>
-            <TextField
-              color="white"
-              label="Select exercise type"
-              select
-              value={ctx.exerciseType}
-              onChange={ctx.exerciseTypeHandler}
+            <ExercisesDropdown />
+            <Button
+              variant="contained"
               sx={{
-                '& .MuiFormLabel-root': {
-                  color: 'white.main',
-                },
-                '& .MuiInputBase-root': {
-                  color: 'white.main',
-                  fontWeight: '700',
-                },
-                '& .MuiOutlinedInput-root': {
-                  '& > fieldset': { border: '1px solid white' },
-                },
-                '& .MuiOutlinedInput-root:hover': {
-                  '& > fieldset': { border: '2px solid white' },
-                },
+                backgroundColor: 'rgba(6,147,227,1)',
+                fontWeight: '600',
               }}
+              onClick={showTable}
             >
-              {ctx.exercises.map((exercise, idx) => {
-                if (idx === 0) {
-                  return (
-                    <MenuItem
-                      key={Math.random().toString()}
-                      value={exercise.name}
-                      onMouseEnter={(e) => {
-                        e.target.style.textDecoration = 'underline';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.target.style.textDecoration = 'none';
-                      }}
-                      style={{
-                        backgroundColor: 'rgba(6,147,227,1)',
-
-                        color: 'white',
-                        paddingTop: '0.5rem',
-                        fontWeight: '600',
-                      }}
-                      sx={{
-                        position: 'relative',
-                        top: '-0.5rem',
-                      }}
-                    >
-                      {exercise.name}
-                    </MenuItem>
-                  );
-                } else if (idx === ctx.exercises.length - 1) {
-                  return (
-                    <MenuItem
-                      key={Math.random().toString()}
-                      value={exercise.name}
-                      onMouseEnter={(e) => {
-                        e.target.style.textDecoration = 'underline';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.target.style.textDecoration = 'none';
-                      }}
-                      style={{
-                        backgroundColor: 'rgba(6,147,227,1)',
-
-                        color: 'white',
-                        paddingTop: '0.5rem',
-                        fontWeight: '600',
-                      }}
-                      sx={{
-                        position: 'relative',
-                        bottom: '-0.5rem',
-                      }}
-                    >
-                      {exercise.name}
-                    </MenuItem>
-                  );
-                } else if (idx === ctx.exercises.length - 2) {
-                  return (
-                    <MenuItem
-                      key={Math.random().toString()}
-                      value={exercise.name}
-                      onMouseEnter={(e) => {
-                        e.target.style.textDecoration = 'underline';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.target.style.textDecoration = 'none';
-                      }}
-                      style={{
-                        backgroundColor: 'rgba(6,147,227,1)',
-
-                        color: 'white',
-                        paddingTop: '0.5rem',
-                        fontWeight: '600',
-                      }}
-                      sx={{
-                        boxShadow: '0 0 0 1rem rgba(6,147,227,1)',
-                      }}
-                    >
-                      {exercise.name}
-                    </MenuItem>
-                  );
-                } else
-                  return (
-                    <MenuItem
-                      key={Math.random().toString()}
-                      value={exercise.name}
-                      onMouseEnter={(e) => {
-                        e.target.style.textDecoration = 'underline';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.target.style.textDecoration = 'none';
-                      }}
-                      style={{
-                        backgroundColor: 'rgba(6,147,227,1)',
-                        marginBottom: '0.5rem',
-                        color: 'white',
-                        paddingTop: '0.5rem',
-                        fontWeight: '600',
-                        boxShadow: '0 0 0 0.5rem rgba(6,147,227,1)',
-                      }}
-                      sx={{
-                        position: 'relative',
-                        top: '-0.5rem',
-                      }}
-                    >
-                      {exercise.name}
-                    </MenuItem>
-                  );
-              })}
-            </TextField>
+              Add Exercise
+            </Button>
+            {addedExercise === true && <FormWorkoutTable />}
+            <div
+              className="buttons-container"
+              style={{ display: 'flex', gap: '0.2rem' }}
+            >
+              <Button
+                variant="contained"
+                onClick={eraseTable}
+                color="error"
+                style={{ width: '50%', fontWeight: '600' }}
+                endIcon={
+                  <DeleteForeverRoundedIcon
+                    sx={{ color: 'white', fontSize: '5rem' }}
+                  />
+                }
+              >
+                Cancel
+              </Button>
+              <Button
+                variant="contained"
+                color="bonus"
+                style={{ fontWeight: '600', width: '50%' }}
+                onClick={submitForm}
+                endIcon={<FitnessCenterIcon sx={{ color: 'white' }} />}
+              >
+                Save Workout
+              </Button>
+            </div>
           </Box>
         </Modal>
       </Button>
 
-      {/* <Button
+      <Button
         type="button"
         data-bs-toggle="modal"
         data-bs-target="#workout-modal"
@@ -243,93 +150,6 @@ function WorkoutModal() {
       >
         Create Workout
       </Button>
-
-      <div
-        className="modal fade"
-        id="workout-modal"
-        tabIndex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog" role="document">
-          <div className="modal-content">
-            <div className={classes['modal-header-container']}>
-              <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLabel">
-                  Create Workout
-                </h5>
-              </div>
-            </div>
-            <div className={`modal-body ${classes['modal-container']}`}>
-              <div className="mb-3 form-floating">
-                <input
-                  value={ctx.workoutName}
-                  type="text"
-                  className={`form-control`}
-                  id="workout-name"
-                  onChange={ctx.workoutNameHandler}
-                  placeholder="Place workout name here"
-                />
-                <label htmlFor="workout-name">Workout Name</label>
-              </div>
-              <div className="mb-3">
-                <select
-                  className={`form-select ${classes['modal-input']}`}
-                  onChange={ctx.selectedExerciseNameHandler}
-                  value={ctx.selectedExerciseName}
-                >
-                  <option value="Choose from your list of exercises">
-                    Choose from your list of exercises
-                  </option>
-                  {ctx.exercises.map((exercise) => {
-                    return (
-                      <option
-                        key={Math.random().toString()}
-                        value={exercise.name}
-                      >
-                        {exercise.name}
-                      </option>
-                    );
-                  })}
-                </select>
-                <button
-                  type="button"
-                  className="btn btn-primary w-100"
-                  id={classes['add-exercise-btn']}
-                  onClick={showTable}
-                >
-                  Add Exercise to Workout
-                </button>
-                {addedExercise === true && <FormWorkoutTable />}
-              </div>
-              <div
-                className="modal-footer"
-                style={{ display: 'flex', justifyContent: 'space-between' }}
-              >
-                <Button
-                  type="button"
-                  className="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                  onClick={eraseTable}
-                  variant="contained"
-                  color="error"
-                >
-                  Close
-                </Button>
-                <Button
-                  type="button"
-                  data-bs-dismiss="modal"
-                  onClick={submitForm}
-                  variant="contained"
-                >
-                  Create Workout
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>*/}
     </>
   );
 }

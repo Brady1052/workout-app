@@ -29,6 +29,7 @@ function ExerciseCard() {
                           borderRadius: '25px',
                           marginTop: '8rem',
                           backgroundColor: '#0057C3',
+
                           color: 'white',
                         }}
                       >

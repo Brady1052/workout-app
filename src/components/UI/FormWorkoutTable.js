@@ -6,9 +6,9 @@ function WorkoutTable() {
 
   return (
     <>
-      <table className="table table-striped">
+      <table className="table" style={{ border: '2px solid white' }}>
         <thead>
-          <tr>
+          <tr style={{ color: 'white', borderBottom: '2px solid white' }}>
             <th scope="col">Name</th>
             <th scope="col">Type</th>
             <th scope="col">Weight</th>
@@ -19,8 +19,24 @@ function WorkoutTable() {
         <tbody>
           {ctx.formArray.map((exercise) => {
             return (
-              <tr key={Math.random().toString()}>
-                <th scope="row">{exercise.name}</th>
+              <tr
+                key={Math.random().toString()}
+                style={{
+                  color: 'white',
+                  fontWeight: '600',
+                  borderBottom: '2px solid white',
+                  position: 'relative',
+                }}
+              >
+                <th
+                  scope="row"
+                  style={{
+                    color: 'white',
+                  }}
+                >
+                  {exercise.name}
+                </th>
+
                 <td>{exercise.type}</td>
                 <td>{exercise.weight}</td>
                 <td>{exercise.sets}</td>

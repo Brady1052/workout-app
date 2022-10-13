@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import classes from './ExerciseModal.module.css';
 import WorkoutsContext from '../../context/workouts-context';
 import Button from '@mui/material/Button';
 import { TextField, Box, Typography, Modal, MenuItem } from '@mui/material';
@@ -269,14 +268,14 @@ function ExerciseModal() {
             <Box
               sx={{
                 display: 'flex',
-                justifyContent: 'space-between',
+                gap: '0.5rem',
                 flexDirection: 'row-reverse',
               }}
             >
               <Button
                 variant="contained"
                 color="bonus"
-                style={{ fontWeight: '600' }}
+                style={{ fontWeight: '600', width: '50%' }}
                 endIcon={<FitnessCenterIcon sx={{ color: 'white' }} />}
                 onClick={ctx.submitHandler}
               >
@@ -285,12 +284,8 @@ function ExerciseModal() {
               <Button
                 variant="contained"
                 color="error"
-                style={{ fontWeight: '600' }}
-                endIcon={
-                  <DeleteForeverRoundedIcon
-                    sx={{ color: 'white', fontSize: '5rem' }}
-                  />
-                }
+                style={{ fontWeight: '600', width: '50%' }}
+                endIcon={<DeleteForeverRoundedIcon sx={{ color: 'white' }} />}
                 onClick={ctx.closeModal}
               >
                 Cancel
