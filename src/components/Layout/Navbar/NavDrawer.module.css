@@ -1,0 +1,23 @@
+.nav-container {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  background-color: black;
+  padding: 1rem;
+  min-width: 100%;
+}
+
+body.modal-open div.modal-backdrop {
+  z-index: 0;
+}
+
+.exercise-modal-container {
+  background-color: aqua;
+}
+
+.nav-item {
+  text-decoration: none;
+}
+.nav-item:hover {
+  text-decoration: underline white;
+}

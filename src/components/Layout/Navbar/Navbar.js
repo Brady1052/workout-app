@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ExerciseModal from '../Modals/ExerciseModal.js';
-import WorkoutModal from '../Modals/WorkoutModal.js';
+import ExerciseModal from './NavItems/Modals/ExerciseModal.js';
+import WorkoutModal from './NavItems/Modals/WorkoutModal.js';
 import Button from '@mui/material/Button';
 import NavDrawer from './NavDrawer';
 import classes from './Navbar.module.css';
 
 import { AppBar, Toolbar, Grid, useTheme, useMediaQuery } from '@mui/material';
 
-function NavBar() {
+function Navbar() {
   const theme = useTheme();
   const screenSmall = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -79,4 +79,4 @@ function NavBar() {
   );
 }
 
-export default NavBar;
+export default Navbar;

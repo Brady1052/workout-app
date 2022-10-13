@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import NavBar from './components/Layout/Navbar';
+import NavBar from './components/Layout/Navbar/Navbar';
 import Exercises from './pages/Exercises';
 import Workouts from './pages/Workouts';
 import 'fontsource-roboto';

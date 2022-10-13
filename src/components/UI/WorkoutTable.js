@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import WorkoutsContext from '../../context/workouts-context';
 import Button from '@mui/material/Button';
-import { Typography } from '@mui/material';
+import { Typography, Box } from '@mui/material';
 
 function WorkoutTable() {
   const ctx = useContext(WorkoutsContext);
@@ -53,33 +53,35 @@ function WorkoutTable() {
             >
               {workout.workoutName}
             </Typography>
-            <table
-              className="table"
-              style={{
-                maxWidth: '50rem',
-                minWidth: '50rem',
-                alignSelf: 'center',
-                position: 'relative',
-                marginTop: '1rem',
-                border: '2px solid white',
-              }}
-            >
-              <thead>
-                <tr
-                  style={{
-                    color: 'white',
-                    border: '2px solid white',
-                  }}
-                >
-                  <th scope="col">Name</th>
-                  <th scope="col">Type</th>
-                  <th scope="col">Weight</th>
-                  <th scope="col">Sets</th>
-                  <th scope="col">Reps</th>
-                </tr>
-              </thead>
-              <tbody>{exerciseInfo(workout.exercises)}</tbody>
-            </table>
+            <div className="table-responsive col-md-offset-1  col-lg-offset-1 col-md-6    col-lg-6">
+              <table
+                className="table"
+                style={{
+                  maxWidth: '50rem',
+                  minWidth: '50rem',
+                  alignSelf: 'center',
+                  position: 'relative',
+                  marginTop: '1rem',
+                  border: '2px solid white',
+                }}
+              >
+                <thead>
+                  <tr
+                    style={{
+                      color: 'white',
+                      border: '2px solid white',
+                    }}
+                  >
+                    <th scope="col">Name</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Weight</th>
+                    <th scope="col">Sets</th>
+                    <th scope="col">Reps</th>
+                  </tr>
+                </thead>
+                <tbody>{exerciseInfo(workout.exercises)}</tbody>
+              </table>
+            </div>
             <Button
               variant="contained"
               style={{
