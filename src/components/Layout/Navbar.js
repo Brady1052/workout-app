@@ -1,42 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import './Navbar.css';
 import ExerciseModal from '../Modals/ExerciseModal.js';
 import WorkoutModal from '../Modals/WorkoutModal.js';
 import Button from '@mui/material/Button';
 import NavDrawer from './NavDrawer';
+import classes from './Navbar.module.css';
 
-import {
-  AppBar,
-  Toolbar,
-  Modal,
-  Box,
-  Typography,
-  Grid,
-  useTheme,
-  useMediaQuery,
-} from '@mui/material';
+import { AppBar, Toolbar, Grid, useTheme, useMediaQuery } from '@mui/material';
 
 function NavBar() {
   const theme = useTheme();
   const screenSmall = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    pt: 2,
-    px: 4,
-    pb: 3,
-  };
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => (!open ? setOpen(true) : console.log());
-  const handleClose = () => setOpen(false);
   return (
     <>
       <AppBar
@@ -54,11 +29,11 @@ function NavBar() {
           ) : (
             <Grid container sx={{ placeItems: 'center' }}>
               <Grid item xs={3} textAlign="center">
-                <Link to="/exercises" style={{ textDecoration: 'none' }}>
+                <Link to="/exercises" className={classes['nav-item']}>
                   <Button
                     color="warning"
                     variant="text"
-                    // size="large"
+                    size="large"
                     sx={{ fontWeight: '1000' }}
                     style={{ color: 'white' }}
                   >
@@ -67,7 +42,7 @@ function NavBar() {
                 </Link>
               </Grid>
               <Grid item xs={3} textAlign="center">
-                <Link to="/workouts" style={{ textDecoration: 'none' }}>
+                <Link to="/workouts" className={classes['nav-item']}>
                   <Button
                     variant="text"
                     color="primary"
@@ -79,10 +54,21 @@ function NavBar() {
                   </Button>
                 </Link>
               </Grid>
-              <Grid item xs={3} textAlign="center">
+              <Grid
+                item
+                xs={3}
+                textAlign="center"
+                className={classes['nav-item']}
+                size="large"
+              >
                 <ExerciseModal />
               </Grid>
-              <Grid item xs={3} textAlign="center">
+              <Grid
+                item
+                xs={3}
+                textAlign="center"
+                className={classes['nav-item']}
+              >
                 <WorkoutModal />
               </Grid>
             </Grid>

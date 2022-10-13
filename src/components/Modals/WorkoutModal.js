@@ -141,15 +141,6 @@ function WorkoutModal() {
           </Box>
         </Modal>
       </Button>
-
-      <Button
-        type="button"
-        data-bs-toggle="modal"
-        data-bs-target="#workout-modal"
-        variant="contained"
-      >
-        Create Workout
-      </Button>
     </>
   );
 }

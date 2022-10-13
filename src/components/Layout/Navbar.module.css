@@ -15,6 +15,13 @@ body.modal-open div.modal-backdrop {
   background-color: aqua;
 }
 
+.nav-item {
+  text-decoration: none;
+}
+.nav-item:hover {
+  text-decoration: underline white;
+}
+
 @media (max-width: 400px) {
   .exercise-modal-container {
     line-height: 1px;
