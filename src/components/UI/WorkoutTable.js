@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import WorkoutsContext from '../../context/workouts-context';
 import Button from '@mui/material/Button';
+import { Typography } from '@mui/material';
 
 function WorkoutTable() {
   const ctx = useContext(WorkoutsContext);
@@ -41,11 +42,17 @@ function WorkoutTable() {
 
         return (
           <div key={Math.random().toString()}>
-            <h1
-              style={{ textAlign: 'center', color: 'blue', marginTop: '5rem' }}
+            <Typography
+              variant="h3"
+              style={{
+                textAlign: 'center',
+                color: 'white',
+                fontWeight: '600',
+                marginTop: '2rem',
+              }}
             >
               {workout.workoutName}
-            </h1>
+            </Typography>
             <table
               className="table"
               style={{
@@ -53,7 +60,7 @@ function WorkoutTable() {
                 minWidth: '50rem',
                 alignSelf: 'center',
                 position: 'relative',
-                marginTop: '5rem',
+                marginTop: '1rem',
                 border: '2px solid white',
               }}
             >
@@ -79,7 +86,9 @@ function WorkoutTable() {
                 maxWidth: '100%',
                 minWidth: '100%',
                 fontWeight: '600',
+                color: 'white',
               }}
+              color="error"
               onClick={() => {
                 for (let i = 0; i < ctx.workouts.length; i++) {
                   const workouts = ctx.workouts;
