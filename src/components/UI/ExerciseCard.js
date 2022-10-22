@@ -24,7 +24,7 @@ function ExerciseCard() {
                   className={`container ${classes.card}`}
                   sx={{
                     marginLeft: {
-                      xs: '-1.2rem',
+                      xs: '0rem',
                       lg: '1rem',
                     },
                   }}
