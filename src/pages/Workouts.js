@@ -1,10 +1,10 @@
 import React from 'react';
-import WorkoutTable from '../components/UI/WorkoutTable';
+import WorkoutCard from '../components/UI/WorkoutCard';
 
 function Workouts() {
   return (
     <>
-      <WorkoutTable />
+      <WorkoutCard />
     </>
   );
 }

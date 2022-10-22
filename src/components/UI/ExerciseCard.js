@@ -4,6 +4,7 @@ import classes from './ExerciseCard.module.css';
 import IconButton from '@mui/material/Button';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 import EditRoundedIcon from '@mui/icons-material/EditRounded';
+import { Box } from '@mui/material';
 
 function ExerciseCard() {
   const ctx = useContext(WorkoutsContext);
@@ -19,26 +20,32 @@ function ExerciseCard() {
                 className={`col-xs-12  col-sm-12 col-md-6 col-lg-4 col-xl-4`}
                 key={Math.random().toString()}
               >
-                <div className={`container ${classes.card}`}>
+                <Box
+                  className={`container ${classes.card}`}
+                  sx={{
+                    marginLeft: {
+                      xs: '-1.2rem',
+                      lg: '1rem',
+                    },
+                  }}
+                >
                   <div className="col">
                     <div className="col ">
-                      <div
+                      <Box
                         className="card"
                         style={{
                           width: '18rem',
                           borderRadius: '25px',
-                          marginTop: '8rem',
+                          marginTop: '5rem',
                           backgroundColor: '#0057C3',
-
+                          border: '1px solid white',
                           color: 'white',
                         }}
+                        sx={{ marginRight: { xs: '1rem', lg: '0' } }}
                       >
                         <div className="card-body">
                           <div className="text-center">
-                            <h5 className="card-title">{exercise.type}</h5>
-                            <h5 className="card-subtitle mb-2 ">
-                              {exercise.name}
-                            </h5>
+                            <h3 className="card-title">{exercise.name}</h3>
                           </div>
                           <ul className={`list-group list-group-flush`}>
                             <li
@@ -109,10 +116,10 @@ function ExerciseCard() {
                             </IconButton>
                           </div>
                         </div>
-                      </div>
+                      </Box>
                     </div>
                   </div>
-                </div>
+                </Box>
               </div>
             );
           })}
