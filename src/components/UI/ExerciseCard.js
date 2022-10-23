@@ -23,10 +23,11 @@ function ExerciseCard() {
                 <Box
                   className={`container ${classes.card}`}
                   sx={{
+                    width: '100%',
                     marginLeft: {
-                      xs: '0rem',
                       lg: '1rem',
                     },
+                    marginRight: { xs: '-1rem', lg: '0rem' },
                   }}
                 >
                   <div className="col">
@@ -40,8 +41,8 @@ function ExerciseCard() {
                           backgroundColor: '#0057C3',
                           border: '1px solid white',
                           color: 'white',
+                          alignSelf: 'center',
                         }}
-                        sx={{ marginRight: { xs: '1rem', lg: '0' } }}
                       >
                         <div className="card-body">
                           <div className="text-center">
