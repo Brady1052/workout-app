@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Button } from '@mui/material';
 import WorkoutModal from './WorkoutModal';
-import WorkoutContext from '../../../../../context/workouts-context';
+import WorkoutContext from '../../../context/workouts-context';
 function WorkoutModalBtn() {
   const ctx = useContext(WorkoutContext);
   return (

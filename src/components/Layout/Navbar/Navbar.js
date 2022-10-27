@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ExerciseModal from './NavItems/Modals/ExerciseModal.js';
-import WorkoutModalBtn from './NavItems/Modals/WorkoutModalBtn';
+import ExerciseModal from '../../Modals/NavModals/ExerciseModal';
+import WorkoutModalBtn from '../../Modals/NavModals/WorkoutModalBtn';
 import Button from '@mui/material/Button';
 import NavDrawer from './NavDrawer';
 import classes from './Navbar.module.css';

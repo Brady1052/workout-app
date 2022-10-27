@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import WorkoutsContext from '../../../../../context/workouts-context';
+import WorkoutsContext from '../../../context/workouts-context';
 import { MenuItem, TextField } from '@mui/material';
 
 function ExercisesDropdown() {

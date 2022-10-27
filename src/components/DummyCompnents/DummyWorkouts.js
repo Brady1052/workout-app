@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import { IconButton, Typography, Box } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 import AddIcon from '@mui/icons-material/Add';
-import WorkoutModal from '../Layout/Navbar/NavItems/Modals/WorkoutModal';
+import WorkoutModal from '../Modals/NavModals/WorkoutModal';
 import WorkoutsContext from '../../context/workouts-context';
 import WorkoutCard from '../UI/WorkoutCard';
 function DummyWorkouts() {

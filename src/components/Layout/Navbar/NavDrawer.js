@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Grid } from '@mui/material';
 import ViewWorkouts from './NavItems/ViewWorkouts';
-import WorkoutModalBtn from './NavItems/Modals/WorkoutModalBtn';
-import ExerciseModal from './NavItems/Modals/ExerciseModal';
+import WorkoutModalBtn from '../../Modals/NavModals/WorkoutModalBtn';
+import ExerciseModal from '../../Modals/NavModals/ExerciseModal';
 import ViewExercises from './NavItems/ViewExercises';
 import classes from './NavDrawer.module.css';
 import { Drawer, IconButton, Box, Button, Link } from '@mui/material';

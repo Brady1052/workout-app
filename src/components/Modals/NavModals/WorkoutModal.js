@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
-import WorkoutsContext from '../../../../../context/workouts-context';
-import FormWorkoutTable from '../../../../UI/FormWorkoutTable';
+import WorkoutsContext from '../../../context/workouts-context';
+import FormWorkoutTable from '../../UI/FormWorkoutTable';
 import ExercisesDropdown from './ExercisesDropdown';
 import { Button, Modal, Box, Typography, TextField } from '@mui/material/';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';

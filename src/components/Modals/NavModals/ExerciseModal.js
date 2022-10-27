@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import WorkoutsContext from '../../../../../context/workouts-context';
+import WorkoutsContext from '../../../context/workouts-context';
 import Button from '@mui/material/Button';
 import { TextField, Box, Typography, Modal, MenuItem } from '@mui/material';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
