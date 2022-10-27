@@ -148,12 +148,10 @@ export const WorkoutsContextProvider = (props) => {
   // //Used for looping through every exercise the user has saved and matching it with the name in workout dropdown
   // Saves the selected exercise name
   const selectedExerciseNameHandler = (e) => {
-    console.log(e.target.value);
     setSelectedExerciseName(e.target.value);
   };
   // Sets the name of the workout to what the user types in the workout modal
   const workoutNameHandler = (e) => {
-    console.log(e.target.value);
     setWorkoutName(e.target.value);
   };
 
@@ -235,6 +233,7 @@ export const WorkoutsContextProvider = (props) => {
         selectedExerciseName: selectedExerciseName,
         handleExerciseClose: handleExerciseClose,
         handleExerciseOpen: handleExerciseOpen,
+        setWorkoutOpen: setWorkoutOpen,
         exerciseOpen: exerciseOpen,
         workoutOpen: workoutOpen,
         handleWorkoutOpen: handleWorkoutOpen,

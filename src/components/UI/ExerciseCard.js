@@ -3,7 +3,7 @@ import WorkoutsContext from '../../context/workouts-context';
 import classes from './ExerciseCard.module.css';
 import IconButton from '@mui/material/Button';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
-import EditRoundedIcon from '@mui/icons-material/EditRounded';
+
 import { Box } from '@mui/material';
 
 function ExerciseCard() {
@@ -81,15 +81,6 @@ function ExerciseCard() {
                             className="text-center d-flex justify-content-between flex-row-reverse"
                             style={{ marginTop: '1rem' }}
                           >
-                            <IconButton variant="text" color="bonus">
-                              {' '}
-                              <EditRoundedIcon
-                                sx={{
-                                  color: 'rgb(32, 225, 18)',
-                                  fontSize: '2.5rem',
-                                }}
-                              />
-                            </IconButton>
                             <IconButton
                               sx={{ fontWeight: '700' }}
                               onClick={() => {
@@ -111,8 +102,9 @@ function ExerciseCard() {
                               variant="text"
                               color="error"
                             >
+                              {' '}
                               <DeleteForeverRoundedIcon
-                                sx={{ color: 'red', fontSize: '3rem' }}
+                                sx={{ color: 'red', fontSize: '2rem' }}
                               />
                             </IconButton>
                           </div>

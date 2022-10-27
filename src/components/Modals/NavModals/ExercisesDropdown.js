@@ -7,7 +7,7 @@ function ExercisesDropdown() {
   return (
     <TextField
       color="white"
-      label="Select exercise type"
+      label="Select from your created exercises"
       select
       onChange={ctx.selectedExerciseNameHandler}
       value={ctx.selectedExerciseName}

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import WorkoutsContext from '../../context/workouts-context';
-import Button from '@mui/material/Button';
+import StartWorkoutModal from '../Modals/StartWorkoutModal';
 import { IconButton, Typography, Box } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 
@@ -111,19 +111,7 @@ function WorkoutCard() {
                             {exerciseInfo(workout.exercises)}
                           </ul>
                         </div>
-                        <Button
-                          variant="contained"
-                          style={{
-                            maxWidth: '100%',
-                            minWidth: '100%',
-                            fontWeight: '600',
-                            color: 'white',
-                            border: '1px solid black',
-                          }}
-                          color="success"
-                        >
-                          Start Workout
-                        </Button>
+                        <StartWorkoutModal id={workout.id} />
                       </div>
                     </Box>
                   </div>
