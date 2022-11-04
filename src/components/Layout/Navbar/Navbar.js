@@ -57,7 +57,7 @@ function Navbar() {
                 </Link>
               </Grid>
               <Grid item xs={2.3} textAlign="center">
-                <Link to="/" className={classes['nav-item']}>
+                <Link to="/workout-app" className={classes['nav-item']}>
                   <Button
                     variant="text"
                     color="primary"

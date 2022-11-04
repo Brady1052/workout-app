@@ -53,8 +53,8 @@ function NavDrawer() {
             >
               <ViewWorkouts />
             </Grid>
-            <Grid item className={classes['nav-item']}>
-              <Link to="/" className={classes['nav-item']}>
+            <Grid item>
+              <Link to="/workout-app" style={{ textDecoration: 'none' }}>
                 <Button
                   variant="text"
                   color="primary"
