@@ -1,305 +1,101 @@
 import React, { useContext } from 'react';
 import WorkoutsContext from '../../context/workouts-context';
-import { TextField, Box, Typography, Modal, MenuItem } from '@mui/material';
-import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
-import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
-import { Button } from '@mui/material';
+import { Modal, Box, Typography, Button } from '@mui/material';
 function StartWorkoutModal(props) {
-  const ctx = useContext(WorkoutsContext);
-  const style = {
-    position: 'relative',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    pt: 2,
-    px: 4,
-    pb: 3,
-  };
-  return (
-    <Button
-      variant="contained"
-      style={{
-        maxWidth: '100%',
-        minWidth: '100%',
-        fontWeight: '600',
-        color: 'white',
-        border: '1px solid black',
-      }}
-      onClick={() => {
-        console.log(props.id);
-      }}
-      color="success"
-    >
-      Start Workout
-      <Modal open={ctx.startWorkout} onClose={ctx.handleWorkoutClose}>
-        <Box
-          sx={style}
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '2rem',
-            backgroundColor: '#0057C3',
-            color: 'white',
-          }}
-        >
-          <Typography
-            variant="h6"
-            style={{
-              alignSelf: 'center',
-              borderBottom: '1px solid white',
-              fontWeight: '600',
-            }}
-          >
-            Enter Exercise Information
-          </Typography>
-          <form
-            noValidate
-            autoComplete="off"
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '2rem',
-              color: 'white',
-            }}
-          >
-            {/* Exercise Name */}
-            <TextField
-              value={ctx.exerciseName}
-              onChange={ctx.exerciseNameHandler}
-              sx={{
-                '& .MuiFormLabel-root': {
-                  color: 'white.main',
-                },
-                '& .MuiInputBase-root': {
-                  color: 'white.main',
-                  fontWeight: '700',
-                },
-                '& .MuiOutlinedInput-root': {
-                  '& > fieldset': { border: '1px solid white' },
-                },
-                '& .MuiOutlinedInput-root:hover': {
-                  '& > fieldset': { border: '2px solid white' },
-                },
-              }}
-              color="white"
-              label="Exercise Name"
-              fullWidth
-            ></TextField>
-            {/* Exercise Type */}
-            <TextField
-              color="white"
-              label="Select exercise type"
-              select
-              value={ctx.exerciseType}
-              onChange={ctx.exerciseTypeHandler}
-              sx={{
-                '& .MuiFormLabel-root': {
-                  color: 'white.main',
-                },
-                '& .MuiInputBase-root': {
-                  color: 'white.main',
-                  fontWeight: '700',
-                },
-                '& .MuiOutlinedInput-root': {
-                  '& > fieldset': { border: '1px solid white' },
-                },
-                '& .MuiOutlinedInput-root:hover': {
-                  '& > fieldset': { border: '2px solid white' },
-                },
-              }}
-            >
-              <MenuItem
-                value="Weight Lifting"
-                onMouseEnter={(e) => {
-                  e.target.style.textDecoration = 'underline';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.textDecoration = 'none';
-                }}
-                style={{
-                  position: 'relative',
-                  backgroundColor: 'rgba(6,147,227,1)',
-                  top: '-0.5rem',
-                  color: 'white',
-                  paddingTop: '0.5rem',
-                  fontWeight: '600',
-                }}
-              >
-                Weight Lifting
-              </MenuItem>
-              <MenuItem
-                onMouseEnter={(e) => {
-                  e.target.style.textDecoration = 'underline';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.textDecoration = 'none';
-                }}
-                value="Cardio"
-                style={{
-                  color: 'white',
-                  marginTop: '-0.5rem',
-                  backgroundColor: 'rgba(6,147,227,1)',
-                  fontWeight: '600',
-                }}
-              >
-                Cardio
-              </MenuItem>
-              <MenuItem
-                onMouseEnter={(e) => {
-                  e.target.style.textDecoration = 'underline';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.textDecoration = 'none';
-                }}
-                value="Yoga"
-                style={{
-                  color: 'white',
-                  backgroundColor: 'rgba(6,147,227,1)',
-                  fontWeight: '600',
-                }}
-              >
-                Yoga
-              </MenuItem>
-              <MenuItem
-                onMouseEnter={(e) => {
-                  e.target.style.textDecoration = 'underline';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.textDecoration = 'none';
-                }}
-                value="Stretching"
-                style={{
-                  color: 'white',
-                  backgroundColor: 'rgba(6,147,227,1)',
-                  fontWeight: '600',
-                }}
-              >
-                Stretching
-              </MenuItem>
-              <MenuItem
-                onMouseEnter={(e) => {
-                  e.target.style.textDecoration = 'underline';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.textDecoration = 'none';
-                }}
-                value="Other"
-                style={{
-                  position: 'relative',
-                  backgroundColor: 'rgba(6,147,227,1)',
-                  bottom: '-0.5rem',
-                  color: 'white',
-                  marginTop: '-0.5rem',
-                  fontWeight: '600',
-                }}
-              >
-                Other
-              </MenuItem>
-            </TextField>
-            {/* Exercise Weight */}
-            <TextField
-              value={ctx.exerciseWeight}
-              onChange={ctx.exerciseWeightHandler}
-              sx={{
-                '& .MuiFormLabel-root': {
-                  color: 'white.main',
-                },
-                '& .MuiInputBase-root': {
-                  color: 'white.main',
-                  fontWeight: '700',
-                },
-                '& .MuiOutlinedInput-root': {
-                  '& > fieldset': { border: '1px solid white' },
-                },
-                '& .MuiOutlinedInput-root:hover': {
-                  '& > fieldset': { border: '2px solid white' },
-                },
-              }}
-              color="white"
-              label="Weight"
-              fullWidth
-            />
-            {/* Exercise Sets */}
-            <TextField
-              value={ctx.numSets}
-              onChange={ctx.numSetsHandler}
-              sx={{
-                '& .MuiFormLabel-root': {
-                  color: 'white.main',
-                },
-                '& .MuiInputBase-root': {
-                  color: 'white.main',
-                  fontWeight: '700',
-                },
-                '& .MuiOutlinedInput-root': {
-                  '& > fieldset': { border: '1px solid white' },
-                },
-                '& .MuiOutlinedInput-root:hover': {
-                  '& > fieldset': { border: '2px solid white' },
-                },
-              }}
-              color="white"
-              label="Sets"
-              fullWidth
-            />
-            {/* Exercise Reps */}
-            <TextField
-              value={ctx.numReps}
-              onChange={ctx.numRepsHandler}
-              sx={{
-                '& .MuiFormLabel-root': {
-                  color: 'white.main',
-                },
-                '& .MuiInputBase-root': {
-                  color: 'white.main',
-                  fontWeight: '700',
-                },
-                '& .MuiOutlinedInput-root': {
-                  '& > fieldset': { border: '1px solid white' },
-                },
-                '& .MuiOutlinedInput-root:hover': {
-                  '& > fieldset': { border: '2px solid white' },
-                },
-              }}
-              color="white"
-              label="Reps"
-              fullWidth
-            />
-          </form>
-          <Box
-            sx={{
-              display: 'flex',
-              gap: '0.5rem',
-              flexDirection: 'row-reverse',
-            }}
-          >
-            <Button
-              variant="contained"
-              color="bonus"
-              style={{ fontWeight: '600', width: '50%' }}
-              endIcon={<FitnessCenterIcon sx={{ color: 'white' }} />}
-              onClick={ctx.submitHandler}
-            >
-              Save Exercise
-            </Button>
-            <Button
-              variant="contained"
-              color="error"
-              style={{ fontWeight: '600', width: '50%' }}
-              endIcon={<DeleteForeverRoundedIcon sx={{ color: 'white' }} />}
-              onClick={ctx.closeModal}
-            >
-              Cancel
-            </Button>
-          </Box>
-        </Box>
-      </Modal>
-    </Button>
-  );
+  // const startWorkout = () => {
+  //   ctx.handleStartWorkout();
+  //   console.log(props.exercises());
+  //   console.log(props.id);
+  //   console.log(props.workoutName);
+  // };
+  // const ctx = useContext(WorkoutsContext);
+  // const style = {
+  //   position: 'relative',
+  //   top: '50%',
+  //   left: '50%',
+  //   transform: 'translate(-50%, -50%)',
+  //   width: 400,
+  //   bgcolor: 'background.paper',
+  //   border: '2px solid #000',
+  //   boxShadow: 24,
+  //   pt: 2,
+  //   px: 4,
+  //   pb: 3,
+  // };
+  // return (
+  //   <Button
+  //     variant="contained"
+  //     style={{
+  //       maxWidth: '100%',
+  //       minWidth: '100%',
+  //       fontWeight: '600',
+  //       color: 'white',
+  //       border: '1px solid black',
+  //     }}
+  //     onClick={startWorkout}
+  //     color="success"
+  //   >
+  //     Start Workout
+  //     <Modal open={ctx.startWorkout} onClose={ctx.handleEndWorkout}>
+  //       <Box style={style} sx={{ backgroundColor: 'red' }}>
+  //         <div className="container">
+  //           <div className="row">
+  //             <div
+  //               className={`col-xs-12  col-sm-12 col-md-6 col-lg-4 col-xl-4`}
+  //               key={Math.random().toString()}
+  //             >
+  //               <div className="container">
+  //                 <div className="col">
+  //                   <div className="col ">
+  //                     <Box
+  //                       className="card"
+  //                       sx={{
+  //                         width: '18rem',
+  //                         borderRadius: '25px',
+  //                         marginTop: { xs: '3rem', lg: '8rem' },
+  //                         marginLeft: { xs: '1rem', lg: '0' },
+  //                         backgroundColor: '#0057C3',
+  //                         border: '1px solid white',
+  //                         color: 'white',
+  //                         position: 'relative',
+  //                       }}
+  //                     >
+  //                       <div className="card-body">
+  //                         <div className="text-center">
+  //                           <Typography
+  //                             className="card-title"
+  //                             variant="h3"
+  //                             style={{
+  //                               textAlign: 'center',
+  //                               color: 'white',
+  //                               fontWeight: '600',
+  //                             }}
+  //                           >
+  //                             {props.workoutName}
+  //                           </Typography>
+  //                           <ul
+  //                             className={`list-group list-group-flush`}
+  //                             style={{
+  //                               marginTop: '0.5rem',
+  //                               display: 'flex',
+  //                               justifyContent: 'flex-start',
+  //                             }}
+  //                           >
+  //                             {props.exercises()}
+  //                           </ul>
+  //                         </div>
+  //                       </div>
+  //                     </Box>
+  //                   </div>
+  //                 </div>
+  //               </div>
+  //             </div>
+  //           </div>
+  //         </div>
+  //       </Box>
+  //     </Modal>
+  //   </Button>
+  // );
 }
 
 export default StartWorkoutModal;

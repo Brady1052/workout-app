@@ -31,6 +31,7 @@ function WorkoutCard() {
     });
     return map;
   };
+
   return (
     <div className="container">
       <div className="row">
@@ -111,7 +112,11 @@ function WorkoutCard() {
                             {exerciseInfo(workout.exercises)}
                           </ul>
                         </div>
-                        <StartWorkoutModal id={workout.id} />
+                        <StartWorkoutModal
+                          id={workout.id}
+                          workoutName={workout.workoutName}
+                          exercises={exerciseInfo}
+                        />
                       </div>
                     </Box>
                   </div>

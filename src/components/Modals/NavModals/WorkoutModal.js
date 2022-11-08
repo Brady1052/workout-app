@@ -90,6 +90,7 @@ function WorkoutModal() {
             }}
             color="white"
             label="Workout Name"
+            autoComplete="off"
             fullWidth
           ></TextField>
           <ExercisesDropdown />

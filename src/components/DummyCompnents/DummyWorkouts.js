@@ -81,13 +81,26 @@ function DummyWorkouts() {
       <Box sx={{ marginTop: { xs: '-5rem', lg: '-6rem' } }}>
         <WorkoutCard />
       </Box>
-      <Typography
+      {/* <Typography
         variant="h6"
         style={{ color: 'white', fontWeight: '600' }}
         sx={{
           marginTop: { xs: '1.5rem', lg: '2rem' },
           marginLeft: { xs: '1rem', lg: '2rem' },
           marginBottom: { xs: '-1rem', lg: '0' },
+          fontSize: { lg: '3rem' },
+        }}
+      >
+        Example Templates
+      </Typography> */}
+      <Typography
+        variant="h6"
+        style={{ color: 'white', fontWeight: '600' }}
+        sx={{
+          marginTop: { xs: '1.5rem', lg: '20rem' },
+          marginLeft: { xs: '1rem', lg: '2rem' },
+          marginBottom: { xs: '-1rem', lg: '0' },
+
           fontSize: { lg: '3rem' },
         }}
       >

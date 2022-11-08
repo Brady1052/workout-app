@@ -6,6 +6,7 @@ import ExerciseModal from '../../Modals/NavModals/ExerciseModal';
 import ViewExercises from './NavItems/ViewExercises';
 import classes from './NavDrawer.module.css';
 import { Drawer, IconButton, Box, Button, Link } from '@mui/material';
+import StartWorkout from './NavItems/StartWorkout';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 function NavDrawer() {
   const [open, setOpen] = useState(false);
@@ -53,18 +54,13 @@ function NavDrawer() {
             >
               <ViewWorkouts />
             </Grid>
-            <Grid item>
-              <Link to="/workout-app" style={{ textDecoration: 'none' }}>
-                <Button
-                  variant="text"
-                  color="primary"
-                  size="large"
-                  sx={{ fontWeight: '1000', textDecoration: 'none' }}
-                  style={{ color: 'white', textDecoration: 'none' }}
-                >
-                  Start Workout
-                </Button>
-              </Link>
+            <Grid
+              item
+              onClick={() => {
+                setOpen(false);
+              }}
+            >
+              <StartWorkout />
             </Grid>
             <Grid
               item
