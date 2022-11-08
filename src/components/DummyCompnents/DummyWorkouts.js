@@ -1,13 +1,34 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
-import { IconButton, Typography, Box } from '@mui/material';
+import {
+  IconButton,
+  Typography,
+  Box,
+  useTheme,
+  useMediaQuery,
+} from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 import AddIcon from '@mui/icons-material/Add';
 import WorkoutModal from '../Modals/NavModals/WorkoutModal';
 import WorkoutsContext from '../../context/workouts-context';
 import WorkoutCard from '../UI/WorkoutCard';
+
 function DummyWorkouts() {
+  const theme = useTheme();
   const ctx = useContext(WorkoutsContext);
+  const [hasWorkouts, setHasWorkouts] = useState(false);
+  const screenSmall = useMediaQuery(theme.breakpoints.down('sm'));
+  useEffect(() => {
+    console.log('123');
+    if (ctx.workouts.length > 0) {
+      setHasWorkouts(true);
+    } else setHasWorkouts(false);
+  });
+  useEffect(() => {
+    if (screenSmall) {
+      console.log('down');
+    }
+  });
   return (
     <React.Fragment>
       <Typography
@@ -32,30 +53,19 @@ function DummyWorkouts() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
+          flexDirection: { xs: 'row-reverse', lg: 'row' },
         }}
       >
-        <Typography
-          variant="h4"
-          style={{
-            color: 'white',
-
-            fontWeight: '600',
-          }}
-          sx={{
-            textAlign: { xs: 'left', lg: 'center' },
-            fontSize: { xs: '1.7rem', lg: '5rem' },
-            marginLeft: { xs: '1rem', lg: '37%' },
-          }}
-        >
-          Templates
-        </Typography>
-
         <Button
           variant="contained"
           color="bonus"
           startIcon={<AddIcon />}
           style={{ color: 'white' }}
-          sx={{ marginRight: '1rem', display: { lg: 'none' } }}
+          sx={{
+            marginRight: '1rem',
+            display: { lg: 'none' },
+            marginBottom: '1rem',
+          }}
           size="small"
           onClick={() => {
             ctx.setWorkoutOpen(true);
@@ -65,27 +75,46 @@ function DummyWorkouts() {
         </Button>
 
         <WorkoutModal />
+
+        <Typography
+          variant="h6"
+          style={{ color: 'white', fontWeight: '600' }}
+          sx={{
+            marginTop: { xs: '1.5rem', lg: '0' },
+            marginLeft: { xs: '1rem', lg: '2rem' },
+            marginBottom: { xs: '3rem', lg: '3rem' },
+            fontSize: { lg: '3rem' },
+          }}
+        >
+          My Templates
+        </Typography>
       </Box>
-      <Typography
-        variant="h6"
-        style={{ color: 'white', fontWeight: '600' }}
-        sx={{
-          marginTop: { xs: '1.5rem', lg: '0' },
-          marginLeft: { xs: '1rem', lg: '2rem' },
-          marginBottom: { xs: '3rem', lg: '0' },
-          fontSize: { lg: '3rem' },
+      <div
+        style={{
+          marginTop: hasWorkouts ? '-9rem' : '0rem',
+          display: screenSmall ? 'none' : 'block',
         }}
       >
-        My Templates
-      </Typography>
-      <Box sx={{ marginTop: { xs: '-5rem', lg: '-6rem' } }}>
-        <WorkoutCard />
-      </Box>
+        <Box>
+          <WorkoutCard />
+        </Box>
+      </div>
+      <div
+        style={{
+          marginTop: hasWorkouts ? '-5rem' : '0rem',
+          display: screenSmall ? 'block' : 'none',
+        }}
+      >
+        <Box>
+          <WorkoutCard />
+        </Box>
+      </div>
+
       {/* <Typography
         variant="h6"
         style={{ color: 'white', fontWeight: '600' }}
         sx={{
-          marginTop: { xs: '1.5rem', lg: '2rem' },
+          marginTop: { xs: '1.5rem', lg: '0' },
           marginLeft: { xs: '1rem', lg: '2rem' },
           marginBottom: { xs: '-1rem', lg: '0' },
           fontSize: { lg: '3rem' },
@@ -97,7 +126,7 @@ function DummyWorkouts() {
         variant="h6"
         style={{ color: 'white', fontWeight: '600' }}
         sx={{
-          marginTop: { xs: '1.5rem', lg: '20rem' },
+          marginTop: { xs: '1.5rem', lg: '2rem' },
           marginLeft: { xs: '1rem', lg: '2rem' },
           marginBottom: { xs: '-1rem', lg: '0' },
 

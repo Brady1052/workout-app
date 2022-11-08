@@ -45,6 +45,7 @@ function WorkoutModal() {
     ctx.saveWorkoutHandler();
     ctx.setFormArray([]);
     ctx.setSelectedExerciseName('');
+    ctx.forceRenderHandler();
   };
 
   return (

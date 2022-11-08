@@ -12,7 +12,7 @@ function ViewWorkouts() {
         sx={{ fontWeight: '1000' }}
         style={{ color: 'white' }}
       >
-        Workouts
+        Templates
       </Button>
     </Link>
   );

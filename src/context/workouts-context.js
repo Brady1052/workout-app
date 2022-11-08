@@ -16,6 +16,7 @@ export const WorkoutsContextProvider = (props) => {
 
   // Re-renders app when exercise is deleted so that the card is removed from the dom immediately
   const forceRenderHandler = () => {
+    console.log('re-render');
     setForceRender((prevState) => {
       return prevState + 1;
     });
