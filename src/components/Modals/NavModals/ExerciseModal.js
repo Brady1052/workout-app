@@ -43,7 +43,6 @@ function ExerciseModal() {
               marginLeft: { xs: '2rem' },
               marginRight: { xs: '2rem' },
               height: { xs: '2rem' },
-              marginTop: { xs: '15rem' },
             }}
           >
             <Typography

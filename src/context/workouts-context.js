@@ -16,7 +16,6 @@ export const WorkoutsContextProvider = (props) => {
 
   // Re-renders app when exercise is deleted so that the card is removed from the dom immediately
   const forceRenderHandler = () => {
-    console.log('re-render');
     setForceRender((prevState) => {
       return prevState + 1;
     });
@@ -220,18 +219,14 @@ export const WorkoutsContextProvider = (props) => {
   }, [workouts]);
 
   /**          START WORKOUT CONTEXT        **/
-  const [dummyChosenWorkout, setDummyChosenWorkout] = useState({});
-  const [chosenWorkout, setChosenWorkout] = useState({});
+
   const [startWorkout, setStartWorkout] = useState(false);
   const handleStartWorkout = () =>
     !startWorkout ? setStartWorkout(true) : setStartWorkout(false);
 
   const checkWorkout = (id) => {
-    console.log('hey');
     for (let i = 0; i < workouts.length; i++) {
-      console.log(workouts[i]);
       if (id === workouts[i].id) {
-        console.log(workouts[i].id);
       }
     }
   };
@@ -241,7 +236,6 @@ export const WorkoutsContextProvider = (props) => {
   return (
     <ExercisesContext.Provider
       value={{
-        chosenWorkout: chosenWorkout,
         startWorkout: startWorkout,
         exercises: exercises,
         exerciseName: exerciseName,

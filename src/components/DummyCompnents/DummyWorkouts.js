@@ -19,7 +19,6 @@ function DummyWorkouts() {
   const [hasWorkouts, setHasWorkouts] = useState(false);
   const screenSmall = useMediaQuery(theme.breakpoints.down('sm'));
   useEffect(() => {
-    console.log('123');
     if (ctx.workouts.length > 0) {
       setHasWorkouts(true);
     } else setHasWorkouts(false);

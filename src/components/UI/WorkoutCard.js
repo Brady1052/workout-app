@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import WorkoutsContext from '../../context/workouts-context';
 import StartWorkoutModal from '../Modals/StartWorkoutModal';
 import { IconButton, Typography, Box } from '@mui/material';
@@ -116,6 +116,8 @@ function WorkoutCard() {
                           id={workout.id}
                           workoutName={workout.workoutName}
                           exercises={exerciseInfo}
+                          info={workout.exercises}
+                          tableID={workout.tableID}
                         />
                       </div>
                     </Box>
