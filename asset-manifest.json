@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/workout-app/static/css/main.460c6032.css",
-    "main.js": "/workout-app/static/js/main.da6e5909.js",
+    "main.js": "/workout-app/static/js/main.c58de970.js",
     "static/media/roboto-all-400-normal.woff": "/workout-app/static/media/roboto-all-400-normal.b5a0a0df312d3423493b.woff",
     "static/media/roboto-latin-400-normal.woff2": "/workout-app/static/media/roboto-latin-400-normal.176f8f5bd5f02b3abfcf.woff2",
     "static/media/roboto-cyrillic-ext-400-normal.woff2": "/workout-app/static/media/roboto-cyrillic-ext-400-normal.dd55ea0a2e90d5d86e15.woff2",
@@ -12,10 +12,10 @@
     "static/media/roboto-greek-ext-400-normal.woff2": "/workout-app/static/media/roboto-greek-ext-400-normal.bc7ace6e50c7d9d4d959.woff2",
     "index.html": "/workout-app/index.html",
     "main.460c6032.css.map": "/workout-app/static/css/main.460c6032.css.map",
-    "main.da6e5909.js.map": "/workout-app/static/js/main.da6e5909.js.map"
+    "main.c58de970.js.map": "/workout-app/static/js/main.c58de970.js.map"
   },
   "entrypoints": [
     "static/css/main.460c6032.css",
-    "static/js/main.da6e5909.js"
+    "static/js/main.c58de970.js"
   ]
 }
