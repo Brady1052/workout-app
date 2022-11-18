@@ -5,7 +5,14 @@ import WorkoutModalBtn from '../../Modals/NavModals/WorkoutModalBtn';
 import Button from '@mui/material/Button';
 import NavDrawer from './NavDrawer';
 import classes from './Navbar.module.css';
-import { AppBar, Toolbar, Grid, useTheme, useMediaQuery } from '@mui/material';
+import {
+  AppBar,
+  Toolbar,
+  Grid,
+  useTheme,
+  useMediaQuery,
+  Typography,
+} from '@mui/material';
 
 function Navbar() {
   const theme = useTheme();
@@ -26,6 +33,18 @@ function Navbar() {
         <Toolbar>
           {screenSmall ? (
             <>
+              <Typography
+                variant="caption"
+                style={{
+                  position: 'absolute',
+                  left: '25%',
+                  fontSize: '1rem',
+                  fontWeight: 'bold',
+                }}
+              >
+                {' '}
+                Strength Training Central
+              </Typography>
               <NavDrawer />
             </>
           ) : (

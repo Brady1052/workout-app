@@ -1,65 +1,42 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Modal, Box, Typography, Button } from '@mui/material';
+import { Modal, Box, Typography, Button, Input } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 function StartWorkoutModal(props) {
-  const [secondsTimer, setSecondsTimer] = useState(0);
-  const [minutesTimer, setMinutesTimer] = useState(0);
   const [chosenWorkoutID, setChosenWorkoutID] = useState();
   const isMounted = useRef(false);
   const [chosenWorkoutExercises, setChosenWorkoutExercises] = useState([]);
   const [chosenWorkoutName, setChosenWorkoutName] = useState('');
   const [startWorkout, setStartWorkout] = useState(false);
-  const handleEndWorkout = () => {
-    setStartWorkout(false);
-    setSecondsTimer(0);
-  };
-  const localStartWorkout = () => {
-    isMounted.current = true;
-    !startWorkout ? setStartWorkout(true) : setStartWorkout(false);
-    // ctx.handleStartWorkout(props.id);
-    // console.log(props.id);
-    // console.log(props.workoutName);
-    // console.log(JSON.parse(localStorage.getItem('Workouts')));
-    setChosenWorkoutName(props.workoutName);
-    setChosenWorkoutID(props.id);
-  };
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setSecondsTimer((prev) => prev + 1);
-    }, 1000);
-    return () => {
-      clearInterval(timer);
-      setSecondsTimer(0);
-      setMinutesTimer(0);
-    };
-  }, [startWorkout]);
-
-  useEffect(() => {
-    if (secondsTimer === 59) {
-      setSecondsTimer(0);
-      setMinutesTimer((prev) => prev + 1);
+  const handleEndWorkout = (event, reason) => {
+    if (reason !== 'backdropClick') {
+      setStartWorkout(false);
     }
-  }, [secondsTimer]);
+  };
+
+  const localStartWorkout = () => {
+    if (!startWorkout) {
+      isMounted.current = true;
+      setStartWorkout(true);
+      setChosenWorkoutName(props.workoutName);
+      setChosenWorkoutID(props.id);
+    }
+  };
 
   useEffect(() => {
     const storedWorkouts = JSON.parse(localStorage.getItem('Workouts'));
     if (isMounted.current) {
       for (let i = 0; i < storedWorkouts.length; i++) {
-        console.log(chosenWorkoutID);
         if (chosenWorkoutID === storedWorkouts[i].id) {
-          console.log(storedWorkouts[i].exercises);
           setChosenWorkoutExercises(storedWorkouts[i].exercises);
-          console.log(storedWorkouts[i].workoutName);
           return;
         }
       }
     } else {
-      console.log('not mounted');
     }
   }, [chosenWorkoutID]);
 
-  const exercises = (info) => {
+  // Exercise function for active workout
+  const activeExercises = (info) => {
     const map = info.map((exercise) => {
       return (
         <React.Fragment key={Math.random().toString()}>
@@ -69,13 +46,32 @@ function StartWorkoutModal(props) {
               backgroundColor: '#0057C3',
               color: 'white',
               display: 'flex',
+              alignItems: 'center',
             }}
           >
-            <span>{exercise.sets}</span>
+            <Input
+              placeholder={exercise.sets}
+              color="white"
+              style={{ color: 'white', fontWeight: '600' }}
+            />
             <span style={{ marginLeft: '0.5rem', marginRight: '0.5rem' }}>
               <ClearIcon />
             </span>
-            <span>{exercise.reps}</span>
+            <Input
+              placeholder={exercise.reps}
+              color="white"
+              style={{ color: 'white', fontWeight: '600' }}
+            />
+            <span style={{ marginLeft: '0.5rem', marginRight: '0.5rem' }}>
+              <ClearIcon />
+            </span>
+            <Input
+              placeholder={exercise.weight}
+              color="white"
+              style={{ color: 'white', fontWeight: '600' }}
+              sx={{ color: 'white', width: '20rem' }}
+            />
+            <span>lbs</span>
             <span style={{ marginLeft: '0.5rem' }}>{exercise.name}</span>
           </li>
         </React.Fragment>
@@ -107,7 +103,7 @@ function StartWorkoutModal(props) {
         color: 'white',
         border: '1px solid black',
       }}
-      onClick={localStartWorkout}
+      onClick={!startWorkout ? localStartWorkout : console.log()}
       color="success"
     >
       Start Workout
@@ -115,27 +111,15 @@ function StartWorkoutModal(props) {
         <Box
           style={style}
           sx={{
+            display: 'flex',
+            flexDirection: 'column',
             backgroundColor: ' rgba(0,65,55,1)',
-            height: { xs: '50%' },
+            height: { overflow: 'auto' },
+            height: { xs: '80%', lg: 'auto' },
+            overflowX: 'hidden',
           }}
         >
-          <Typography
-            variant="subheader1"
-            sx={{
-              marginLeft: {
-                xs: '1rem',
-                lg: '1rem',
-              },
-              marginTop: { xs: '1rem', lg: '1rem' },
-            }}
-            style={{
-              color: 'white',
-              fontSize: '1.5rem',
-              position: 'absolute',
-            }}
-          >
-            {minutesTimer} Minutes {secondsTimer} Seconds
-          </Typography>
+          {/* Input Card */}
           <div className="container">
             <div className="row">
               <div
@@ -145,20 +129,32 @@ function StartWorkoutModal(props) {
                 <div className="container">
                   <div className="col">
                     <div className="col ">
+                      <Typography
+                        variant="h4"
+                        style={{ color: 'white', whiteSpace: 'nowrap' }}
+                        sx={{
+                          position: 'relative',
+                          top: { xs: '5rem', lg: '-4rem' },
+                          left: { xs: '2.3rem', lg: '2.5rem' },
+                          fontWeight: '600',
+                          marginTop: { xs: '-3rem', lg: '1rem' },
+                        }}
+                      >
+                        Current Workout
+                      </Typography>
                       <Box
                         className="card"
                         sx={{
-                          width: '18rem',
-                          borderRadius: '25px',
-                          marginTop: { xs: '1px', lg: '10rem' },
-                          marginLeft: { xs: '25%', lg: '0' },
-
-                          backgroundColor: '#0057C3',
-                          border: '1px solid white',
-                          color: 'white',
                           position: 'relative',
                           left: { xs: '-60px', lg: '18px' },
                           bottom: { xs: '-50px', lg: '93px' },
+                          width: '18rem',
+                          borderRadius: '25px',
+                          marginTop: { xs: '3rem', lg: '3rem' },
+                          marginLeft: { xs: '25%', lg: '0' },
+                          backgroundColor: '#0057C3',
+                          border: '1px solid white',
+                          color: 'white',
                         }}
                       >
                         <div className="card-body">
@@ -182,10 +178,23 @@ function StartWorkoutModal(props) {
                                 justifyContent: 'flex-start',
                               }}
                             >
-                              {exercises(chosenWorkoutExercises)}
+                              {activeExercises(chosenWorkoutExercises)}
                             </ul>
                           </div>
                         </div>
+                        <Button
+                          variant="contained"
+                          color="error"
+                          sx={{
+                            width: 'inherit',
+                            position: 'absolute',
+                            bottom: { xs: '-3rem', lg: '-3.5rem' },
+                            fontWeight: '600',
+                          }}
+                          onClick={handleEndWorkout}
+                        >
+                          End Workout
+                        </Button>
                       </Box>
                     </div>
                   </div>

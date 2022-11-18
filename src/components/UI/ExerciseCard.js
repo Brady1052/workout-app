@@ -3,7 +3,6 @@ import WorkoutsContext from '../../context/workouts-context';
 import classes from './ExerciseCard.module.css';
 import IconButton from '@mui/material/Button';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
-
 import { Box } from '@mui/material';
 
 function ExerciseCard() {
@@ -37,7 +36,7 @@ function ExerciseCard() {
                         style={{
                           width: '18rem',
                           borderRadius: '25px',
-                          marginTop: '5rem',
+                          marginTop: '1',
                           backgroundColor: '#0057C3',
                           border: '1px solid white',
                           color: 'white',

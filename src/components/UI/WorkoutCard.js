@@ -6,6 +6,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 
 function WorkoutCard() {
   const ctx = useContext(WorkoutsContext);
+  const [chosenWorkoutID, setChosenWorkoutID] = useState();
 
   const exerciseInfo = (info) => {
     const map = info.map((exercise) => {
@@ -24,6 +25,11 @@ function WorkoutCard() {
               <ClearIcon />
             </span>
             <span>{exercise.reps}</span>
+            <span style={{ marginLeft: '0.5rem', marginRight: '0.5rem' }}>
+              <ClearIcon />
+            </span>
+            <span>{exercise.weight}</span>
+            <span>lbs</span>
             <span style={{ marginLeft: '0.5rem' }}>{exercise.name}</span>
           </li>
         </React.Fragment>
@@ -118,6 +124,8 @@ function WorkoutCard() {
                           exercises={exerciseInfo}
                           info={workout.exercises}
                           tableID={workout.tableID}
+                          chosenWorkoutID={chosenWorkoutID}
+                          setChosenWorkoutID={setChosenWorkoutID}
                         />
                       </div>
                     </Box>

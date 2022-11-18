@@ -218,25 +218,9 @@ export const WorkoutsContextProvider = (props) => {
     }
   }, [workouts]);
 
-  /**          START WORKOUT CONTEXT        **/
-
-  const [startWorkout, setStartWorkout] = useState(false);
-  const handleStartWorkout = () =>
-    !startWorkout ? setStartWorkout(true) : setStartWorkout(false);
-
-  const checkWorkout = (id) => {
-    for (let i = 0; i < workouts.length; i++) {
-      if (id === workouts[i].id) {
-      }
-    }
-  };
-
-  const handleEndWorkout = () => setStartWorkout(false);
-
   return (
     <ExercisesContext.Provider
       value={{
-        startWorkout: startWorkout,
         exercises: exercises,
         exerciseName: exerciseName,
         exerciseType: exerciseType,
@@ -247,9 +231,6 @@ export const WorkoutsContextProvider = (props) => {
         workouts: workouts,
         workoutName: workoutName,
         selectedExerciseName: selectedExerciseName,
-        checkWorkout: checkWorkout,
-        handleStartWorkout: handleStartWorkout,
-        handleEndWorkout: handleEndWorkout,
         handleExerciseClose: handleExerciseClose,
         handleExerciseOpen: handleExerciseOpen,
         setWorkoutOpen: setWorkoutOpen,
