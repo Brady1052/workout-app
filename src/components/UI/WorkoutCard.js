@@ -18,6 +18,7 @@ function WorkoutCard() {
               backgroundColor: '#0057C3',
               color: 'white',
               display: 'flex',
+              alignItems: 'center',
             }}
           >
             <span>{exercise.sets}</span>

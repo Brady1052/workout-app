@@ -209,6 +209,8 @@ function DummyWorkouts() {
                               <ClearIcon />
                             </span>
                             <span>8</span>
+                            <ClearIcon />
+                            225lbs
                             <span style={{ marginLeft: '0.5rem' }}>Squats</span>
                           </li>
                           <li
@@ -217,6 +219,7 @@ function DummyWorkouts() {
                               backgroundColor: '#0057C3',
                               color: 'white',
                               display: 'flex',
+                              alignItems: 'center',
                             }}
                           >
                             <span>4</span>
@@ -229,6 +232,8 @@ function DummyWorkouts() {
                               <ClearIcon />
                             </span>
                             <span>12</span>
+                            <ClearIcon />
+                            450lbs
                             <span style={{ marginLeft: '0.5rem' }}>
                               Leg Press
                             </span>
@@ -239,6 +244,7 @@ function DummyWorkouts() {
                               backgroundColor: '#0057C3',
                               color: 'white',
                               display: 'flex',
+                              alignItems: 'center',
                             }}
                           >
                             <span>4</span>
@@ -251,6 +257,8 @@ function DummyWorkouts() {
                               <ClearIcon />
                             </span>
                             <span>12</span>
+                            <ClearIcon />
+                            315lbs
                             <span style={{ marginLeft: '0.5rem' }}>
                               Leg Extensions
                             </span>
@@ -333,6 +341,7 @@ function DummyWorkouts() {
                               backgroundColor: '#0057C3',
                               color: 'white',
                               display: 'flex',
+                              alignItems: 'center',
                             }}
                           >
                             <span>4</span>
@@ -344,7 +353,9 @@ function DummyWorkouts() {
                             >
                               <ClearIcon />
                             </span>
-                            <span>8</span>
+                            <span>10</span>
+                            <ClearIcon />
+                            135lbs
                             <span style={{ marginLeft: '0.5rem' }}>
                               Bench Press
                             </span>
@@ -355,6 +366,7 @@ function DummyWorkouts() {
                               backgroundColor: '#0057C3',
                               color: 'white',
                               display: 'flex',
+                              alignItems: 'center',
                             }}
                           >
                             <span>3</span>
@@ -367,6 +379,8 @@ function DummyWorkouts() {
                               <ClearIcon />
                             </span>
                             <span>8</span>
+                            <ClearIcon />
+                            50lbs
                             <span style={{ marginLeft: '0.5rem' }}>
                               Incline DB Press
                             </span>
@@ -377,6 +391,7 @@ function DummyWorkouts() {
                               backgroundColor: '#0057C3',
                               color: 'white',
                               display: 'flex',
+                              alignItems: 'center',
                             }}
                           >
                             <span>5</span>
@@ -389,6 +404,8 @@ function DummyWorkouts() {
                               <ClearIcon />
                             </span>
                             <span>8</span>
+                            <ClearIcon />
+                            60lbs
                             <span style={{ marginLeft: '0.5rem' }}>
                               Tricep Extensions
                             </span>
@@ -483,6 +500,8 @@ function DummyWorkouts() {
                               <ClearIcon />
                             </span>
                             <span>8</span>
+                            <ClearIcon />
+                            315lbs
                             <span style={{ marginLeft: '0.5rem' }}>
                               Deadlift
                             </span>
@@ -505,6 +524,8 @@ function DummyWorkouts() {
                               <ClearIcon />
                             </span>
                             <span>12</span>
+                            <ClearIcon />
+                            70lbs
                             <span style={{ marginLeft: '0.5rem' }}>
                               DB Rows
                             </span>
@@ -527,6 +548,8 @@ function DummyWorkouts() {
                               <ClearIcon />
                             </span>
                             <span>8</span>
+                            <ClearIcon />
+                            180lbs
                             <span style={{ marginLeft: '0.5rem' }}>
                               Pullups
                             </span>
