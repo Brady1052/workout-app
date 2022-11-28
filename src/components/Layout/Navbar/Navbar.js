@@ -63,7 +63,7 @@ function Navbar() {
                 </Link>
               </Grid>
               <Grid item xs={2.3} textAlign="center">
-                <Link to="/workouts" className={classes['nav-item']}>
+                <Link to="/completed-workouts" className={classes['nav-item']}>
                   <Button
                     variant="text"
                     color="primary"
@@ -71,7 +71,7 @@ function Navbar() {
                     sx={{ fontWeight: '1000' }}
                     style={{ color: 'white' }}
                   >
-                    Workouts
+                    Completed Workouts
                   </Button>
                 </Link>
               </Grid>

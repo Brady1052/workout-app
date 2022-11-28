@@ -32,7 +32,7 @@ function WorkoutModal() {
   };
 
   const eraseTable = () => {
-    ctx.handleWorkoutClose();
+    ctx.handleWorkoutOpen();
     setAddedExercise(false);
     ctx.setFormArray([]);
     ctx.setWorkoutName('');
@@ -41,7 +41,7 @@ function WorkoutModal() {
 
   const submitForm = () => {
     setAddedExercise(false);
-    ctx.handleWorkoutClose();
+    ctx.handleWorkoutOpen();
     ctx.saveWorkoutHandler();
     ctx.setFormArray([]);
     ctx.setSelectedExerciseName('');

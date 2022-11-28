@@ -23,11 +23,7 @@ function DummyWorkouts() {
       setHasWorkouts(true);
     } else setHasWorkouts(false);
   });
-  useEffect(() => {
-    if (screenSmall) {
-      console.log('down');
-    }
-  });
+
   return (
     <React.Fragment>
       <Typography

@@ -4,6 +4,7 @@ const ExercisesContext = React.createContext({});
 
 // Provides state and functions to entire application
 export const WorkoutsContextProvider = (props) => {
+  // eslint-disable-next-line
   const [forceRender, setForceRender] = useState(0);
 
   const [exercises, setExercises] = useState([]);
@@ -34,8 +35,7 @@ export const WorkoutsContextProvider = (props) => {
       localStorage.setItem('Exercises', JSON.stringify(exercises));
     }
 
-    /** If the user has left the site, is coming back, and has saved exercises then set the exercise state equal to their 
-        saved data **/
+    /** If the user has left the site, is coming back, and has saved exercises then set the exercise state equal to their saved data **/
     if (
       JSON.parse(localStorage.getItem('Exercises')).length > 0 &&
       exercises.length === 0
@@ -84,8 +84,7 @@ export const WorkoutsContextProvider = (props) => {
   //   Handles submit and closing events for the exercise modal
   const [exerciseOpen, setExerciseOpen] = useState(false);
   const handleExerciseOpen = () =>
-    !exerciseOpen ? setExerciseOpen(true) : console.log();
-  const handleExerciseClose = () => setExerciseOpen(false);
+    !exerciseOpen ? setExerciseOpen(true) : setExerciseOpen(false);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -98,7 +97,7 @@ export const WorkoutsContextProvider = (props) => {
       sets: numSets,
       reps: numReps,
     };
-    handleExerciseClose();
+    handleExerciseOpen();
     saveExerciseDataHandler(exerciseData);
     setExerciseName('');
     setExerciseType('');
@@ -108,7 +107,7 @@ export const WorkoutsContextProvider = (props) => {
   };
 
   const closeModal = () => {
-    handleExerciseClose();
+    handleExerciseOpen();
     setExerciseName('');
     setExerciseType('');
     setExerciseWeight('');
@@ -186,8 +185,7 @@ export const WorkoutsContextProvider = (props) => {
 
   const [workoutOpen, setWorkoutOpen] = useState(false);
   const handleWorkoutOpen = () =>
-    !workoutOpen ? setWorkoutOpen(true) : console.log();
-  const handleWorkoutClose = () => setWorkoutOpen(false);
+    !workoutOpen ? setWorkoutOpen(true) : setWorkoutOpen(false);
 
   //Save form to local storage
   //******** Handles local storage, and appending to local storage ***********//
@@ -218,9 +216,54 @@ export const WorkoutsContextProvider = (props) => {
     }
   }, [workouts]);
 
+  /********************************** ACTIVE WORKOUT ***********************************************/
+  /*************************************************************************************************/
+  const [completedWorkouts, setCompletedWorkouts] = useState([]);
+
+  /******************* STORED AND COMPLETED WORKOUTS ********************************************** ***********************************************************************************************/
+
+  //******** Handles local storage, and appending to local storage ***********//
+  useEffect(() => {
+    /** If it is the user's first time visitng the site then store a Completed_Workouts object set to an empty array in local storage **/
+    if (localStorage.getItem('Completed_Workouts') === null) {
+      localStorage.setItem('Completed_Workouts', JSON.stringify([]));
+    }
+
+    /** If the user does not have any completed workouts saved, but they have already visited the site then set the local storage equal to the workout they are currently adding **/
+    if (
+      localStorage.getItem('Completed_Workouts') === '[]' &&
+      completedWorkouts.length !== 0
+    ) {
+      localStorage.setItem(
+        'Completed_Workouts',
+        JSON.stringify(completedWorkouts)
+      );
+    }
+
+    /** If the user has left the site, is coming back, and has saved completed workouts then set the completed workouts state equal to their saved data **/
+    if (
+      JSON.parse(localStorage.getItem('Completed_Workouts')).length > 0 &&
+      completedWorkouts.length === 0
+    ) {
+      setCompletedWorkouts(
+        JSON.parse(localStorage.getItem('Completed_Workouts'))
+      );
+    }
+
+    /** If the workouts state length is greater than zero, and the user completes an exercise - add their workout to the saved workouts array in local storage  **/
+    if (completedWorkouts.length > 0) {
+      localStorage.setItem(
+        'Completed_Workouts',
+        JSON.stringify(completedWorkouts)
+      );
+    }
+  }, [completedWorkouts]);
+
   return (
     <ExercisesContext.Provider
       value={{
+        completedWorkouts: completedWorkouts,
+        setCompletedWorkouts: setCompletedWorkouts,
         exercises: exercises,
         exerciseName: exerciseName,
         exerciseType: exerciseType,
@@ -231,13 +274,11 @@ export const WorkoutsContextProvider = (props) => {
         workouts: workouts,
         workoutName: workoutName,
         selectedExerciseName: selectedExerciseName,
-        handleExerciseClose: handleExerciseClose,
         handleExerciseOpen: handleExerciseOpen,
         setWorkoutOpen: setWorkoutOpen,
         exerciseOpen: exerciseOpen,
         workoutOpen: workoutOpen,
         handleWorkoutOpen: handleWorkoutOpen,
-        handleWorkoutClose: handleWorkoutClose,
         deleteWorkout: deleteWorkout,
         setExercises: setExercises,
         setWorkouts: setWorkouts,

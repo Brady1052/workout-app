@@ -3,19 +3,20 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Layout/Navbar/Navbar';
 import Exercises from './pages/Exercises';
-import Workouts from './pages/Workouts';
+import CompletedWorkouts from './pages/CompletedWorkouts';
 import Home from './pages/Home';
 import 'fontsource-roboto';
+import CurrentDate from './components/UI/CurrentDate';
 
 function App() {
   return (
     <>
       <Navbar />
-
+      <CurrentDate />
       <Routes>
         <Route path="/workout-app" element={<Home />} />
         <Route path="/exercises" element={<Exercises />} />
-        <Route path="/workouts" element={<Workouts />} />
+        <Route path="/completed-workouts" element={<CompletedWorkouts />} />
       </Routes>
     </>
   );

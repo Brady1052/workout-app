@@ -1,16 +1,81 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useContext } from 'react';
 import { Modal, Box, Typography, Button, Input } from '@mui/material';
+import WorkoutsContext from '../../context/workouts-context';
 import ClearIcon from '@mui/icons-material/Clear';
+
 function StartWorkoutModal(props) {
-  const [chosenWorkoutID, setChosenWorkoutID] = useState();
+  // eslint-disable-next-line
+  const ctx = useContext(WorkoutsContext);
+  // Used for determining whether or not modal is open
   const isMounted = useRef(false);
+  // Used for holding information related to the user's chosen workout
+  const [chosenWorkoutID, setChosenWorkoutID] = useState();
   const [chosenWorkoutExercises, setChosenWorkoutExercises] = useState([]);
-  const [chosenWorkoutName, setChosenWorkoutName] = useState('');
+  const [chosenWorkoutName, setChosenWorkoutName] = useState();
+  // Gathering info when user selects an exercise
+  const [activeExercise, setActiveExercise] = useState({});
+  const [activeExerciseName, setActiveExerciseName] = useState('');
+  // Holding data that the user enters in the modal
+  const [completedExercises, setCompletedExercises] = useState([]);
+  const completedSets = useRef();
+  const completedReps = useRef();
+  const completedWeight = useRef();
+  // const [activeExerciseID, setActiveExerciseID] = useState('');
   const [startWorkout, setStartWorkout] = useState(false);
-  const handleEndWorkout = (event, reason) => {
-    if (reason !== 'backdropClick') {
-      setStartWorkout(false);
-    }
+
+  //Functions for setting state when user completes an exercise (ie sets,weight,reps)
+  const completedSetsHandler = (e) => {
+    completedSets.current = e.target.value;
+  };
+  const completedRepsHandler = (e) => {
+    completedReps.current = e.target.value;
+  };
+
+  const completedWeightHandler = (e) => {
+    completedWeight.current = e.target.value;
+  };
+
+  const activeExerciseHandler = (index) => {
+    setActiveExercise((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
+  };
+
+  const completedExerciseHandler = () => {
+    setCompletedExercises((prev) => {
+      return [
+        ...prev,
+        {
+          name: activeExerciseName,
+          sets: completedSets.current,
+          reps: completedReps.current,
+          weight: completedWeight.current,
+        },
+      ];
+    });
+  };
+
+  const completedWorkoutHandler = () => {
+    ctx.setCompletedWorkouts((prev) => {
+      return [
+        ...prev,
+        {
+          workoutName: chosenWorkoutName,
+          completedExercises: [...completedExercises],
+          id: Math.random().toString(),
+        },
+      ];
+    });
+  };
+
+  // useEffect(() => {
+  //   console.log(chosenWorkoutName);
+  // });
+
+  const handleEndWorkout = () => {
+    setStartWorkout(false);
+    completedWorkoutHandler();
   };
 
   const localStartWorkout = () => {
@@ -19,7 +84,7 @@ function StartWorkoutModal(props) {
       setStartWorkout(true);
       setChosenWorkoutName(props.workoutName);
       setChosenWorkoutID(props.id);
-    }
+    } else isMounted.current = false;
   };
 
   useEffect(() => {
@@ -35,9 +100,9 @@ function StartWorkoutModal(props) {
     }
   }, [chosenWorkoutID]);
 
-  // Exercise function for active workout
+  // Function that returns a component for every exercise
   const activeExercises = (info) => {
-    const map = info.map((exercise) => {
+    const map = info.map((exercise, i) => {
       return (
         <React.Fragment key={Math.random().toString()}>
           <li
@@ -53,6 +118,13 @@ function StartWorkoutModal(props) {
               placeholder={exercise.sets}
               color="white"
               style={{ color: 'white', fontWeight: '600' }}
+              sx={{
+                minWidth: '1.25rem',
+                pointerEvents: !activeExercise[i] ? 'none' : 'auto',
+              }}
+              onChange={(e) => {
+                completedSetsHandler(e);
+              }}
             />
             <span style={{ marginLeft: '0.5rem', marginRight: '0.5rem' }}>
               <ClearIcon />
@@ -60,7 +132,15 @@ function StartWorkoutModal(props) {
             <Input
               placeholder={exercise.reps}
               color="white"
-              style={{ color: 'white', fontWeight: '600' }}
+              style={{
+                color: 'white',
+                fontWeight: '600',
+                minWidth: '1.25rem',
+              }}
+              onChange={(e) => {
+                completedRepsHandler(e);
+              }}
+              sx={{ pointerEvents: !activeExercise[i] ? 'none' : 'auto' }}
             />
             <span style={{ marginLeft: '0.5rem', marginRight: '0.5rem' }}>
               <ClearIcon />
@@ -69,14 +149,54 @@ function StartWorkoutModal(props) {
               placeholder={exercise.weight}
               color="white"
               style={{ color: 'white', fontWeight: '600' }}
-              sx={{ color: 'white', width: '20rem' }}
+              sx={{
+                color: 'white',
+                minWidth: '2rem',
+                pointerEvents: !activeExercise[i] ? 'none' : 'auto',
+              }}
+              onChange={(e) => {
+                completedWeightHandler(e);
+              }}
             />
             <span>lbs</span>
             <span style={{ marginLeft: '0.5rem' }}>{exercise.name}</span>
           </li>
+
+          {/* Buttons for starting and completing an exercise */}
+          <Button
+            variant="contained"
+            color="success"
+            onClick={() => {
+              activeExerciseHandler(i);
+              completedExerciseHandler();
+              console.log(ctx.completedWorkouts);
+            }}
+            style={{
+              fontWeight: '600',
+              display: !activeExercise[i] ? 'none' : 'block',
+            }}
+          >
+            Done
+          </Button>
+
+          <Button
+            variant="contained"
+            color="error"
+            style={{
+              fontWeight: '600',
+              display: activeExercise[i] ? 'none' : 'block',
+            }}
+            onClick={() => {
+              activeExerciseHandler(i);
+              setActiveExerciseName(exercise.name);
+            }}
+          >
+            Begin
+          </Button>
         </React.Fragment>
       );
     });
+
     return map;
   };
 
@@ -103,19 +223,18 @@ function StartWorkoutModal(props) {
         color: 'white',
         border: '1px solid black',
       }}
-      onClick={!startWorkout ? localStartWorkout : console.log()}
+      onClick={localStartWorkout}
       color="success"
     >
       Start Workout
-      <Modal open={startWorkout} onClose={handleEndWorkout}>
+      <Modal open={startWorkout}>
         <Box
           style={style}
           sx={{
             display: 'flex',
             flexDirection: 'column',
             backgroundColor: ' rgba(0,65,55,1)',
-            height: { overflow: 'auto' },
-            height: { xs: '80%', lg: 'auto' },
+            height: { xs: '100%', lg: 'auto' },
             overflowX: 'hidden',
           }}
         >

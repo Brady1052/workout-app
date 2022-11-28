@@ -1,12 +1,10 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import WorkoutsContext from '../../../context/workouts-context';
 import { MenuItem, TextField } from '@mui/material';
 
 function ExercisesDropdown() {
   const ctx = useContext(WorkoutsContext);
-  useEffect(() => {
-    console.log(ctx.exercises.length);
-  });
+
   return (
     <TextField
       color="white"
@@ -32,7 +30,6 @@ function ExercisesDropdown() {
     >
       {ctx.exercises.map((exercise, idx) => {
         if (idx === 0 && ctx.exercises.length === 1) {
-          console.log('yo');
           return (
             <MenuItem
               key={Math.random().toString()}
@@ -60,7 +57,6 @@ function ExercisesDropdown() {
           );
         }
         if (idx === 0) {
-          console.log('yo');
           return (
             <MenuItem
               key={Math.random().toString()}
@@ -88,7 +84,6 @@ function ExercisesDropdown() {
             </MenuItem>
           );
         } else if (ctx.exercises.length === 2 && idx === 1) {
-          console.log('hey');
           return (
             <MenuItem
               key={Math.random().toString()}
