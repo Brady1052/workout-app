@@ -5,7 +5,7 @@ import WorkoutModalBtn from '../../Modals/NavModals/WorkoutModalBtn';
 import ExerciseModal from '../../Modals/NavModals/ExerciseModal';
 import ViewExercises from './NavItems/ViewExercises';
 import classes from './NavDrawer.module.css';
-import { Drawer, IconButton, Box, Button, Link } from '@mui/material';
+import { Drawer, IconButton, Box } from '@mui/material';
 import StartWorkout from './NavItems/StartWorkout';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 function NavDrawer() {
@@ -32,12 +32,11 @@ function NavDrawer() {
             style={{
               display: 'flex',
               flexDirection: 'column',
+              textAlign: 'center',
             }}
           >
             <Grid
               item
-              xs={3}
-              style={{ marginLeft: '14.5%' }}
               onClick={() => {
                 setOpen(false);
               }}
@@ -46,8 +45,6 @@ function NavDrawer() {
             </Grid>
             <Grid
               item
-              xs={3}
-              style={{ marginLeft: '13%' }}
               onClick={() => {
                 setOpen(false);
               }}
@@ -64,17 +61,14 @@ function NavDrawer() {
             </Grid>
             <Grid
               item
-              xs={3}
-              style={{ marginLeft: '18%', color: 'white' }}
+              style={{ color: 'white' }}
               className={classes['nav-item']}
-              size="large"
             >
               <ExerciseModal />
             </Grid>
             <Grid
               item
-              xs={3}
-              style={{ marginLeft: '17%', color: 'white' }}
+              style={{ color: 'white' }}
               className={classes['nav-item']}
             >
               <WorkoutModalBtn />

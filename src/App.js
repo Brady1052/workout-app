@@ -6,13 +6,11 @@ import Exercises from './pages/Exercises';
 import CompletedWorkouts from './pages/CompletedWorkouts';
 import Home from './pages/Home';
 import 'fontsource-roboto';
-import CurrentDate from './components/UI/CurrentDate';
 
 function App() {
   return (
     <>
       <Navbar />
-      <CurrentDate />
       <Routes>
         <Route path="/workout-app" element={<Home />} />
         <Route path="/exercises" element={<Exercises />} />

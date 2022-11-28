@@ -9,7 +9,7 @@ function StartWorkout() {
         color="primary"
         size="large"
         sx={{ fontWeight: '1000', textDecoration: 'none' }}
-        style={{ color: 'white', textDecoration: 'none' }}
+        style={{ color: 'white', textDecoration: 'none', textAlign: 'center' }}
       >
         Start Workout
       </Button>

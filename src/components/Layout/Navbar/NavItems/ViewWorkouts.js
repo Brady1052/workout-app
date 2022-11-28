@@ -4,7 +4,7 @@ import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 function ViewWorkouts() {
   return (
-    <Link to="/workouts" className={classes['nav-item']}>
+    <Link to="/completed-workouts" className={classes['nav-item']}>
       <Button
         variant="text"
         color="primary"
@@ -12,7 +12,7 @@ function ViewWorkouts() {
         sx={{ fontWeight: '1000' }}
         style={{ color: 'white' }}
       >
-        Templates
+        Completed Workouts
       </Button>
     </Link>
   );

@@ -13,6 +13,7 @@ import {
   useMediaQuery,
   Typography,
 } from '@mui/material';
+import CurrentDate from '../../UI/CurrentDate';
 
 function Navbar() {
   const theme = useTheme();
@@ -22,12 +23,9 @@ function Navbar() {
     <>
       <AppBar
         sx={{
-          display: 'flex',
           backgroundImage:
             'linear-gradient(90deg, rgba(0,65,55,1) 0%, rgba(3,35,64,1) 50%, rgba(0,117,245,1) 100%)',
           position: 'relative',
-
-          justifyContent: 'space-between',
         }}
       >
         <Toolbar>
@@ -45,6 +43,7 @@ function Navbar() {
                 {' '}
                 Strength Training Central
               </Typography>
+              <CurrentDate />
               <NavDrawer />
             </>
           ) : (

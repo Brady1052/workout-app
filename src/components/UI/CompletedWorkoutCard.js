@@ -54,7 +54,7 @@ function CompletedWorkoutCard() {
                       sx={{
                         width: '18rem',
                         borderRadius: '25px',
-                        marginTop: { xs: '3rem', lg: '8rem' },
+                        marginTop: { xs: '1rem', lg: '8rem' },
                         marginLeft: { xs: '1rem', lg: '0' },
                         backgroundColor: '#0057C3',
                         border: '1px solid white',
