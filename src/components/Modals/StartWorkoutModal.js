@@ -55,12 +55,13 @@ function StartWorkoutModal(props) {
       ];
     });
   };
-
+  const date = new Date().toLocaleDateString() + '';
   const completedWorkoutHandler = () => {
     ctx.setCompletedWorkouts((prev) => {
       return [
         ...prev,
         {
+          date: date,
           workoutName: chosenWorkoutName,
           completedExercises: [...completedExercises],
           id: Math.random().toString(),

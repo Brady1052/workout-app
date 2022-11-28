@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import WorkoutsContext from '../../context/workouts-context';
 import { IconButton, Typography, Box } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
-import CurrentDate from './CurrentDate';
 
 function CompletedWorkoutCard() {
   const ctx = useContext(WorkoutsContext);
@@ -95,7 +94,16 @@ function CompletedWorkoutCard() {
                           style={{ fontSize: '1.5rem' }}
                         />
                       </IconButton>
-                      <CurrentDate />
+                      <Typography
+                        variant="h4"
+                        style={{ color: 'white' }}
+                        sx={{
+                          paddingTop: '0.5rem',
+                          textAlign: 'center',
+                        }}
+                      >
+                        {workout.date}
+                      </Typography>
                       <div className="card-body">
                         <div className="text-center">
                           <Typography
@@ -105,6 +113,7 @@ function CompletedWorkoutCard() {
                               textAlign: 'center',
                               color: 'white',
                               fontWeight: '600',
+                              marginTop: '-1rem',
                             }}
                           >
                             {workout.workoutName}
