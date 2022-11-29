@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const ExercisesContext = React.createContext({});
 
@@ -219,6 +219,9 @@ export const WorkoutsContextProvider = (props) => {
   /********************************** ACTIVE WORKOUT ***********************************************/
   /*************************************************************************************************/
   const [completedWorkouts, setCompletedWorkouts] = useState([]);
+  const completedSets = useRef();
+  const completedReps = useRef();
+  const completedWeight = useRef();
 
   /******************* STORED AND COMPLETED WORKOUTS ********************************************** ***********************************************************************************************/
 
@@ -264,6 +267,9 @@ export const WorkoutsContextProvider = (props) => {
       value={{
         completedWorkouts: completedWorkouts,
         setCompletedWorkouts: setCompletedWorkouts,
+        completedSets: completedSets,
+        completedReps: completedReps,
+        completedWeight: completedWeight,
         exercises: exercises,
         exerciseName: exerciseName,
         exerciseType: exerciseType,

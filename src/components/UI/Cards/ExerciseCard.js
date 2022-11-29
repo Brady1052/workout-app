@@ -1,9 +1,7 @@
 import React, { useContext } from 'react';
-import WorkoutsContext from '../../context/workouts-context';
+import WorkoutsContext from '../../../context/workouts-context';
 import classes from './ExerciseCard.module.css';
-import IconButton from '@mui/material/Button';
-import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
 
 function ExerciseCard() {
   const ctx = useContext(WorkoutsContext);
@@ -80,7 +78,7 @@ function ExerciseCard() {
                             className="text-center d-flex justify-content-between flex-row-reverse"
                             style={{ marginTop: '1rem' }}
                           >
-                            <IconButton
+                            <Button
                               sx={{ fontWeight: '700' }}
                               onClick={() => {
                                 for (let i = 0; i < ctx.exercises.length; i++) {
@@ -98,14 +96,11 @@ function ExerciseCard() {
                                 }
                                 return alert('Error');
                               }}
-                              variant="text"
+                              variant="contained"
                               color="error"
                             >
-                              {' '}
-                              <DeleteForeverRoundedIcon
-                                sx={{ color: 'red', fontSize: '2rem' }}
-                              />
-                            </IconButton>
+                              Delete
+                            </Button>
                           </div>
                         </div>
                       </Box>

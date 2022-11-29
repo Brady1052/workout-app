@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material';
 import React from 'react';
-import CompletedWorkoutCard from '../components/UI/CompletedWorkoutCard';
+import CompletedWorkoutCard from '../components/UI/Cards/CompletedWorkoutCard';
 
 function Completed_Workouts() {
   return (

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, useContext } from 'react';
-import { Modal, Box, Typography, Button, Input } from '@mui/material';
+import { Modal, Box, Typography, Button } from '@mui/material';
 import WorkoutsContext from '../../context/workouts-context';
-import ClearIcon from '@mui/icons-material/Clear';
+import Exercise from '../HelperComponents/Exercise';
 
 function StartWorkoutModal(props) {
   // eslint-disable-next-line
@@ -13,28 +13,15 @@ function StartWorkoutModal(props) {
   const [chosenWorkoutExercises, setChosenWorkoutExercises] = useState([]);
   const [chosenWorkoutName, setChosenWorkoutName] = useState();
   // Gathering info when user selects an exercise
-  const [activeExercise, setActiveExercise] = useState({});
   const [activeExerciseName, setActiveExerciseName] = useState('');
-  // Holding data that the user enters in the modal
+  const [activeExercise, setActiveExercise] = useState({});
+  // Holding data that the user enters information in the modal
   const [completedExercises, setCompletedExercises] = useState([]);
-  const completedSets = useRef();
-  const completedReps = useRef();
-  const completedWeight = useRef();
+
   // const [activeExerciseID, setActiveExerciseID] = useState('');
   const [startWorkout, setStartWorkout] = useState(false);
 
   //Functions for setting state when user completes an exercise (ie sets,weight,reps)
-  const completedSetsHandler = (e) => {
-    completedSets.current = e.target.value;
-  };
-  const completedRepsHandler = (e) => {
-    completedReps.current = e.target.value;
-  };
-
-  const completedWeightHandler = (e) => {
-    completedWeight.current = e.target.value;
-  };
-
   const activeExerciseHandler = (index) => {
     setActiveExercise((prev) => ({
       ...prev,
@@ -48,9 +35,9 @@ function StartWorkoutModal(props) {
         ...prev,
         {
           name: activeExerciseName,
-          sets: completedSets.current,
-          reps: completedReps.current,
-          weight: completedWeight.current,
+          sets: ctx.completedSets.current,
+          reps: ctx.completedReps.current,
+          weight: ctx.completedWeight.current,
         },
       ];
     });
@@ -69,10 +56,6 @@ function StartWorkoutModal(props) {
       ];
     });
   };
-
-  // useEffect(() => {
-  //   console.log(chosenWorkoutName);
-  // });
 
   const handleEndWorkout = () => {
     setStartWorkout(false);
@@ -104,65 +87,22 @@ function StartWorkoutModal(props) {
   // Function that returns a component for every exercise
   const activeExercises = (info) => {
     const map = info.map((exercise, i) => {
+      let sets = [];
+      for (let index = 0; index < exercise.sets; index++) {
+        sets.push(
+          <Exercise
+            key={Math.random().toString()}
+            exercise={exercise}
+            loopIndex={index}
+            index={i}
+            info={info}
+            activeExercise={activeExercise}
+          />
+        );
+      }
       return (
         <React.Fragment key={Math.random().toString()}>
-          <li
-            className="list-group-item"
-            style={{
-              backgroundColor: '#0057C3',
-              color: 'white',
-              display: 'flex',
-              alignItems: 'center',
-            }}
-          >
-            <Input
-              placeholder={exercise.sets}
-              color="white"
-              style={{ color: 'white', fontWeight: '600' }}
-              sx={{
-                minWidth: '1.25rem',
-                pointerEvents: !activeExercise[i] ? 'none' : 'auto',
-              }}
-              onChange={(e) => {
-                completedSetsHandler(e);
-              }}
-            />
-            <span style={{ marginLeft: '0.5rem', marginRight: '0.5rem' }}>
-              <ClearIcon />
-            </span>
-            <Input
-              placeholder={exercise.reps}
-              color="white"
-              style={{
-                color: 'white',
-                fontWeight: '600',
-                minWidth: '1.25rem',
-              }}
-              onChange={(e) => {
-                completedRepsHandler(e);
-              }}
-              sx={{ pointerEvents: !activeExercise[i] ? 'none' : 'auto' }}
-            />
-            <span style={{ marginLeft: '0.5rem', marginRight: '0.5rem' }}>
-              <ClearIcon />
-            </span>
-            <Input
-              placeholder={exercise.weight}
-              color="white"
-              style={{ color: 'white', fontWeight: '600' }}
-              sx={{
-                color: 'white',
-                minWidth: '2rem',
-                pointerEvents: !activeExercise[i] ? 'none' : 'auto',
-              }}
-              onChange={(e) => {
-                completedWeightHandler(e);
-              }}
-            />
-            <span>lbs</span>
-            <span style={{ marginLeft: '0.5rem' }}>{exercise.name}</span>
-          </li>
-
+          {sets}
           {/* Buttons for starting and completing an exercise */}
           <Button
             variant="contained"
@@ -197,7 +137,6 @@ function StartWorkoutModal(props) {
         </React.Fragment>
       );
     });
-
     return map;
   };
 
@@ -250,17 +189,17 @@ function StartWorkoutModal(props) {
                   <div className="col">
                     <div className="col ">
                       <Typography
-                        variant="h4"
+                        variant="h3"
                         style={{ color: 'white', whiteSpace: 'nowrap' }}
                         sx={{
                           position: 'relative',
                           top: { xs: '5rem', lg: '-4rem' },
-                          left: { xs: '2.3rem', lg: '2.5rem' },
                           fontWeight: '600',
-                          marginTop: { xs: '-3rem', lg: '1rem' },
+                          marginTop: { xs: '-4rem', lg: '1rem' },
+                          textAlign: 'center',
                         }}
                       >
-                        Current Workout
+                        {chosenWorkoutName}
                       </Typography>
                       <Box
                         className="card"
@@ -279,17 +218,6 @@ function StartWorkoutModal(props) {
                       >
                         <div className="card-body">
                           <div className="text-center">
-                            <Typography
-                              className="card-title"
-                              variant="h3"
-                              style={{
-                                textAlign: 'center',
-                                color: 'white',
-                                fontWeight: '600',
-                              }}
-                            >
-                              {chosenWorkoutName}
-                            </Typography>
                             <ul
                               className={`list-group list-group-flush`}
                               style={{

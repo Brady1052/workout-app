@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material';
 import React from 'react';
-import ExerciseCard from '../components/UI/ExerciseCard';
+import ExerciseCard from '../components/UI/Cards/ExerciseCard';
 
 function Exercises() {
   return (

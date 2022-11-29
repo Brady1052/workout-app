@@ -1,14 +1,15 @@
-import React, { useContext } from 'react';
-import WorkoutsContext from '../../context/workouts-context';
+import React, { useContext, useState } from 'react';
+import WorkoutsContext from '../../../context/workouts-context';
+import StartWorkoutModal from '../../Modals/StartWorkoutModal';
 import { IconButton, Typography, Box } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 
-function CompletedWorkoutCard() {
+function WorkoutCard() {
   const ctx = useContext(WorkoutsContext);
-  const completedWorkouts = ctx.completedWorkouts;
+  const [chosenWorkoutID, setChosenWorkoutID] = useState();
 
-  const completedWorkoutExercises = (exerciseInfo) => {
-    const mappedExercises = exerciseInfo.map((exercise) => {
+  const exerciseInfo = (info) => {
+    const map = info.map((exercise) => {
       return (
         <React.Fragment key={Math.random().toString()}>
           <li
@@ -35,12 +36,14 @@ function CompletedWorkoutCard() {
         </React.Fragment>
       );
     });
-    return mappedExercises;
+    return map;
   };
+
   return (
     <div className="container">
       <div className="row">
-        {completedWorkouts.map((workout) => {
+        {ctx.workouts.map((workout) => {
+          workout['tableID'] = workout.id;
           return (
             <div
               className={`col-xs-12  col-sm-12 col-md-6 col-lg-4 col-xl-4`}
@@ -54,7 +57,7 @@ function CompletedWorkoutCard() {
                       sx={{
                         width: '18rem',
                         borderRadius: '25px',
-                        marginTop: { xs: '1rem', lg: '8rem' },
+                        marginTop: { xs: '3rem', lg: '8rem' },
                         marginLeft: { xs: '1rem', lg: '0' },
                         backgroundColor: '#0057C3',
                         border: '1px solid white',
@@ -69,18 +72,14 @@ function CompletedWorkoutCard() {
                           top: '0.5rem',
                         }}
                         onClick={() => {
-                          for (
-                            let i = 0;
-                            i < ctx.completedWorkouts.length;
-                            i++
-                          ) {
-                            const completedWorkouts = ctx.completedWorkouts;
-                            if (ctx.completedWorkouts[i].id === workout.id) {
-                              completedWorkouts.splice(i, 1);
-                              ctx.setCompletedWorkouts(completedWorkouts);
+                          for (let i = 0; i < ctx.workouts.length; i++) {
+                            const workouts = ctx.workouts;
+                            if (ctx.workouts[i].id === workout.id) {
+                              workouts.splice(i, 1);
+                              ctx.setWorkouts(workouts);
                               localStorage.setItem(
-                                'Completed_Workouts',
-                                JSON.stringify(ctx.completedWorkouts)
+                                'Workouts',
+                                JSON.stringify(workouts)
                               );
                               ctx.forceRenderHandler();
                               return;
@@ -94,16 +93,7 @@ function CompletedWorkoutCard() {
                           style={{ fontSize: '1.5rem' }}
                         />
                       </IconButton>
-                      <Typography
-                        variant="h4"
-                        style={{ color: 'white' }}
-                        sx={{
-                          paddingTop: '0.5rem',
-                          textAlign: 'center',
-                        }}
-                      >
-                        {workout.date}
-                      </Typography>
+
                       <div className="card-body">
                         <div className="text-center">
                           <Typography
@@ -113,7 +103,6 @@ function CompletedWorkoutCard() {
                               textAlign: 'center',
                               color: 'white',
                               fontWeight: '600',
-                              marginTop: '-1rem',
                             }}
                           >
                             {workout.workoutName}
@@ -127,11 +116,18 @@ function CompletedWorkoutCard() {
                               justifyContent: 'flex-start',
                             }}
                           >
-                            {completedWorkoutExercises(
-                              workout.completedExercises
-                            )}
+                            {exerciseInfo(workout.exercises)}
                           </ul>
                         </div>
+                        <StartWorkoutModal
+                          id={workout.id}
+                          workoutName={workout.workoutName}
+                          exercises={exerciseInfo}
+                          info={workout.exercise}
+                          tableID={workout.tableID}
+                          chosenWorkoutID={chosenWorkoutID}
+                          setChosenWorkoutID={setChosenWorkoutID}
+                        />
                       </div>
                     </Box>
                   </div>
@@ -145,4 +141,4 @@ function CompletedWorkoutCard() {
   );
 }
 
-export default CompletedWorkoutCard;
+export default WorkoutCard;
