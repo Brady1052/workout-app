@@ -61,63 +61,77 @@ function Exercise(props) {
       >
         <CurrentDate />
       </div>
-      <li
-        className="list-group-item"
+      <div
         style={{
-          backgroundColor: '#0057C3',
-          color: 'white',
-          display: 'flex',
-          alignItems: 'center',
+          display: props.activeExercise[props.index] ? 'inline' : 'none',
+          border: '1px solid white',
+          borderTop: !loopIndex ? 'none' : '1px solid white',
         }}
       >
-        <Input
-          value={props.loopIndex + 1}
-          color="white"
-          style={{ color: 'white', fontWeight: '600' }}
-          sx={{
-            minWidth: '1.25rem',
-            pointerEvents: !props.activeExercise[props.index] ? 'none' : 'auto',
-          }}
-          onChange={(e) => {
-            completedSetsHandler(e);
-          }}
-        />
-        <span style={{ marginLeft: '0.5rem', marginRight: '0.5rem' }}>
-          <ClearIcon />
-        </span>
-        <Input
-          placeholder={props.exercise.reps}
-          color="white"
+        <li
+          className="list-group-item"
           style={{
+            backgroundColor: '#0057C3',
             color: 'white',
-            fontWeight: '600',
-            minWidth: '1.25rem',
+            display: 'flex',
+            alignItems: 'center',
           }}
-          onChange={(e) => {
-            completedRepsHandler(e);
-          }}
-          sx={{
-            pointerEvents: !props.activeExercise[props.index] ? 'none' : 'auto',
-          }}
-        />
-        <span style={{ marginLeft: '0.5rem', marginRight: '0.5rem' }}>
-          <ClearIcon />
-        </span>
-        <Input
-          placeholder={props.exercise.weight}
-          color="white"
-          style={{ color: 'white', fontWeight: '600' }}
-          sx={{
-            color: 'white',
-            minWidth: '2rem',
-            pointerEvents: !props.activeExercise[props.index] ? 'none' : 'auto',
-          }}
-          onChange={(e) => {
-            completedWeightHandler(e);
-          }}
-        />
-        <span>lbs</span>
-      </li>
+        >
+          <Input
+            value={props.loopIndex + 1}
+            color="white"
+            style={{ color: 'white', fontWeight: '600' }}
+            sx={{
+              minWidth: '1.25rem',
+              pointerEvents: !props.activeExercise[props.index]
+                ? 'none'
+                : 'auto',
+            }}
+            onChange={(e) => {
+              completedSetsHandler(e);
+            }}
+          />
+          <span style={{ marginLeft: '0.5rem', marginRight: '0.5rem' }}>
+            <ClearIcon />
+          </span>
+          <Input
+            placeholder={props.exercise.reps}
+            color="white"
+            style={{
+              color: 'white',
+              fontWeight: '600',
+              minWidth: '1.25rem',
+            }}
+            onChange={(e) => {
+              completedRepsHandler(e);
+            }}
+            sx={{
+              pointerEvents: !props.activeExercise[props.index]
+                ? 'none'
+                : 'auto',
+            }}
+          />
+          <span style={{ marginLeft: '0.5rem', marginRight: '0.5rem' }}>
+            <ClearIcon />
+          </span>
+          <Input
+            placeholder={props.exercise.weight}
+            color="white"
+            style={{ color: 'white', fontWeight: '600' }}
+            sx={{
+              color: 'white',
+              minWidth: '2rem',
+              pointerEvents: !props.activeExercise[props.index]
+                ? 'none'
+                : 'auto',
+            }}
+            onChange={(e) => {
+              completedWeightHandler(e);
+            }}
+          />
+          <span>lbs</span>
+        </li>
+      </div>
     </React.Fragment>
   );
 }

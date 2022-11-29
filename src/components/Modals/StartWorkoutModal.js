@@ -2,7 +2,8 @@ import React, { useEffect, useState, useRef, useContext } from 'react';
 import { Modal, Box, Typography, Button } from '@mui/material';
 import WorkoutsContext from '../../context/workouts-context';
 import Exercise from '../HelperComponents/Exercise';
-
+import WhatshotIcon from '@mui/icons-material/Whatshot';
+import OpacitySharpIcon from '@mui/icons-material/OpacitySharp';
 function StartWorkoutModal(props) {
   // eslint-disable-next-line
   const ctx = useContext(WorkoutsContext);
@@ -97,6 +98,9 @@ function StartWorkoutModal(props) {
             index={i}
             info={info}
             activeExercise={activeExercise}
+            style={{
+              display: activeExercise[i] ? 'inherit' : 'none',
+            }}
           />
         );
       }
@@ -106,33 +110,37 @@ function StartWorkoutModal(props) {
           {/* Buttons for starting and completing an exercise */}
           <Button
             variant="contained"
-            color="success"
             onClick={() => {
               activeExerciseHandler(i);
               completedExerciseHandler();
-              console.log(ctx.completedWorkouts);
             }}
             style={{
               fontWeight: '600',
-              display: !activeExercise[i] ? 'none' : 'block',
+              display: !activeExercise[i] ? 'none' : 'flex',
+              backgroundColor: 'black',
+              fontSize: '1rem',
             }}
+            size="large"
+            endIcon={<WhatshotIcon color="warning" />}
           >
-            Done
+            Solidify Gainz
           </Button>
 
           <Button
             variant="contained"
-            color="error"
             style={{
               fontWeight: '600',
-              display: activeExercise[i] ? 'none' : 'block',
+              display: activeExercise[i] ? 'none' : 'flex',
+              fontSize: '1rem',
+              backgroundColor: 'black',
             }}
             onClick={() => {
               activeExerciseHandler(i);
               setActiveExerciseName(exercise.name);
             }}
+            endIcon={<OpacitySharpIcon color="error" />}
           >
-            Begin
+            Initiate Gainz
           </Button>
         </React.Fragment>
       );
@@ -147,7 +155,7 @@ function StartWorkoutModal(props) {
     transform: 'translate(-50%, -50%)',
     width: 400,
     bgcolor: 'background.paper',
-    border: '2px solid #000',
+    border: '2px solid white',
     boxShadow: 24,
     pt: 2,
     px: 4,
@@ -166,15 +174,16 @@ function StartWorkoutModal(props) {
       onClick={localStartWorkout}
       color="success"
     >
-      Start Workout
+      Click Here for Gainz
       <Modal open={startWorkout}>
         <Box
           style={style}
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            backgroundColor: ' rgba(0,65,55,1)',
-            height: { xs: '100%', lg: 'auto' },
+            backgroundColor: 'black',
+            height: { xs: '99%', lg: 'auto' },
+            maxWidth: { xs: '99%', lg: 'auto' },
             overflowX: 'hidden',
           }}
         >

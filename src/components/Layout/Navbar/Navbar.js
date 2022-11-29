@@ -35,13 +35,13 @@ function Navbar() {
                 variant="caption"
                 style={{
                   position: 'absolute',
-                  left: '25%',
+                  left: '40%',
                   fontSize: '1rem',
                   fontWeight: 'bold',
                 }}
               >
                 {' '}
-                Strength Training Central
+                Gainz Central
               </Typography>
               <CurrentDate />
               <NavDrawer />
