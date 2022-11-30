@@ -4,7 +4,7 @@ import FormWorkoutTable from '../../UI/FormWorkoutTable';
 import ExercisesDropdown from './ExercisesDropdown';
 import { Button, Modal, Box, Typography, TextField } from '@mui/material/';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
-import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
+import { Save } from '@mui/icons-material';
 
 function WorkoutModal() {
   const ctx = useContext(WorkoutsContext);
@@ -31,17 +31,17 @@ function WorkoutModal() {
     ctx.displayExerciseTable(ctx.selectedExerciseName);
   };
 
-  const eraseTable = () => {
-    ctx.handleWorkoutOpen();
+  const eraseTable = (e) => {
+    ctx.handleWorkoutOpen(e);
     setAddedExercise(false);
     ctx.setFormArray([]);
     ctx.setWorkoutName('');
     ctx.setSelectedExerciseName('');
   };
 
-  const submitForm = () => {
+  const submitForm = (e) => {
+    ctx.handleWorkoutOpen(e);
     setAddedExercise(false);
-    ctx.handleWorkoutOpen();
     ctx.saveWorkoutHandler();
     ctx.setFormArray([]);
     ctx.setSelectedExerciseName('');
@@ -50,14 +50,15 @@ function WorkoutModal() {
 
   return (
     <>
-      <Modal open={ctx.workoutOpen} onClose={ctx.handleWorkoutClose}>
+      <Modal open={ctx.workoutOpen}>
         <Box
           sx={style}
           style={{
             display: 'flex',
             flexDirection: 'column',
             gap: '2rem',
-            backgroundColor: '#0057C3',
+            backgroundImage:
+              'linear-gradient(90deg, rgba(255,117,0,1) 0%, rgba(198,102,17,1) 41%, rgba(51,17,0,1) 100%)',
             color: 'white',
           }}
         >
@@ -97,8 +98,8 @@ function WorkoutModal() {
           <ExercisesDropdown />
           <Button
             variant="contained"
+            color="secondary"
             sx={{
-              backgroundColor: 'rgba(6,147,227,1)',
               fontWeight: '600',
             }}
             onClick={showTable}
@@ -113,22 +114,22 @@ function WorkoutModal() {
             <Button
               variant="contained"
               onClick={eraseTable}
-              color="error"
+              color="primary"
               style={{ width: '50%', fontWeight: '600' }}
               endIcon={
                 <DeleteForeverRoundedIcon
-                  sx={{ color: 'white', fontSize: '5rem' }}
+                  sx={{ color: 'red', fontSize: '5rem' }}
                 />
               }
             >
-              Cancel
+              Delete
             </Button>
             <Button
               variant="contained"
               color="bonus"
-              style={{ fontWeight: '600', width: '50%' }}
+              style={{ fontWeight: '600', width: '50%', whiteSpace: 'nowrap' }}
+              endIcon={<Save color="primary" />}
               onClick={submitForm}
-              endIcon={<FitnessCenterIcon sx={{ color: 'white' }} />}
             >
               Save Workout
             </Button>

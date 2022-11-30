@@ -9,7 +9,7 @@ function WorkoutModalBtn() {
       variant="text"
       color="inherit"
       onClick={ctx.handleWorkoutOpen}
-      sx={{ fontWeight: '1000' }}
+      sx={{ fontWeight: '600' }}
     >
       Create Template
       <WorkoutModal />

@@ -3,6 +3,7 @@ import { Input, Typography } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 import WorkoutsContext from '../../context/workouts-context';
 import CurrentDate from '../UI/CurrentDate';
+import styles from './Exercise.module.css';
 // Returns a new component for every set the user intends on completing.(Used in the startWorkout modal)
 function Exercise(props) {
   const ctx = useContext(WorkoutsContext);
@@ -62,19 +63,19 @@ function Exercise(props) {
         <CurrentDate />
       </div>
       <div
+        className={styles['exercises-container']}
         style={{
           display: props.activeExercise[props.index] ? 'inline' : 'none',
-          border: '1px solid white',
-          borderTop: !loopIndex ? 'none' : '1px solid white',
         }}
       >
         <li
           className="list-group-item"
           style={{
-            backgroundColor: '#0057C3',
+            backgroundColor: 'transparent',
             color: 'white',
             display: 'flex',
             alignItems: 'center',
+            border: '0px',
           }}
         >
           <Input

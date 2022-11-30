@@ -5,21 +5,22 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { WorkoutsContextProvider } from './context/workouts-context';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: 'rgba(0, 31, 65, 1)',
+      main: 'rgb(0, 0, 0)',
     },
     secondary: {
-      main: '#0057C3',
+      main: '#e2700b',
     },
     white: {
       main: '#fff',
     },
     bonus: {
-      main: 'rgba(6,147,227,1)',
+      main: '#d16a0f',
     },
   },
 });

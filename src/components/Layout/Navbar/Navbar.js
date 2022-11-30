@@ -12,6 +12,7 @@ import {
   useTheme,
   useMediaQuery,
   Typography,
+  Container,
 } from '@mui/material';
 import CurrentDate from '../../UI/CurrentDate';
 
@@ -24,18 +25,24 @@ function Navbar() {
       <AppBar
         sx={{
           backgroundImage:
-            'linear-gradient(90deg, rgba(0,65,55,1) 0%, rgba(3,35,64,1) 50%, rgba(0,117,245,1) 100%)',
+            ' linear-gradient(90deg, rgba(163,86,0,1) 0%, rgba(226,112,11,1) 48%, rgba(51,17,0,1) 100%)',
           position: 'relative',
         }}
       >
         <Toolbar>
           {screenSmall ? (
-            <>
+            <Container
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                flexDirection: 'row-reverse',
+                justifyContent: 'space-between',
+              }}
+            >
+              <CurrentDate />
               <Typography
                 variant="caption"
                 style={{
-                  position: 'absolute',
-                  left: '40%',
                   fontSize: '1rem',
                   fontWeight: 'bold',
                 }}
@@ -43,9 +50,8 @@ function Navbar() {
                 {' '}
                 Gainz Central
               </Typography>
-              <CurrentDate />
               <NavDrawer />
-            </>
+            </Container>
           ) : (
             <Grid container sx={{ placeItems: 'center' }}>
               <Grid item xs={2.3} textAlign="center">
@@ -54,7 +60,7 @@ function Navbar() {
                     color="warning"
                     variant="text"
                     size="large"
-                    sx={{ fontWeight: '1000' }}
+                    sx={{ fontWeight: '600' }}
                     style={{ color: 'white' }}
                   >
                     Exercises
@@ -67,7 +73,7 @@ function Navbar() {
                     variant="text"
                     color="primary"
                     size="large"
-                    sx={{ fontWeight: '1000' }}
+                    sx={{ fontWeight: '600' }}
                     style={{ color: 'white' }}
                   >
                     Completed Workouts
@@ -80,7 +86,7 @@ function Navbar() {
                     variant="text"
                     color="primary"
                     size="large"
-                    sx={{ fontWeight: '1000' }}
+                    sx={{ fontWeight: '600' }}
                     style={{ color: 'white' }}
                   >
                     Start Workout

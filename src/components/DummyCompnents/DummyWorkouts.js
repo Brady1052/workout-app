@@ -27,9 +27,8 @@ function DummyWorkouts() {
   return (
     <React.Fragment>
       <Typography
-        variant="h3"
+        variant="h1"
         style={{
-          color: 'white',
           marginTop: '2rem',
           fontWeight: '600',
         }}
@@ -38,10 +37,13 @@ function DummyWorkouts() {
           fontSize: { xs: '2.5rem', lg: '5rem' },
           marginLeft: { xs: '1rem' },
           marginBottom: { xs: '2rem', lg: '0' },
+          backgroundImage:
+            ' linear-gradient(90deg, rgba(255,117,0,1) 0%, rgba(198,102,17,1) 41%, rgba(51,17,0,1) 100%);',
+          backgroundClip: 'text',
+          color: 'transparent',
         }}
-        color="white"
       >
-        Start Workout
+        House of Gainz
       </Typography>
       <Box
         sx={{
@@ -77,7 +79,7 @@ function DummyWorkouts() {
           sx={{
             marginTop: { xs: '1.5rem', lg: '0' },
             marginLeft: { xs: '1rem', lg: '2rem' },
-            marginBottom: { xs: '3rem', lg: '3rem' },
+            marginBottom: { xs: '3rem', lg: hasWorkouts ? '-2rem' : '3rem' },
             fontSize: { lg: '3rem' },
           }}
         >
@@ -86,7 +88,7 @@ function DummyWorkouts() {
       </Box>
       <div
         style={{
-          marginTop: hasWorkouts ? '-9rem' : '0rem',
+          marginTop: hasWorkouts ? '-5rem' : '0rem',
           display: screenSmall ? 'none' : 'block',
         }}
       >
@@ -104,19 +106,6 @@ function DummyWorkouts() {
           <WorkoutCard />
         </Box>
       </div>
-
-      {/* <Typography
-        variant="h6"
-        style={{ color: 'white', fontWeight: '600' }}
-        sx={{
-          marginTop: { xs: '1.5rem', lg: '0' },
-          marginLeft: { xs: '1rem', lg: '2rem' },
-          marginBottom: { xs: '-1rem', lg: '0' },
-          fontSize: { lg: '3rem' },
-        }}
-      >
-        Example Templates
-      </Typography> */}
       <Typography
         variant="h6"
         style={{ color: 'white', fontWeight: '600' }}
@@ -145,11 +134,12 @@ function DummyWorkouts() {
                   <Box
                     className="card"
                     sx={{
-                      width: '18rem',
+                      width: 'min-content',
                       borderRadius: '25px',
                       marginTop: { xs: '3rem', lg: '2rem' },
                       marginLeft: { xs: '1rem', lg: '0' },
-                      backgroundColor: '#0057C3',
+                      backgroundImage:
+                        'linear-gradient(90deg, rgba(163,86,0,1) 0%, rgba(226,112,11,1) 48%, rgba(51,17,0,1) 100%)',
                       border: '1px solid white',
                       color: 'white',
                       position: 'relative',
@@ -162,7 +152,10 @@ function DummyWorkouts() {
                         top: '0.5rem',
                       }}
                     >
-                      <ClearIcon color="error" style={{ fontSize: '1.5rem' }} />
+                      <ClearIcon
+                        color="primary"
+                        style={{ fontSize: '1.5rem' }}
+                      />
                     </IconButton>
 
                     <div className="card-body">
@@ -184,47 +177,45 @@ function DummyWorkouts() {
                           style={{
                             marginTop: '0.5rem',
                             display: 'flex',
-                            justifyContent: 'flex-start',
                           }}
                         >
                           <li
                             className="list-group-item"
                             style={{
-                              backgroundColor: '#0057C3',
+                              backgroundColor: 'transparent',
                               color: 'white',
                               display: 'flex',
+                              justifyContent: 'space-between',
                             }}
                           >
                             <span>5</span>
+                            <span>
+                              <ClearIcon />
+                            </span>
+                            <span>10</span>
+                            <ClearIcon />
+                            225lbs
                             <span
                               style={{
                                 marginLeft: '0.5rem',
-                                marginRight: '0.5rem',
+                                whiteSpace: 'nowrap',
                               }}
                             >
-                              <ClearIcon />
+                              BB Squats
                             </span>
-                            <span>8</span>
-                            <ClearIcon />
-                            225lbs
-                            <span style={{ marginLeft: '0.5rem' }}>Squats</span>
                           </li>
                           <li
                             className="list-group-item"
                             style={{
-                              backgroundColor: '#0057C3',
+                              backgroundColor: 'transparent',
                               color: 'white',
                               display: 'flex',
+                              justifyContent: 'space-between',
                               alignItems: 'center',
                             }}
                           >
                             <span>4</span>
-                            <span
-                              style={{
-                                marginLeft: '0.5rem',
-                                marginRight: '0.5rem',
-                              }}
-                            >
+                            <span>
                               <ClearIcon />
                             </span>
                             <span>12</span>
@@ -237,26 +228,22 @@ function DummyWorkouts() {
                           <li
                             className="list-group-item"
                             style={{
-                              backgroundColor: '#0057C3',
+                              backgroundColor: 'transparent',
                               color: 'white',
                               display: 'flex',
+                              justifyContent: 'space-between',
                               alignItems: 'center',
                             }}
                           >
                             <span>4</span>
-                            <span
-                              style={{
-                                marginLeft: '0.5rem',
-                                marginRight: '0.5rem',
-                              }}
-                            >
+                            <span>
                               <ClearIcon />
                             </span>
                             <span>12</span>
                             <ClearIcon />
                             315lbs
                             <span style={{ marginLeft: '0.5rem' }}>
-                              Leg Extensions
+                              Extensions
                             </span>
                           </li>
                         </ul>
@@ -270,7 +257,7 @@ function DummyWorkouts() {
                           color: 'white',
                           border: '1px solid black',
                         }}
-                        color="success"
+                        color="primary"
                       >
                         Start Workout
                       </Button>
@@ -289,11 +276,12 @@ function DummyWorkouts() {
                   <Box
                     className="card"
                     sx={{
-                      width: '18rem',
+                      width: 'min-content',
                       borderRadius: '25px',
                       marginTop: { xs: '3rem', lg: '2rem' },
                       marginLeft: { xs: '1rem', lg: '0' },
-                      backgroundColor: '#0057C3',
+                      backgroundImage:
+                        'linear-gradient(90deg, rgba(163,86,0,1) 0%, rgba(226,112,11,1) 48%, rgba(51,17,0,1) 100%)',
                       border: '1px solid white',
                       color: 'white',
                       position: 'relative',
@@ -306,7 +294,10 @@ function DummyWorkouts() {
                         top: '0.5rem',
                       }}
                     >
-                      <ClearIcon color="error" style={{ fontSize: '1.5rem' }} />
+                      <ClearIcon
+                        color="primary"
+                        style={{ fontSize: '1.5rem' }}
+                      />
                     </IconButton>
 
                     <div className="card-body">
@@ -334,76 +325,79 @@ function DummyWorkouts() {
                           <li
                             className="list-group-item"
                             style={{
-                              backgroundColor: '#0057C3',
+                              backgroundColor: 'transparent',
                               color: 'white',
                               display: 'flex',
+                              justifyContent: 'space-between',
                               alignItems: 'center',
                             }}
                           >
                             <span>4</span>
-                            <span
-                              style={{
-                                marginLeft: '0.5rem',
-                                marginRight: '0.5rem',
-                              }}
-                            >
+                            <span>
                               <ClearIcon />
                             </span>
                             <span>10</span>
                             <ClearIcon />
-                            135lbs
-                            <span style={{ marginLeft: '0.5rem' }}>
+                            45lbs
+                            <span
+                              style={{
+                                marginLeft: '0.5rem',
+                                whiteSpace: 'nowrap',
+                              }}
+                            >
                               Bench Press
                             </span>
                           </li>
                           <li
                             className="list-group-item"
                             style={{
-                              backgroundColor: '#0057C3',
+                              backgroundColor: 'transparent',
                               color: 'white',
                               display: 'flex',
+                              justifyContent: 'space-between',
                               alignItems: 'center',
                             }}
                           >
                             <span>3</span>
+                            <span>
+                              <ClearIcon />
+                            </span>
+                            <span>12</span>
+                            <ClearIcon />
+                            50lbs
                             <span
                               style={{
                                 marginLeft: '0.5rem',
-                                marginRight: '0.5rem',
+                                whiteSpace: 'nowrap',
                               }}
                             >
-                              <ClearIcon />
-                            </span>
-                            <span>8</span>
-                            <ClearIcon />
-                            50lbs
-                            <span style={{ marginLeft: '0.5rem' }}>
-                              Incline DB Press
+                              Incline Press
                             </span>
                           </li>
                           <li
                             className="list-group-item"
                             style={{
-                              backgroundColor: '#0057C3',
+                              backgroundColor: 'transparent',
                               color: 'white',
                               display: 'flex',
+                              justifyContent: 'space-between',
                               alignItems: 'center',
                             }}
                           >
                             <span>5</span>
+                            <span>
+                              <ClearIcon />
+                            </span>
+                            <span>10</span>
+                            <ClearIcon />
+                            60lbs
                             <span
                               style={{
                                 marginLeft: '0.5rem',
-                                marginRight: '0.5rem',
+                                whiteSpace: 'nowrap',
                               }}
                             >
-                              <ClearIcon />
-                            </span>
-                            <span>8</span>
-                            <ClearIcon />
-                            60lbs
-                            <span style={{ marginLeft: '0.5rem' }}>
-                              Tricep Extensions
+                              Tri Extensions
                             </span>
                           </li>
                         </ul>
@@ -417,7 +411,7 @@ function DummyWorkouts() {
                           color: 'white',
                           border: '1px solid black',
                         }}
-                        color="success"
+                        color="primary"
                       >
                         Start Workout
                       </Button>
@@ -440,7 +434,8 @@ function DummyWorkouts() {
                       borderRadius: '25px',
                       marginTop: { xs: '3rem', lg: '2rem' },
                       marginLeft: { xs: '1rem', lg: '0' },
-                      backgroundColor: '#0057C3',
+                      backgroundImage:
+                        'linear-gradient(90deg, rgba(163,86,0,1) 0%, rgba(226,112,11,1) 48%, rgba(51,17,0,1) 100%)',
                       border: '1px solid white',
                       color: 'white',
                       position: 'relative',
@@ -453,7 +448,10 @@ function DummyWorkouts() {
                         top: '0.5rem',
                       }}
                     >
-                      <ClearIcon color="error" style={{ fontSize: '1.5rem' }} />
+                      <ClearIcon
+                        color="primary"
+                        style={{ fontSize: '1.5rem' }}
+                      />
                     </IconButton>
 
                     <div className="card-body">
@@ -481,9 +479,10 @@ function DummyWorkouts() {
                           <li
                             className="list-group-item"
                             style={{
-                              backgroundColor: '#0057C3',
+                              backgroundColor: 'transparent',
                               color: 'white',
                               display: 'flex',
+                              justifyContent: 'space-between',
                             }}
                           >
                             <span>4</span>
@@ -505,9 +504,10 @@ function DummyWorkouts() {
                           <li
                             className="list-group-item"
                             style={{
-                              backgroundColor: '#0057C3',
+                              backgroundColor: 'transparent',
                               color: 'white',
                               display: 'flex',
+                              justifyContent: 'space-between',
                             }}
                           >
                             <span>4</span>
@@ -529,9 +529,10 @@ function DummyWorkouts() {
                           <li
                             className="list-group-item"
                             style={{
-                              backgroundColor: '#0057C3',
+                              backgroundColor: 'transparent',
                               color: 'white',
                               display: 'flex',
+                              justifyContent: 'space-between',
                             }}
                           >
                             <span>4</span>
@@ -561,7 +562,7 @@ function DummyWorkouts() {
                           color: 'white',
                           border: '1px solid black',
                         }}
-                        color="success"
+                        color="primary"
                       >
                         Start Workout
                       </Button>

@@ -5,7 +5,6 @@ import Navbar from './components/Layout/Navbar/Navbar';
 import Exercises from './pages/Exercises';
 import CompletedWorkouts from './pages/CompletedWorkouts';
 import Home from './pages/Home';
-import 'fontsource-roboto';
 
 function App() {
   return (

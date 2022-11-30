@@ -6,9 +6,12 @@ function Completed_Workouts() {
   return (
     <>
       <Typography
-        variant="h4"
-        style={{
-          color: 'white',
+        variant="h3"
+        sx={{
+          backgroundImage:
+            ' linear-gradient(90deg, rgba(255,117,0,1) 0%, rgba(198,102,17,1) 41%, rgba(51,17,0,1) 100%)',
+          backgroundClip: 'text',
+          color: 'transparent',
           fontWeight: '600',
           marginTop: '1rem',
           textAlign: 'center',

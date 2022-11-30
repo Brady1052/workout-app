@@ -14,10 +14,12 @@ function CompletedWorkoutCard() {
           <li
             className="list-group-item"
             style={{
-              backgroundColor: '#0057C3',
+              backgroundColor: 'transparent',
               color: 'white',
               display: 'flex',
               alignItems: 'center',
+              justifyContent: 'space-between',
+              whiteSpace: 'nowrap',
             }}
           >
             <span>{exercise.sets}</span>
@@ -52,14 +54,16 @@ function CompletedWorkoutCard() {
                     <Box
                       className="card"
                       sx={{
-                        width: '18rem',
+                        width: 'min-content',
                         borderRadius: '25px',
                         marginTop: { xs: '1rem', lg: '8rem' },
                         marginLeft: { xs: '1rem', lg: '0' },
-                        backgroundColor: '#0057C3',
                         border: '1px solid white',
-                        color: 'white',
                         position: 'relative',
+                        backgroundImage:
+                          ' linear-gradient(90deg, rgba(255,117,0,1) 0%, rgba(198,102,17,1) 41%, rgba(51,17,0,1) 100%)',
+
+                        fontWeight: '600',
                       }}
                     >
                       <IconButton
@@ -90,7 +94,7 @@ function CompletedWorkoutCard() {
                         }}
                       >
                         <ClearIcon
-                          color="error"
+                          color="primary"
                           style={{ fontSize: '1.5rem' }}
                         />
                       </IconButton>
@@ -100,6 +104,7 @@ function CompletedWorkoutCard() {
                         sx={{
                           paddingTop: '0.5rem',
                           textAlign: 'center',
+                          fontWeight: '500',
                         }}
                       >
                         {workout.date}
@@ -123,7 +128,8 @@ function CompletedWorkoutCard() {
                             className={`list-group list-group-flush`}
                             style={{
                               display: 'flex',
-                              justifyContent: 'flex-start',
+                              flexDirection: 'column',
+                              alignItems: 'center',
                             }}
                           >
                             {completedWorkoutExercises(

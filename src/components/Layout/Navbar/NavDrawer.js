@@ -22,8 +22,9 @@ function NavDrawer() {
         {' '}
         <Box
           style={{
+            backgroundImage:
+              'linear-gradient(90deg, rgba(163,86,0,1) 0%, rgba(226,112,11,1) 48%, rgba(51,17,0,1) 100%)',
             height: 'inherit',
-            backgroundColor: '#0057C3',
             paddingTop: '1rem',
           }}
         >
@@ -80,9 +81,8 @@ function NavDrawer() {
         onClick={() => {
           setOpen(true);
         }}
-        sx={{ position: 'absolute', right: '0' }}
       >
-        <MenuRoundedIcon style={{ color: 'white' }} />
+        <MenuRoundedIcon color="primary" />
       </IconButton>
     </>
   );

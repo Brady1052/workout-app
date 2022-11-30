@@ -10,9 +10,9 @@ function ViewExercises() {
         color="warning"
         variant="text"
         size="large"
-        style={{ color: 'white', fontWeight: '1000' }}
+        style={{ color: 'white', fontWeight: '600' }}
       >
-        Exercises
+        Created Exercises
       </Button>
     </Link>
   );

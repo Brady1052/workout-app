@@ -1,0 +1,12 @@
+@keyframe exercises {
+  from {
+    display: none;
+  }
+  to {
+    display: inline;
+  }
+}
+
+.exercises-container {
+  font-family: 'Courier New', Courier, monospace;
+}

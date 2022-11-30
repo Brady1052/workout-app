@@ -15,10 +15,11 @@ function WorkoutCard() {
           <li
             className="list-group-item"
             style={{
-              backgroundColor: '#0057C3',
               color: 'white',
               display: 'flex',
+              justifyContent: 'space-between',
               alignItems: 'center',
+              backgroundColor: 'transparent',
             }}
           >
             <span>{exercise.sets}</span>
@@ -26,7 +27,7 @@ function WorkoutCard() {
               <ClearIcon />
             </span>
             <span>{exercise.reps}</span>
-            <span style={{ marginLeft: '0.5rem', marginRight: '0.5rem' }}>
+            <span style={{ marginLeft: '0.2rem', marginRight: '0.3rem' }}>
               <ClearIcon />
             </span>
             <span>{exercise.weight}</span>
@@ -55,7 +56,7 @@ function WorkoutCard() {
                     <Box
                       className="card"
                       sx={{
-                        width: '18rem',
+                        maxWidth: 'fit-content',
                         borderRadius: '25px',
                         marginTop: { xs: '3rem', lg: '8rem' },
                         marginLeft: { xs: '1rem', lg: '0' },
@@ -63,6 +64,8 @@ function WorkoutCard() {
                         border: '1px solid white',
                         color: 'white',
                         position: 'relative',
+                        backgroundImage:
+                          'linear-gradient(90deg, rgba(163,86,0,1) 0%, rgba(226,112,11,1) 48%, rgba(51,17,0,1) 100%)',
                       }}
                     >
                       <IconButton
@@ -89,7 +92,7 @@ function WorkoutCard() {
                         }}
                       >
                         <ClearIcon
-                          color="error"
+                          color="primary"
                           style={{ fontSize: '1.5rem' }}
                         />
                       </IconButton>
@@ -114,6 +117,7 @@ function WorkoutCard() {
                               marginTop: '0.5rem',
                               display: 'flex',
                               justifyContent: 'flex-start',
+                              whiteSpace: 'nowrap',
                             }}
                           >
                             {exerciseInfo(workout.exercises)}

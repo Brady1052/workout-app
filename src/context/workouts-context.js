@@ -83,8 +83,16 @@ export const WorkoutsContextProvider = (props) => {
   };
   //   Handles submit and closing events for the exercise modal
   const [exerciseOpen, setExerciseOpen] = useState(false);
-  const handleExerciseOpen = () =>
-    !exerciseOpen ? setExerciseOpen(true) : setExerciseOpen(false);
+  const handleExerciseOpen = (e) => {
+    if (
+      e.target.className ===
+        'MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit css-7ggi3t-MuiButtonBase-root-MuiButton-root' ||
+      e.target.className ===
+        'MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1bpzuq5-MuiButtonBase-root-MuiButton-root'
+    ) {
+      !exerciseOpen ? setExerciseOpen(true) : setExerciseOpen(false);
+    }
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -97,7 +105,7 @@ export const WorkoutsContextProvider = (props) => {
       sets: numSets,
       reps: numReps,
     };
-    handleExerciseOpen();
+    handleExerciseOpen(e);
     saveExerciseDataHandler(exerciseData);
     setExerciseName('');
     setExerciseType('');
@@ -106,8 +114,8 @@ export const WorkoutsContextProvider = (props) => {
     setNumReps('');
   };
 
-  const closeModal = () => {
-    handleExerciseOpen();
+  const closeModal = (e) => {
+    handleExerciseOpen(e);
     setExerciseName('');
     setExerciseType('');
     setExerciseWeight('');
@@ -184,8 +192,19 @@ export const WorkoutsContextProvider = (props) => {
   };
 
   const [workoutOpen, setWorkoutOpen] = useState(false);
-  const handleWorkoutOpen = () =>
-    !workoutOpen ? setWorkoutOpen(true) : setWorkoutOpen(false);
+  const handleWorkoutOpen = (event) => {
+    console.log(event.target.className);
+    if (
+      event.target.className ===
+        'MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit css-7ggi3t-MuiButtonBase-root-MuiButton-root' ||
+      event.target.className ===
+        'MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1bpzuq5-MuiButtonBase-root-MuiButton-root' ||
+      event.target.className ===
+        'MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedBonus MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedBonus MuiButton-sizeMedium MuiButton-containedSizeMedium css-qi969j-MuiButtonBase-root-MuiButton-root'
+    ) {
+      !workoutOpen ? setWorkoutOpen(true) : setWorkoutOpen(false);
+    } else console.log('yo');
+  };
 
   //Save form to local storage
   //******** Handles local storage, and appending to local storage ***********//

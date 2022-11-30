@@ -9,7 +9,7 @@ function ViewWorkouts() {
         variant="text"
         color="primary"
         size="large"
-        sx={{ fontWeight: '1000' }}
+        sx={{ fontWeight: '600' }}
         style={{ color: 'white' }}
       >
         Completed Workouts

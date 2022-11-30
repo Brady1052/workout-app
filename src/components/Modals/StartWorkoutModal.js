@@ -98,9 +98,6 @@ function StartWorkoutModal(props) {
             index={i}
             info={info}
             activeExercise={activeExercise}
-            style={{
-              display: activeExercise[i] ? 'inherit' : 'none',
-            }}
           />
         );
       }
@@ -119,6 +116,7 @@ function StartWorkoutModal(props) {
               display: !activeExercise[i] ? 'none' : 'flex',
               backgroundColor: 'black',
               fontSize: '1rem',
+              marginTop: '1rem',
             }}
             size="large"
             endIcon={<WhatshotIcon color="warning" />}
@@ -133,6 +131,7 @@ function StartWorkoutModal(props) {
               display: activeExercise[i] ? 'none' : 'flex',
               fontSize: '1rem',
               backgroundColor: 'black',
+              marginTop: '1rem',
             }}
             onClick={() => {
               activeExerciseHandler(i);
@@ -165,14 +164,13 @@ function StartWorkoutModal(props) {
     <Button
       variant="contained"
       style={{
-        maxWidth: '100%',
         minWidth: '100%',
         fontWeight: '600',
         color: 'white',
         border: '1px solid black',
       }}
       onClick={localStartWorkout}
-      color="success"
+      color="primary"
     >
       Click Here for Gainz
       <Modal open={startWorkout}>
@@ -181,7 +179,8 @@ function StartWorkoutModal(props) {
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            backgroundColor: 'black',
+            backgroundImage:
+              'linear-gradient(90deg, rgba(255,117,0,1) 0%, rgba(198,102,17,1) 41%, rgba(51,17,0,1) 100%)',
             height: { xs: '99%', lg: 'auto' },
             maxWidth: { xs: '99%', lg: 'auto' },
             overflowX: 'hidden',
@@ -220,7 +219,8 @@ function StartWorkoutModal(props) {
                           borderRadius: '25px',
                           marginTop: { xs: '3rem', lg: '3rem' },
                           marginLeft: { xs: '25%', lg: '0' },
-                          backgroundColor: '#0057C3',
+                          backgroundImage:
+                            'linear-gradient(90deg, rgba(255,117,0,1) 0%, rgba(198,102,17,1) 41%, rgba(51,17,0,1) 100%)',
                           border: '1px solid white',
                           color: 'white',
                         }}
@@ -228,7 +228,7 @@ function StartWorkoutModal(props) {
                         <div className="card-body">
                           <div className="text-center">
                             <ul
-                              className={`list-group list-group-flush`}
+                              className={`list-group`}
                               style={{
                                 marginTop: '0.5rem',
                                 display: 'flex',
@@ -241,7 +241,7 @@ function StartWorkoutModal(props) {
                         </div>
                         <Button
                           variant="contained"
-                          color="error"
+                          color="primary"
                           sx={{
                             width: 'inherit',
                             position: 'absolute',
@@ -250,7 +250,7 @@ function StartWorkoutModal(props) {
                           }}
                           onClick={handleEndWorkout}
                         >
-                          End Workout
+                          Complete Workout
                         </Button>
                       </Box>
                     </div>

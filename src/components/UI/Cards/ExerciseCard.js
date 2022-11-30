@@ -35,7 +35,8 @@ function ExerciseCard() {
                           width: '18rem',
                           borderRadius: '25px',
                           marginTop: '1',
-                          backgroundColor: '#0057C3',
+                          backgroundImage:
+                            'linear-gradient(90deg, rgba(163,86,0,1) 0%, rgba(226,112,11,1) 48%, rgba(51,17,0,1) 100%)',
                           border: '1px solid white',
                           color: 'white',
                           alignSelf: 'center',
@@ -43,13 +44,18 @@ function ExerciseCard() {
                       >
                         <div className="card-body">
                           <div className="text-center">
-                            <h3 className="card-title">{exercise.name}</h3>
+                            <h3
+                              className="card-title"
+                              style={{ fontWeight: '600' }}
+                            >
+                              {exercise.name}
+                            </h3>
                           </div>
                           <ul className={`list-group list-group-flush`}>
                             <li
                               className="list-group-item"
                               style={{
-                                backgroundColor: '#0057C3',
+                                backgroundColor: 'transparent',
                                 color: 'white',
                               }}
                             >
@@ -58,7 +64,7 @@ function ExerciseCard() {
                             <li
                               className="list-group-item"
                               style={{
-                                backgroundColor: '#0057C3',
+                                backgroundColor: 'transparent',
                                 color: 'white',
                               }}
                             >
@@ -67,7 +73,7 @@ function ExerciseCard() {
                             <li
                               className="list-group-item"
                               style={{
-                                backgroundColor: '#0057C3',
+                                backgroundColor: 'transparent',
                                 color: 'white',
                               }}
                             >
@@ -97,7 +103,7 @@ function ExerciseCard() {
                                 return alert('Error');
                               }}
                               variant="contained"
-                              color="error"
+                              color="primary"
                             >
                               Delete
                             </Button>

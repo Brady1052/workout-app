@@ -7,8 +7,14 @@ function Exercises() {
     <>
       <Typography
         variant="h1"
-        style={{ color: 'white', textAlign: 'center' }}
-        sx={{ fontSize: { xs: '5rem' } }}
+        style={{ textAlign: 'center', fontWeight: '600' }}
+        sx={{
+          fontSize: { xs: '5rem' },
+          backgroundImage:
+            ' linear-gradient(90deg, rgba(255,117,0,1) 0%, rgba(198,102,17,1) 41%, rgba(51,17,0,1) 100%)',
+          backgroundClip: 'text',
+          color: 'transparent',
+        }}
       >
         Exercises
       </Typography>

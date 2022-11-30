@@ -8,7 +8,7 @@ function StartWorkout() {
         variant="text"
         color="primary"
         size="large"
-        sx={{ fontWeight: '1000', textDecoration: 'none' }}
+        sx={{ fontWeight: '600', textDecoration: 'none' }}
         style={{ color: 'white', textDecoration: 'none', textAlign: 'center' }}
       >
         Start Workout

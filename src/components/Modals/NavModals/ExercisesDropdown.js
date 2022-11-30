@@ -41,7 +41,7 @@ function ExercisesDropdown() {
                 e.target.style.textDecoration = 'none';
               }}
               style={{
-                backgroundColor: 'rgba(6,147,227,1)',
+                backgroundColor: '#e2700b',
 
                 color: 'white',
                 paddingTop: '0.5rem',
@@ -49,7 +49,7 @@ function ExercisesDropdown() {
               }}
               sx={{
                 marginBottom: '0',
-                boxShadow: '0 0 0 1.5rem rgba(6,147,227,1)',
+                boxShadow: '',
               }}
             >
               {exercise.name}
@@ -68,8 +68,7 @@ function ExercisesDropdown() {
                 e.target.style.textDecoration = 'none';
               }}
               style={{
-                backgroundColor: 'rgba(6,147,227,1)',
-
+                backgroundColor: '#e2700b',
                 color: 'white',
                 paddingTop: '0.5rem',
                 fontWeight: '600',
@@ -95,7 +94,7 @@ function ExercisesDropdown() {
                 e.target.style.textDecoration = 'none';
               }}
               style={{
-                backgroundColor: 'rgba(6,147,227,1)',
+                backgroundColor: '#e2700b',
 
                 color: 'white',
                 paddingTop: '0',
@@ -104,7 +103,7 @@ function ExercisesDropdown() {
               sx={{
                 position: 'relative',
                 bottom: '0',
-                boxShadow: '0 0 0 1.5rem rgba(6,147,227,1)',
+                boxShadow: '0 0 0 1.5rem #e2700b)',
               }}
             >
               {exercise.name}
@@ -122,7 +121,7 @@ function ExercisesDropdown() {
                 e.target.style.textDecoration = 'none';
               }}
               style={{
-                backgroundColor: 'rgba(6,147,227,1)',
+                backgroundColor: '#e2700b',
 
                 color: 'white',
                 paddingTop: '0.5rem',
@@ -148,14 +147,13 @@ function ExercisesDropdown() {
                 e.target.style.textDecoration = 'none';
               }}
               style={{
-                backgroundColor: 'rgba(6,147,227,1)',
-
+                backgroundColor: '#e2700b',
                 color: 'white',
                 paddingTop: '0.5rem',
                 fontWeight: '600',
               }}
               sx={{
-                boxShadow: '0 0 0 1rem rgba(6,147,227,1)',
+                boxShadow: '0 0 0 1rem #e2700b',
               }}
             >
               {exercise.name}
@@ -173,12 +171,12 @@ function ExercisesDropdown() {
                 e.target.style.textDecoration = 'none';
               }}
               style={{
-                backgroundColor: 'rgba(6,147,227,1)',
+                backgroundColor: '#e2700b',
                 marginBottom: '0.5rem',
                 color: 'white',
                 paddingTop: '0.5rem',
                 fontWeight: '600',
-                boxShadow: '0 0 0 0.5rem rgba(6,147,227,1)',
+                boxShadow: '0 0 0 0.5rem #e2700b',
               }}
               sx={{
                 position: 'relative',

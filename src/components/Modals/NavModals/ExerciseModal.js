@@ -3,8 +3,7 @@ import WorkoutsContext from '../../../context/workouts-context';
 import Button from '@mui/material/Button';
 import { TextField, Box, Typography, Modal, MenuItem } from '@mui/material';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
-import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
-
+import { Save } from '@mui/icons-material';
 function ExerciseModal() {
   const ctx = useContext(WorkoutsContext);
   const style = {
@@ -27,17 +26,18 @@ function ExerciseModal() {
         variant="text"
         color="inherit"
         onClick={ctx.handleExerciseOpen}
-        sx={{ fontWeight: '1000' }}
+        sx={{ fontWeight: '600' }}
       >
         Create Exercise
-        <Modal open={ctx.exerciseOpen} onClose={ctx.handleExerciseClose}>
+        <Modal open={ctx.exerciseOpen}>
           <Box
             sx={style}
             style={{
               display: 'flex',
               flexDirection: 'column',
               gap: '2rem',
-              backgroundColor: '#0057C3',
+              backgroundImage:
+                'linear-gradient(90deg, rgba(255,117,0,1) 0%, rgba(198,102,17,1) 41%, rgba(51,17,0,1) 100%)',
               color: 'white',
               width: { xs: '3px' },
               marginLeft: { xs: '2rem' },
@@ -121,7 +121,8 @@ function ExerciseModal() {
                   }}
                   style={{
                     position: 'relative',
-                    backgroundColor: 'rgba(6,147,227,1)',
+                    backgroundImage:
+                      'linear-gradient(90deg, rgba(255,117,0,1) 0%, rgba(198,102,17,1) 41%, rgba(51,17,0,1) 100%)',
                     top: '-0.5rem',
                     color: 'white',
                     paddingTop: '0.5rem',
@@ -141,7 +142,8 @@ function ExerciseModal() {
                   style={{
                     color: 'white',
                     marginTop: '-0.5rem',
-                    backgroundColor: 'rgba(6,147,227,1)',
+                    backgroundImage:
+                      'linear-gradient(90deg, rgba(255,117,0,1) 0%, rgba(198,102,17,1) 41%, rgba(51,17,0,1) 100%)',
                     fontWeight: '600',
                   }}
                 >
@@ -157,7 +159,8 @@ function ExerciseModal() {
                   value="Yoga"
                   style={{
                     color: 'white',
-                    backgroundColor: 'rgba(6,147,227,1)',
+                    backgroundImage:
+                      'linear-gradient(90deg, rgba(255,117,0,1) 0%, rgba(198,102,17,1) 41%, rgba(51,17,0,1) 100%)',
                     fontWeight: '600',
                   }}
                 >
@@ -173,7 +176,8 @@ function ExerciseModal() {
                   value="Stretching"
                   style={{
                     color: 'white',
-                    backgroundColor: 'rgba(6,147,227,1)',
+                    backgroundImage:
+                      'linear-gradient(90deg, rgba(255,117,0,1) 0%, rgba(198,102,17,1) 41%, rgba(51,17,0,1) 100%)',
                     fontWeight: '600',
                   }}
                 >
@@ -189,7 +193,8 @@ function ExerciseModal() {
                   value="Other"
                   style={{
                     position: 'relative',
-                    backgroundColor: 'rgba(6,147,227,1)',
+                    backgroundImage:
+                      'linear-gradient(90deg, rgba(255,117,0,1) 0%, rgba(198,102,17,1) 41%, rgba(51,17,0,1) 100%)',
                     bottom: '-0.5rem',
                     color: 'white',
                     marginTop: '-0.5rem',
@@ -279,20 +284,29 @@ function ExerciseModal() {
               <Button
                 variant="contained"
                 color="bonus"
-                style={{ fontWeight: '600', width: '50%' }}
-                endIcon={<FitnessCenterIcon sx={{ color: 'white' }} />}
+                style={{
+                  fontWeight: '600',
+                  width: '50%',
+                  padding: '0.7rem',
+                  whiteSpace: 'nowrap',
+                }}
                 onClick={ctx.submitHandler}
+                endIcon={<Save color="primary" />}
               >
                 Save Exercise
               </Button>
               <Button
                 variant="contained"
-                color="error"
+                color="primary"
                 style={{ fontWeight: '600', width: '50%' }}
-                endIcon={<DeleteForeverRoundedIcon sx={{ color: 'white' }} />}
                 onClick={ctx.closeModal}
+                endIcon={
+                  <DeleteForeverRoundedIcon
+                    sx={{ color: 'red', fontSize: '5rem' }}
+                  />
+                }
               >
-                Cancel
+                Delete
               </Button>
             </Box>
           </Box>
