@@ -1,21 +1,13 @@
 {
   "files": {
-    "main.css": "/workout-app/static/css/main.460c6032.css",
-    "main.js": "/workout-app/static/js/main.67f52863.js",
-    "static/media/roboto-all-400-normal.woff": "/workout-app/static/media/roboto-all-400-normal.b5a0a0df312d3423493b.woff",
-    "static/media/roboto-latin-400-normal.woff2": "/workout-app/static/media/roboto-latin-400-normal.176f8f5bd5f02b3abfcf.woff2",
-    "static/media/roboto-cyrillic-ext-400-normal.woff2": "/workout-app/static/media/roboto-cyrillic-ext-400-normal.dd55ea0a2e90d5d86e15.woff2",
-    "static/media/roboto-latin-ext-400-normal.woff2": "/workout-app/static/media/roboto-latin-ext-400-normal.dcc07bcfcd475f34f20b.woff2",
-    "static/media/roboto-cyrillic-400-normal.woff2": "/workout-app/static/media/roboto-cyrillic-400-normal.3605d18d8a4ce5bd39c3.woff2",
-    "static/media/roboto-greek-400-normal.woff2": "/workout-app/static/media/roboto-greek-400-normal.352cc77aaed5208ce13c.woff2",
-    "static/media/roboto-vietnamese-400-normal.woff2": "/workout-app/static/media/roboto-vietnamese-400-normal.52cebac009baf5592e7d.woff2",
-    "static/media/roboto-greek-ext-400-normal.woff2": "/workout-app/static/media/roboto-greek-ext-400-normal.bc7ace6e50c7d9d4d959.woff2",
+    "main.css": "/workout-app/static/css/main.cd2e7533.css",
+    "main.js": "/workout-app/static/js/main.8dbd4a91.js",
     "index.html": "/workout-app/index.html",
-    "main.460c6032.css.map": "/workout-app/static/css/main.460c6032.css.map",
-    "main.67f52863.js.map": "/workout-app/static/js/main.67f52863.js.map"
+    "main.cd2e7533.css.map": "/workout-app/static/css/main.cd2e7533.css.map",
+    "main.8dbd4a91.js.map": "/workout-app/static/js/main.8dbd4a91.js.map"
   },
   "entrypoints": [
-    "static/css/main.460c6032.css",
-    "static/js/main.67f52863.js"
+    "static/css/main.cd2e7533.css",
+    "static/js/main.8dbd4a91.js"
   ]
 }
