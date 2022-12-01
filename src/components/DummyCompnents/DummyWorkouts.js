@@ -1,11 +1,14 @@
 import React, { useContext, useState, useEffect } from 'react';
-import Button from '@mui/material/Button';
+import Logo from '../../media/images/logo.png';
+
 import {
+  Button,
   IconButton,
   Typography,
   Box,
   useTheme,
   useMediaQuery,
+  Container,
 } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 import AddIcon from '@mui/icons-material/Add';
@@ -26,31 +29,53 @@ function DummyWorkouts() {
 
   return (
     <React.Fragment>
-      <Typography
-        variant="h1"
+      <Container
         style={{
+          display: 'flex',
+          justifyContent: 'space-between',
           marginTop: '2rem',
-          fontWeight: '600',
-        }}
-        sx={{
-          textAlign: { xs: 'left', lg: 'center' },
-          fontSize: { xs: '2.5rem', lg: '5rem' },
-          marginLeft: { xs: '1rem' },
-          marginBottom: { xs: '2rem', lg: '0' },
-          backgroundImage:
-            ' linear-gradient(90deg, rgba(255,117,0,1) 0%, rgba(198,102,17,1) 41%, rgba(51,17,0,1) 100%);',
-          backgroundClip: 'text',
-          color: 'transparent',
         }}
       >
-        House of Gainz
-      </Typography>
+        <Typography
+          variant="h1"
+          style={{
+            marginTop: '0.2rem',
+            fontWeight: '600',
+          }}
+          sx={{
+            textAlign: { xs: 'left', lg: 'center' },
+            fontSize: { xs: '2.5rem', lg: '5rem' },
+            marginLeft: { xs: '-0.3rem' },
+            marginBottom: { xs: '2rem', lg: '0' },
+            backgroundImage:
+              ' linear-gradient(90deg, rgba(255,117,0,1) 0%, rgba(198,102,17,1) 41%, rgba(51,17,0,1) 100%);',
+            backgroundClip: 'text',
+            color: 'transparent',
+            whiteSpace: 'nowrap',
+          }}
+        >
+          House of Gainz
+        </Typography>
+        <Box style={{ color: 'white' }}>
+          <img
+            src={Logo}
+            alt="All Natural"
+            style={{
+              borderRadius: '3rem',
+              maxWidth: '19.3vw',
+              marginLeft: '1rem',
+              marginTop: '-1.4rem',
+            }}
+          />
+        </Box>
+      </Container>
       <Box
         sx={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
           flexDirection: { xs: 'row-reverse', lg: 'row' },
+          marginTop: '-1.5rem',
         }}
       >
         <Button
@@ -98,7 +123,7 @@ function DummyWorkouts() {
       </div>
       <div
         style={{
-          marginTop: hasWorkouts ? '-5rem' : '0rem',
+          marginTop: hasWorkouts ? '-4rem' : '0rem',
           display: screenSmall ? 'block' : 'none',
         }}
       >
