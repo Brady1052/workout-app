@@ -84,11 +84,14 @@ export const WorkoutsContextProvider = (props) => {
   //   Handles submit and closing events for the exercise modal
   const [exerciseOpen, setExerciseOpen] = useState(false);
   const handleExerciseOpen = (e) => {
+    console.log(e.target.className);
     if (
       e.target.className ===
         'MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit css-7ggi3t-MuiButtonBase-root-MuiButton-root' ||
       e.target.className ===
-        'MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1bpzuq5-MuiButtonBase-root-MuiButton-root'
+        'MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1bpzuq5-MuiButtonBase-root-MuiButton-root' ||
+      e.target.className ===
+        'MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedBonus MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedBonus MuiButton-sizeMedium MuiButton-containedSizeMedium css-qi969j-MuiButtonBase-root-MuiButton-root'
     ) {
       !exerciseOpen ? setExerciseOpen(true) : setExerciseOpen(false);
     }

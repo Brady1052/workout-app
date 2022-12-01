@@ -84,9 +84,7 @@ function Exercise(props) {
             style={{ color: 'white', fontWeight: '600' }}
             sx={{
               minWidth: '1.25rem',
-              pointerEvents: !props.activeExercise[props.index]
-                ? 'none'
-                : 'auto',
+              pointerEvents: !props.activeExercise[props.index],
             }}
             onChange={(e) => {
               completedSetsHandler(e);
