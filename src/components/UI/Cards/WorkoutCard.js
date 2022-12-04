@@ -56,7 +56,7 @@ function WorkoutCard() {
                     <Box
                       className="card"
                       sx={{
-                        maxWidth: 'fit-content',
+                        maxWidth: '19rem',
                         borderRadius: '25px',
                         marginTop: { xs: '3rem', lg: '8rem' },
                         marginLeft: { xs: '1rem', lg: '0' },
@@ -117,7 +117,7 @@ function WorkoutCard() {
                               marginTop: '0.5rem',
                               display: 'flex',
                               justifyContent: 'flex-start',
-                              whiteSpace: 'nowrap',
+                              // whiteSpace: 'nowrap',
                             }}
                           >
                             {exerciseInfo(workout.exercises)}

@@ -42,6 +42,8 @@ function StartWorkoutModal(props) {
         },
       ];
     });
+
+    console.log(completedExercises);
   };
   const date = new Date().toLocaleDateString() + '';
   const completedWorkoutHandler = () => {
@@ -173,7 +175,7 @@ function StartWorkoutModal(props) {
       color="primary"
     >
       Click Here for Gainz
-      <Modal open={startWorkout}>
+      <Modal open={startWorkout} sx={{ overflowY: 'scroll' }}>
         <Box
           style={style}
           sx={{
@@ -181,9 +183,10 @@ function StartWorkoutModal(props) {
             flexDirection: 'column',
             backgroundImage:
               'linear-gradient(90deg, rgba(255,117,0,1) 0%, rgba(198,102,17,1) 41%, rgba(51,17,0,1) 100%)',
-            height: { xs: '99%', lg: 'auto' },
-            maxWidth: { xs: '99%', lg: 'auto' },
+            height: { xs: '99%', lg: '70%' },
+            maxWidth: { xs: '99%', lg: '25%' },
             overflowX: 'hidden',
+            overflowY: 'scroll',
           }}
         >
           {/* Input Card */}
@@ -201,9 +204,10 @@ function StartWorkoutModal(props) {
                         style={{ color: 'white', whiteSpace: 'nowrap' }}
                         sx={{
                           position: 'relative',
-                          top: { xs: '5rem', lg: '-4rem' },
+                          top: { xs: '5rem', lg: '-3.5rem' },
+                          left: { lg: '176%' },
                           fontWeight: '600',
-                          marginTop: { xs: '-4rem', lg: '1rem' },
+                          marginTop: { xs: '-4rem', lg: '4rem' },
                           textAlign: 'center',
                         }}
                       >
@@ -213,7 +217,7 @@ function StartWorkoutModal(props) {
                         className="card"
                         sx={{
                           position: 'relative',
-                          left: { xs: '-60px', lg: '18px' },
+                          left: { xs: '-60px', lg: '0px' },
                           bottom: { xs: '-50px', lg: '93px' },
                           width: '18rem',
                           borderRadius: '25px',

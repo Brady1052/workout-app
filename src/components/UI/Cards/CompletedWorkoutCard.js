@@ -54,7 +54,7 @@ function CompletedWorkoutCard() {
                     <Box
                       className="card"
                       sx={{
-                        width: 'min-content',
+                        maxWidth: '19rem',
                         borderRadius: '25px',
                         marginTop: { xs: '1rem', lg: '8rem' },
                         marginLeft: { xs: '1rem', lg: '0' },

@@ -56,7 +56,7 @@ function DummyWorkouts() {
         >
           House of Gainz
         </Typography>
-        <Box style={{ color: 'white' }}>
+        {/* <Box style={{ color: 'white' }}>
           <img
             src={Logo}
             alt="All Natural"
@@ -67,7 +67,7 @@ function DummyWorkouts() {
               marginTop: '-1.4rem',
             }}
           />
-        </Box>
+        </Box> */}
       </Container>
       <Box
         sx={{
