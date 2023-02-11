@@ -206,7 +206,7 @@ export const WorkoutsContextProvider = (props) => {
         'MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedBonus MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedBonus MuiButton-sizeMedium MuiButton-containedSizeMedium css-qi969j-MuiButtonBase-root-MuiButton-root'
     ) {
       !workoutOpen ? setWorkoutOpen(true) : setWorkoutOpen(false);
-    } else console.log('yo');
+    }
   };
 
   //Save form to local storage

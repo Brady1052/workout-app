@@ -12,8 +12,9 @@ body.modal-open div.modal-backdrop {
 }
 
 .exercise-modal-container {
-  background-color: aqua;
+  background-color: rgb(238, 129, 5);
 }
+
 
 .nav-item {
   text-decoration: none;

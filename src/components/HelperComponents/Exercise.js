@@ -33,9 +33,11 @@ function Exercise(props) {
   //Functions for setting state when user completes an exercise (ie sets,weight,reps)
   const completedSetsHandler = (e) => {
     ctx.completedSets.current = e.target.value;
+    console.log(e.target.value);
   };
   const completedRepsHandler = (e) => {
     ctx.completedReps.current = e.target.value;
+    console.log(ctx.completedReps.current.value);
   };
 
   const completedWeightHandler = (e) => {
@@ -45,7 +47,7 @@ function Exercise(props) {
   return (
     <React.Fragment key={Math.random().toString()}>
       <Typography
-        variant="h4"
+        variant='h4'
         style={{
           display: loopIndex ? 'block' : 'none',
           marginTop: mapIndex ? '-1rem' : '1rem',
@@ -69,7 +71,7 @@ function Exercise(props) {
         }}
       >
         <li
-          className="list-group-item"
+          className='list-group-item'
           style={{
             backgroundColor: 'transparent',
             color: 'white',
@@ -80,7 +82,7 @@ function Exercise(props) {
         >
           <Input
             value={props.loopIndex + 1}
-            color="white"
+            color='white'
             style={{ color: 'white', fontWeight: '600' }}
             sx={{
               minWidth: '1.25rem',
@@ -95,7 +97,7 @@ function Exercise(props) {
           </span>
           <Input
             placeholder={props.exercise.reps}
-            color="white"
+            color='white'
             style={{
               color: 'white',
               fontWeight: '600',
@@ -115,7 +117,7 @@ function Exercise(props) {
           </span>
           <Input
             placeholder={props.exercise.weight}
-            color="white"
+            color='white'
             style={{ color: 'white', fontWeight: '600' }}
             sx={{
               color: 'white',

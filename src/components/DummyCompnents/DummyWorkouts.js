@@ -37,7 +37,7 @@ function DummyWorkouts() {
         }}
       >
         <Typography
-          variant="h1"
+          variant='h1'
           style={{
             marginTop: '0.2rem',
             fontWeight: '600',
@@ -46,7 +46,7 @@ function DummyWorkouts() {
             textAlign: { xs: 'left', lg: 'center' },
             fontSize: { xs: '2.5rem', lg: '5rem' },
             marginLeft: { xs: '-0.3rem' },
-            marginBottom: { xs: '2rem', lg: '0' },
+            marginBottom: { xs: '2rem', lg: '1.5rem' },
             backgroundImage:
               ' linear-gradient(90deg, rgba(255,117,0,1) 0%, rgba(198,102,17,1) 41%, rgba(51,17,0,1) 100%);',
             backgroundClip: 'text',
@@ -56,18 +56,6 @@ function DummyWorkouts() {
         >
           House of Gainz
         </Typography>
-        {/* <Box style={{ color: 'white' }}>
-          <img
-            src={Logo}
-            alt="All Natural"
-            style={{
-              borderRadius: '3rem',
-              maxWidth: '19.3vw',
-              marginLeft: '1rem',
-              marginTop: '-1.4rem',
-            }}
-          />
-        </Box> */}
       </Container>
       <Box
         sx={{
@@ -79,8 +67,8 @@ function DummyWorkouts() {
         }}
       >
         <Button
-          variant="contained"
-          color="bonus"
+          variant='contained'
+          color='bonus'
           startIcon={<AddIcon />}
           style={{ color: 'white' }}
           sx={{
@@ -88,7 +76,7 @@ function DummyWorkouts() {
             display: { lg: 'none' },
             marginBottom: '1rem',
           }}
-          size="small"
+          size='small'
           onClick={() => {
             ctx.setWorkoutOpen(true);
           }}
@@ -99,7 +87,7 @@ function DummyWorkouts() {
         <WorkoutModal />
 
         <Typography
-          variant="h6"
+          variant='h6'
           style={{ color: 'white', fontWeight: '600' }}
           sx={{
             marginTop: { xs: '1.5rem', lg: '0' },
@@ -132,7 +120,7 @@ function DummyWorkouts() {
         </Box>
       </div>
       <Typography
-        variant="h6"
+        variant='h6'
         style={{ color: 'white', fontWeight: '600' }}
         sx={{
           marginTop: { xs: '1.5rem', lg: '2rem' },
@@ -151,13 +139,13 @@ function DummyWorkouts() {
           marginLeft: { lg: '6rem', xs: '1.6rem' },
         }}
       >
-        <div className="container">
-          <div className="row">
+        <div className='container'>
+          <div className='row'>
             <div className={`col-xs-12  col-sm-12 col-md-6 col-lg-4 col-xl-4`}>
-              <div className="col">
-                <div className="col ">
+              <div className='col'>
+                <div className='col '>
                   <Box
-                    className="card"
+                    className='card'
                     sx={{
                       width: 'min-content',
                       borderRadius: '25px',
@@ -178,16 +166,16 @@ function DummyWorkouts() {
                       }}
                     >
                       <ClearIcon
-                        color="primary"
+                        color='primary'
                         style={{ fontSize: '1.5rem' }}
                       />
                     </IconButton>
 
-                    <div className="card-body">
-                      <div className="text-center">
+                    <div className='card-body'>
+                      <div className='text-center'>
                         <Typography
-                          className="card-title"
-                          variant="h3"
+                          className='card-title'
+                          variant='h3'
                           style={{
                             textAlign: 'center',
                             color: 'white',
@@ -205,7 +193,7 @@ function DummyWorkouts() {
                           }}
                         >
                           <li
-                            className="list-group-item"
+                            className='list-group-item'
                             style={{
                               backgroundColor: 'transparent',
                               color: 'white',
@@ -230,7 +218,7 @@ function DummyWorkouts() {
                             </span>
                           </li>
                           <li
-                            className="list-group-item"
+                            className='list-group-item'
                             style={{
                               backgroundColor: 'transparent',
                               color: 'white',
@@ -251,7 +239,7 @@ function DummyWorkouts() {
                             </span>
                           </li>
                           <li
-                            className="list-group-item"
+                            className='list-group-item'
                             style={{
                               backgroundColor: 'transparent',
                               color: 'white',
@@ -274,7 +262,7 @@ function DummyWorkouts() {
                         </ul>
                       </div>
                       <Button
-                        variant="contained"
+                        variant='contained'
                         style={{
                           maxWidth: '100%',
                           minWidth: '100%',
@@ -282,7 +270,7 @@ function DummyWorkouts() {
                           color: 'white',
                           border: '1px solid black',
                         }}
-                        color="primary"
+                        color='primary'
                       >
                         Start Workout
                       </Button>
@@ -293,13 +281,13 @@ function DummyWorkouts() {
             </div>
           </div>
         </div>
-        <div className="container">
-          <div className="row">
+        <div className='container'>
+          <div className='row'>
             <div className={`col-xs-12  col-sm-12 col-md-6 col-lg-4 col-xl-4`}>
-              <div className="col">
-                <div className="col ">
+              <div className='col'>
+                <div className='col '>
                   <Box
-                    className="card"
+                    className='card'
                     sx={{
                       width: 'min-content',
                       borderRadius: '25px',
@@ -320,16 +308,16 @@ function DummyWorkouts() {
                       }}
                     >
                       <ClearIcon
-                        color="primary"
+                        color='primary'
                         style={{ fontSize: '1.5rem' }}
                       />
                     </IconButton>
 
-                    <div className="card-body">
-                      <div className="text-center">
+                    <div className='card-body'>
+                      <div className='text-center'>
                         <Typography
-                          className="card-title"
-                          variant="h3"
+                          className='card-title'
+                          variant='h3'
                           style={{
                             textAlign: 'center',
                             color: 'white',
@@ -348,7 +336,7 @@ function DummyWorkouts() {
                           }}
                         >
                           <li
-                            className="list-group-item"
+                            className='list-group-item'
                             style={{
                               backgroundColor: 'transparent',
                               color: 'white',
@@ -374,7 +362,7 @@ function DummyWorkouts() {
                             </span>
                           </li>
                           <li
-                            className="list-group-item"
+                            className='list-group-item'
                             style={{
                               backgroundColor: 'transparent',
                               color: 'white',
@@ -400,7 +388,7 @@ function DummyWorkouts() {
                             </span>
                           </li>
                           <li
-                            className="list-group-item"
+                            className='list-group-item'
                             style={{
                               backgroundColor: 'transparent',
                               color: 'white',
@@ -428,7 +416,7 @@ function DummyWorkouts() {
                         </ul>
                       </div>
                       <Button
-                        variant="contained"
+                        variant='contained'
                         style={{
                           maxWidth: '100%',
                           minWidth: '100%',
@@ -436,7 +424,7 @@ function DummyWorkouts() {
                           color: 'white',
                           border: '1px solid black',
                         }}
-                        color="primary"
+                        color='primary'
                       >
                         Start Workout
                       </Button>
@@ -447,13 +435,13 @@ function DummyWorkouts() {
             </div>
           </div>
         </div>
-        <div className="container">
-          <div className="row">
+        <div className='container'>
+          <div className='row'>
             <div className={`col-xs-12  col-sm-12 col-md-6 col-lg-4 col-xl-4`}>
-              <div className="col">
-                <div className="col ">
+              <div className='col'>
+                <div className='col '>
                   <Box
-                    className="card"
+                    className='card'
                     sx={{
                       width: '18rem',
                       borderRadius: '25px',
@@ -474,16 +462,16 @@ function DummyWorkouts() {
                       }}
                     >
                       <ClearIcon
-                        color="primary"
+                        color='primary'
                         style={{ fontSize: '1.5rem' }}
                       />
                     </IconButton>
 
-                    <div className="card-body">
-                      <div className="text-center">
+                    <div className='card-body'>
+                      <div className='text-center'>
                         <Typography
-                          className="card-title"
-                          variant="h3"
+                          className='card-title'
+                          variant='h3'
                           style={{
                             textAlign: 'center',
                             color: 'white',
@@ -502,7 +490,7 @@ function DummyWorkouts() {
                           }}
                         >
                           <li
-                            className="list-group-item"
+                            className='list-group-item'
                             style={{
                               backgroundColor: 'transparent',
                               color: 'white',
@@ -527,7 +515,7 @@ function DummyWorkouts() {
                             </span>
                           </li>
                           <li
-                            className="list-group-item"
+                            className='list-group-item'
                             style={{
                               backgroundColor: 'transparent',
                               color: 'white',
@@ -552,7 +540,7 @@ function DummyWorkouts() {
                             </span>
                           </li>
                           <li
-                            className="list-group-item"
+                            className='list-group-item'
                             style={{
                               backgroundColor: 'transparent',
                               color: 'white',
@@ -579,7 +567,7 @@ function DummyWorkouts() {
                         </ul>
                       </div>
                       <Button
-                        variant="contained"
+                        variant='contained'
                         style={{
                           maxWidth: '100%',
                           minWidth: '100%',
@@ -587,7 +575,7 @@ function DummyWorkouts() {
                           color: 'white',
                           border: '1px solid black',
                         }}
-                        color="primary"
+                        color='primary'
                       >
                         Start Workout
                       </Button>

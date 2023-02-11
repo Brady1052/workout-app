@@ -8,8 +8,8 @@ function ExerciseCard() {
 
   return (
     <>
-      <div className="container">
-        <div className="row">
+      <div className='container'>
+        <div className='row'>
           {ctx.exercises.map((exercise) => {
             exercise['cardID'] = exercise.id;
             return (
@@ -27,10 +27,10 @@ function ExerciseCard() {
                     marginRight: { xs: '-1rem', lg: '0rem' },
                   }}
                 >
-                  <div className="col">
-                    <div className="col ">
+                  <div className='col'>
+                    <div className='col '>
                       <Box
-                        className="card"
+                        className='card'
                         style={{
                           width: '18rem',
                           borderRadius: '25px',
@@ -42,10 +42,10 @@ function ExerciseCard() {
                           alignSelf: 'center',
                         }}
                       >
-                        <div className="card-body">
-                          <div className="text-center">
+                        <div className='card-body'>
+                          <div className='text-center'>
                             <h3
-                              className="card-title"
+                              className='card-title'
                               style={{ fontWeight: '600' }}
                             >
                               {exercise.name}
@@ -53,7 +53,7 @@ function ExerciseCard() {
                           </div>
                           <ul className={`list-group list-group-flush`}>
                             <li
-                              className="list-group-item"
+                              className='list-group-item'
                               style={{
                                 backgroundColor: 'transparent',
                                 color: 'white',
@@ -62,7 +62,7 @@ function ExerciseCard() {
                               Weight: {exercise.weight}
                             </li>
                             <li
-                              className="list-group-item"
+                              className='list-group-item'
                               style={{
                                 backgroundColor: 'transparent',
                                 color: 'white',
@@ -71,7 +71,7 @@ function ExerciseCard() {
                               Sets: {exercise.sets}
                             </li>
                             <li
-                              className="list-group-item"
+                              className='list-group-item'
                               style={{
                                 backgroundColor: 'transparent',
                                 color: 'white',
@@ -81,7 +81,7 @@ function ExerciseCard() {
                             </li>
                           </ul>
                           <div
-                            className="text-center d-flex justify-content-between flex-row-reverse"
+                            className='text-center d-flex justify-content-between flex-row-reverse'
                             style={{ marginTop: '1rem' }}
                           >
                             <Button
@@ -102,8 +102,8 @@ function ExerciseCard() {
                                 }
                                 return alert('Error');
                               }}
-                              variant="contained"
-                              color="primary"
+                              variant='contained'
+                              color='primary'
                             >
                               Delete
                             </Button>
